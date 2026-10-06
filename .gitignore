@@ -17,3 +17,4 @@ migration-work/navigation-validation/
 tools/importer/*.bundle.js
 tools/importer/reports/
 tools/importer/bd-snapshots/
+migration-work/footer-validation/
