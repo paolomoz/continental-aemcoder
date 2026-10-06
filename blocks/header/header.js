@@ -179,6 +179,117 @@ function setupPanels(nav, panelHost, overlay) {
 }
 
 /**
+ * Reads a panel section into { title, groups: [{ label, href, links }] } (non-destructive).
+ * @param {Element} section
+ */
+function readPanelTree(section) {
+  const link = (a) => ({ label: a.textContent.trim(), href: a.getAttribute('href') });
+  const titleLink = section.querySelector('h2 a');
+  const groups = [...section.querySelectorAll(':scope > h3')].map((h3) => {
+    const a = h3.querySelector('a');
+    const next = h3.nextElementSibling;
+    return {
+      label: h3.textContent.trim(),
+      href: a ? a.getAttribute('href') : null,
+      links: next && next.tagName === 'UL' ? [...next.querySelectorAll('a')].map(link) : [],
+    };
+  });
+  return { title: titleLink ? link(titleLink) : null, groups };
+}
+
+/**
+ * Builds the mobile drill-down drawer: each level slides in and has a back link.
+ * @param {Array} items top-level { label, href, tree }
+ * @param {Array} languages { label, href }
+ */
+function buildDrawer(items, languages) {
+  const drawer = document.createElement('div');
+  drawer.className = 'nav-drawer';
+  const levels = new Map();
+
+  const makeLevel = (id, parentId) => {
+    const level = document.createElement('div');
+    level.className = 'nav-level';
+    level.id = id;
+    level.hidden = id !== 'nav-level-root';
+    if (parentId) {
+      level.dataset.parent = parentId;
+      const back = document.createElement('button');
+      back.type = 'button';
+      back.className = 'nav-level-back';
+      back.innerHTML = `${ICONS.chevron}<span>Back</span>`;
+      level.append(back);
+    }
+    const ul = document.createElement('ul');
+    level.append(ul);
+    levels.set(id, level);
+    drawer.append(level);
+    return ul;
+  };
+  const addLink = (ul, label, href) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = href;
+    a.textContent = label;
+    li.append(a);
+    ul.append(li);
+  };
+  const addDrill = (ul, label, target) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.dataset.target = target;
+    btn.innerHTML = `<span>${label}</span>${ICONS.chevron}`;
+    li.append(btn);
+    ul.append(li);
+    return li;
+  };
+
+  const root = makeLevel('nav-level-root');
+  items.forEach((item, i) => {
+    if (!item.tree) {
+      addLink(root, item.label, item.href);
+      return;
+    }
+    const levelId = `nav-level-${i}`;
+    addDrill(root, item.label, levelId);
+    const ul = makeLevel(levelId, 'nav-level-root');
+    if (item.tree.title) addLink(ul, item.tree.title.label, item.tree.title.href);
+    item.tree.groups.forEach((g, j) => {
+      if (!g.links.length) {
+        if (g.href) addLink(ul, g.label, g.href);
+        return;
+      }
+      const groupId = `${levelId}-${j}`;
+      addDrill(ul, g.label, groupId);
+      const gul = makeLevel(groupId, levelId);
+      if (g.href) addLink(gul, g.label, g.href);
+      g.links.forEach((l) => addLink(gul, l.label, l.href));
+    });
+  });
+  if (languages.length) {
+    addDrill(root, 'Select Language', 'nav-level-language').classList.add('nav-level-language');
+    const lul = makeLevel('nav-level-language', 'nav-level-root');
+    languages.forEach((l) => addLink(lul, l.label, l.href));
+  }
+
+  const show = (id, direction) => {
+    levels.forEach((level) => { level.hidden = true; level.classList.remove('slide-in', 'slide-back'); });
+    const target = levels.get(id);
+    target.hidden = false;
+    if (direction) target.classList.add(direction);
+  };
+  drawer.addEventListener('click', (e) => {
+    const drill = e.target.closest('button[data-target]');
+    const back = e.target.closest('.nav-level-back');
+    if (drill) show(drill.dataset.target, 'slide-in');
+    else if (back) show(back.closest('.nav-level').dataset.parent, 'slide-back');
+  });
+  drawer.reset = () => show('nav-level-root');
+  return drawer;
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -193,9 +304,26 @@ export default async function decorate(block) {
   nav.id = 'nav';
   nav.setAttribute('aria-label', 'Main');
 
-  const bar = document.createElement('div');
-  bar.className = 'nav-bar';
-  if (toolsSection) bar.append(buildTools(toolsSection));
+  const tools = toolsSection ? buildTools(toolsSection) : document.createElement('div');
+  const languages = [...tools.querySelectorAll('.nav-language-list a')]
+    .map((a) => ({ label: a.textContent.trim(), href: a.getAttribute('href') }));
+
+  // mobile-only search toggle: reveals the search form below the bar
+  const searchForm = tools.querySelector('.nav-search');
+  if (searchForm) {
+    const searchToggle = document.createElement('button');
+    searchToggle.type = 'button';
+    searchToggle.className = 'nav-search-toggle';
+    searchToggle.setAttribute('aria-expanded', 'false');
+    searchToggle.setAttribute('aria-label', 'Search');
+    searchToggle.innerHTML = ICONS.search;
+    searchToggle.addEventListener('click', () => {
+      const expanded = searchToggle.getAttribute('aria-expanded') === 'true';
+      searchToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      if (!expanded) searchForm.querySelector('input').focus();
+    });
+    searchForm.before(searchToggle);
+  }
 
   // main nav list; items whose label matches a panel heading become panel triggers
   const sections = document.createElement('div');
@@ -203,12 +331,14 @@ export default async function decorate(block) {
   const panelHost = document.createElement('div');
   panelHost.className = 'nav-panel';
   const panelsByLabel = new Map(panelSections.map((s) => [normalize((s.querySelector('h2') || {}).textContent), s]));
+  const drawerItems = [];
   const list = listSection ? listSection.querySelector('ul') : null;
   if (list) {
     [...list.children].forEach((li, i) => {
       const link = li.querySelector('a');
       const label = link ? link.textContent.trim() : li.textContent.trim();
       const panelSection = panelsByLabel.get(normalize(label));
+      drawerItems.push({ label, href: link ? link.getAttribute('href') : '#', tree: panelSection ? readPanelTree(panelSection) : null });
       if (!panelSection) return;
       const id = `nav-panel-${i}`;
       panelHost.append(buildPanel(panelSection, id));
@@ -222,7 +352,6 @@ export default async function decorate(block) {
     });
     sections.append(list);
   }
-  bar.append(sections);
 
   const closeButton = document.createElement('button');
   closeButton.type = 'button';
@@ -235,28 +364,30 @@ export default async function decorate(block) {
   overlay.className = 'nav-overlay';
   overlay.hidden = true;
 
+  const drawer = buildDrawer(drawerItems, languages);
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.className = 'nav-hamburger';
   hamburger.innerHTML = '<button type="button" aria-controls="nav" aria-label="Open navigation"><span class="nav-hamburger-icon"></span></button>';
-  hamburger.querySelector('button').addEventListener('click', () => {
-    const expanded = nav.getAttribute('aria-expanded') === 'true';
-    nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    hamburger.querySelector('button').setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
-    document.body.style.overflowY = expanded ? '' : 'hidden';
-  });
+  const hamburgerButton = hamburger.querySelector('button');
+  const setMenu = (open) => {
+    nav.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamburgerButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    document.body.style.overflowY = open && !isDesktop.matches ? 'hidden' : '';
+    if (open) drawer.reset();
+  };
+  hamburgerButton.addEventListener('click', () => setMenu(nav.getAttribute('aria-expanded') !== 'true'));
 
   if (brandSection) nav.append(buildBrand(brandSection));
-  nav.append(hamburger, bar, panelHost);
-  nav.setAttribute('aria-expanded', 'false');
+  nav.append(tools, sections, hamburger, panelHost, drawer);
+  setMenu(false);
   const closePanels = setupPanels(nav, panelHost, overlay);
 
   // reset menu/panel state when crossing the desktop breakpoint
   isDesktop.addEventListener('change', () => {
     closePanels();
-    nav.setAttribute('aria-expanded', 'false');
-    hamburger.querySelector('button').setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflowY = '';
+    setMenu(false);
   });
 
   const navWrapper = document.createElement('div');
