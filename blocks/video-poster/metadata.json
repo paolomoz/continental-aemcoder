@@ -1,0 +1,24 @@
+{
+  "variantName": "video-poster",
+  "baseBlock": "video",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "standalone video",
+    "colorScheme": "inherits section",
+    "density": "medium",
+    "imagePattern": "16:9-poster",
+    "layout": "16:9 poster image with a centred play button and a caption below (title + '(c) Continental AG'). Clicking replaces the poster in place with the Continental (AdmiralCloud) player iframe; nothing third-party loads before the click. Fills its column (e.g. the third column of a 'three-column' section)"
+  },
+  "contentPattern": "Poster image + link to https://video.continental.com/?v={uuid} + optional caption paragraph(s), in any rows/cells (one cell or one row per item both work). Poster from images.admiralcloud.com/v5/deliverEmbed/{uuid}/image/{width}, downloaded at import. The caption's first non-copyright line is the iframe title. A link that is not a video.continental.com URL keeps the poster as a plain link. Shared helper: /scripts/video-embed.js",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "video-poster"
+  ]
+}

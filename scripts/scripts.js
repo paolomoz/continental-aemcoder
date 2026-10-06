@@ -10,6 +10,9 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -104,6 +107,41 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Applies section metadata: `style` becomes section classes, `background-image`
+ * becomes a `.section-background` picture, other keys become data attributes.
+ * Runs after decorateSections and before decorateBlocks.
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section > div > .section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    const config = readBlockConfig(meta);
+    Object.entries(config).forEach(([key, value]) => {
+      if (key === 'style') {
+        [value].flat().join(',').split(',')
+          .map((s) => toClassName(s.trim()))
+          .filter(Boolean)
+          .forEach((cls) => section.classList.add(cls));
+      } else if (key === 'background-image') {
+        const picture = meta.querySelector('picture');
+        if (picture) {
+          const bg = document.createElement('div');
+          bg.className = 'section-background';
+          bg.append(picture);
+          section.prepend(bg);
+          section.classList.add('has-background');
+        }
+      } else {
+        section.dataset[toCamelCase(key)] = [value].flat().join(',');
+      }
+    });
+    const wrapper = meta.parentElement;
+    meta.remove();
+    if (!wrapper.children.length) wrapper.remove();
+  });
+}
+
+/**
  * Decorates formatted links to style them as buttons.
  * @param {HTMLElement} main The main container element
  */
@@ -151,6 +189,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

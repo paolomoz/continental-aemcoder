@@ -1,0 +1,328 @@
+.cards-teaser > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* a single teaser fills the available width (e.g. the 2/3 column next to a widget) */
+.cards-teaser > ul:has(> li:only-child) {
+  grid-template-columns: 1fr;
+}
+
+.cards-teaser .cards-teaser-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-teaser .cards-teaser-card-image {
+  line-height: 0;
+}
+
+.cards-teaser .cards-teaser-card-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cards-teaser .cards-teaser-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.cards-teaser .cards-teaser-card-body > :first-child {
+  margin-top: 0;
+}
+
+/* push the CTA to the bottom so links align across a row of cards */
+.cards-teaser .cards-teaser-card-body > :last-child:has(.cards-teaser-card-link) {
+  margin-top: auto;
+}
+
+/* stretched link: the whole teaser is clickable */
+.cards-teaser .cards-teaser-card-linked .cards-teaser-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* other links inside the body stay independently clickable above the stretched link */
+.cards-teaser .cards-teaser-card-body a:not(.cards-teaser-card-link) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (width >= 600px) {
+  .cards-teaser > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-teaser > ul:has(> li:only-child) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-teaser > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-teaser > ul:has(> li:only-child) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* block heading row (tab label in a tab group) */
+.cards-teaser .cards-teaser-header {
+  margin-bottom: 24px;
+}
+
+.cards-teaser .cards-teaser-header > :first-child {
+  margin-top: 0;
+}
+
+.cards-teaser .cards-teaser-header > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- video teasers: play overlay, player opens in a dialog ---------- */
+.cards-teaser .cards-teaser-card-video .cards-teaser-card-image {
+  position: relative;
+}
+
+.cards-teaser .cards-teaser-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cards-teaser .cards-teaser-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent white;
+  transform: translate(-50%, -50%);
+}
+
+.cards-teaser .cards-teaser-video-dialog {
+  width: min(92vw, 1100px);
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: black;
+  overflow: visible;
+}
+
+.cards-teaser .cards-teaser-video-dialog::backdrop {
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.cards-teaser .cards-teaser-video-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+.cards-teaser .cards-teaser-video-close::before,
+.cards-teaser .cards-teaser-video-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background-color: currentcolor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cards-teaser .cards-teaser-video-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ---------- option: two-up - at most 2 per row ---------- */
+@media (width >= 900px) {
+  .cards-teaser.two-up > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- option: four-up - 4 per row on desktop ---------- */
+@media (width >= 900px) {
+  .cards-teaser.four-up > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* single teasers keep filling the row in every column option */
+@media (width >= 600px) {
+  .cards-teaser.two-up > ul:has(> li:only-child),
+  .cards-teaser.four-up > ul:has(> li:only-child) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- option: slider - one horizontal scroll-snap row ---------- */
+.cards-teaser.slider {
+  position: relative;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-teaser.slider > ul,
+.cards-teaser.slider > ul:has(> li:only-child) {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.cards-teaser.slider > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-teaser.slider .cards-teaser-card {
+  flex: 0 0 85%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav[hidden] {
+  display: none;
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+
+.cards-teaser.slider .cards-teaser-slider-prev::after {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+@media (width >= 600px) {
+  .cards-teaser.slider .cards-teaser-card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-teaser.slider .cards-teaser-card {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-teaser.slider .cards-teaser-card {
+    flex-basis: calc((100% - 3 * 24px) / 4);
+  }
+
+  /* desktop: arrows sit on the track edges at mid-height */
+  .cards-teaser.slider .cards-teaser-slider-nav {
+    position: absolute;
+    inset: 0 -20px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .cards-teaser.slider .cards-teaser-slider-nav button {
+    background-color: var(--background-color, white);
+    pointer-events: auto;
+  }
+}
+
+/* ---------- option: tabbed - adjacent instances share one tab bar ---------- */
+
+/* the tab bar is inserted before the first grouped instance (outside the block) */
+.cards-teaser-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid currentcolor;
+}
+
+.cards-teaser-tablist .cards-teaser-tab {
+  margin: 0 0 -1px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+.cards-teaser-tablist .cards-teaser-tab[aria-selected="true"] {
+  border-bottom-color: currentcolor;
+  font-weight: bold;
+}
+
+/* in a tab group the tab is the label; the heading row only names the panel for no-JS */
+.cards-teaser.cards-teaser-in-tabs .cards-teaser-header {
+  display: none;
+}
+
+.cards-teaser-wrapper[role="tabpanel"][hidden] {
+  display: none;
+}

@@ -1,0 +1,37 @@
+.widget-share-price {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* reserve space for the third-party chart so lazy-loading causes no layout shift */
+.widget-share-price .widget-share-price-frame {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+}
+
+.widget-share-price .widget-share-price-frame iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+
+/* CTA button sits below the chart, aligned to the end of the column */
+.widget-share-price .widget-share-price-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.widget-share-price .widget-share-price-cta > * {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .widget-share-price .widget-share-price-cta {
+    justify-content: flex-end;
+  }
+}

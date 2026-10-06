@@ -1,0 +1,191 @@
+.cards-gallery > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-gallery .cards-gallery-item {
+  min-width: 0;
+}
+
+.cards-gallery .cards-gallery-figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.cards-gallery .cards-gallery-image {
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-image a {
+  display: block;
+}
+
+/* product photos: show the whole image, never crop */
+.cards-gallery .cards-gallery-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.cards-gallery .cards-gallery-caption {
+  padding-top: 8px;
+}
+
+.cards-gallery .cards-gallery-caption > :first-child {
+  margin-top: 0;
+}
+
+.cards-gallery .cards-gallery-caption > :last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 600px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* two photos share the row instead of leaving an empty third column */
+  .cards-gallery > ul[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* a single photo keeps its natural column width */
+.cards-gallery > ul[data-count='1'] {
+  grid-template-columns: minmax(0, 480px);
+}
+
+/* ---------- option: four-up - 4 photos per row on desktop ---------- */
+@media (width >= 900px) {
+  .cards-gallery.four-up > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-gallery.four-up > ul[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-gallery.four-up > ul[data-count='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- option: slider - one horizontal scroll-snap row ---------- */
+.cards-gallery.slider {
+  position: relative;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-gallery.slider > ul,
+.cards-gallery.slider > ul[data-count] {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.cards-gallery.slider > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-gallery.slider .cards-gallery-item {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
+
+/* the slider crops photos to one height so the row stays even */
+.cards-gallery.slider .cards-gallery-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav[hidden] {
+  display: none;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+
+.cards-gallery.slider .cards-gallery-slider-prev::after {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+@media (width >= 600px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 3 * 24px) / 4);
+  }
+
+  /* desktop: arrows sit on the track edges at the photo's mid-height */
+  .cards-gallery.slider .cards-gallery-slider-nav {
+    position: absolute;
+    inset: 0 -20px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .cards-gallery.slider .cards-gallery-slider-nav button {
+    background-color: var(--background-color, white);
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "variantName": "cards-gallery",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "press-photo-gallery",
+    "colorScheme": "light",
+    "density": "compact",
+    "imagePattern": "product-photo-top",
+    "layout": "Lightweight grid of press photos (3 per row on desktop, 2 on tablet, 1 on mobile); each item: uncropped product photo with a short caption underneath and an optional link to the hi-res original (the photo itself also links to the original). Options: 'four-up' (4 per row from 900px), 'slider' (one horizontal scroll-snap row, 1/2/3/4 visible at <600/600/900/1200px, photos cropped to 4:3, prev/next buttons hidden when everything fits)"
+  },
+  "contentPattern": "One row per photo: cell 1 = image; cell 2 = caption paragraph plus optional link to the hi-res original (e.g. a cdn.continental.com/fileadmin/... URL, link text 'Download' or the caption itself)",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/press-releases/oe-porsche/",
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [
+    {
+      "class": "four-up",
+      "label": "Four Up"
+    },
+    {
+      "class": "slider",
+      "label": "Slider"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-gallery"
+  ]
+}

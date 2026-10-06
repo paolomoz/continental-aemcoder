@@ -1,0 +1,79 @@
+/* Table block: structural styles only (brand design is applied later) */
+
+.table .table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+}
+
+.table th,
+.table td {
+  padding: 0.5em 0.75em;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+/* keep empty cells taking up space so rows stay aligned */
+.table td:empty::after,
+.table th:empty::after {
+  content: '\00a0';
+}
+
+.table th p,
+.table td p {
+  margin: 0;
+}
+
+.table th p + p,
+.table td p + p {
+  margin-top: 0.25em;
+}
+
+/* mobile: let wide tables scroll rather than squash below a readable width */
+.table table.table-cols-3,
+.table table.table-cols-4 {
+  min-width: 480px;
+}
+
+.table table[class*='table-cols-']:not(.table-cols-1, .table-cols-2, .table-cols-3, .table-cols-4) {
+  min-width: 640px;
+}
+
+@media (width >= 600px) {
+  .table th,
+  .table td {
+    padding: 0.75em 1em;
+  }
+}
+
+@media (width >= 900px) {
+  /* two-column key/value tables (e.g. CV): narrow first column */
+  .table table.table-cols-2 td:first-child {
+    width: 25%;
+  }
+}
+
+/* default: first row rendered as thead (no-header option turns it off) */
+.table thead th {
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+/* striped option: dark head + zebra rows (neutral tint; design pass sets brand colors) */
+.table.striped thead tr {
+  background-color: rgb(0 0 0 / 80%);
+  color: #fff;
+}
+
+.table.striped tbody tr:nth-child(odd) {
+  background-color: rgb(0 0 0 / 5%);
+}

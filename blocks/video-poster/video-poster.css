@@ -1,0 +1,77 @@
+.video-poster .video-poster-media {
+  position: relative;
+  line-height: 0;
+}
+
+/* poster: picture with a centred play button; a <button> for videos, a link otherwise */
+.video-poster .video-poster-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.video-poster .video-poster-poster picture,
+.video-poster .video-poster-poster img {
+  display: block;
+  width: 100%;
+}
+
+.video-poster .video-poster-poster img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* no poster image: keep the 16:9 player area */
+.video-poster .video-poster-no-image {
+  aspect-ratio: 16 / 9;
+  background-color: black;
+}
+
+.video-poster .video-poster-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 50%);
+  transform: translate(-50%, -50%);
+}
+
+.video-poster .video-poster-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent white;
+  transform: translate(-50%, -50%);
+}
+
+.video-poster .video-poster-poster:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+/* the player iframe that replaces the poster after the click */
+.video-poster .video-poster-frame {
+  line-height: 0;
+}
+
+.video-poster .video-poster-caption {
+  margin-top: 8px;
+}
+
+.video-poster .video-poster-caption > * {
+  margin: 0;
+}

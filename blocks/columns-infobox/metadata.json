@@ -1,0 +1,26 @@
+{
+  "variantName": "columns-infobox",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "info-box",
+    "colorScheme": "light-grey (section background via section-metadata style 'light-grey')",
+    "density": "medium",
+    "imagePattern": "image-left-third",
+    "layout": "Two columns on tablet/desktop: image takes 1/3, text takes 2/3 (stacked on mobile, image first); the text ends with a pill CTA button (e.g. 'Find out more', external links open in a new tab). Placed in a section styled 'light-grey', usually after a default-content heading"
+  },
+  "contentPattern": "One row, two cells: cell 1 = image; cell 2 = paragraph(s) followed by a CTA link in its own paragraph. Authoring the image in cell 2 puts it on the right",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/press-releases/oe-porsche/",
+      "https://www.continental.com/en/press/",
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 3,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-infobox"
+  ]
+}

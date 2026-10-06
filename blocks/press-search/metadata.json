@@ -1,0 +1,27 @@
+{
+  "variantName": "press-search",
+  "baseBlock": "search",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "faceted-press-search",
+    "colorScheme": "light",
+    "density": "spacious",
+    "imagePattern": "thumbnail-left",
+    "layout": "Full-width search application rendered at runtime from the press index (template = press-release): pill search input with an in-field submit button; 'Filter by:' label followed by an ARIA tab bar, one tab per configured facet (Published / Corporate Topics / Products & Technologies / Vehicle Types), the open tab shows its panel - Published: radio options All, Last week, 30 days, 6 months (with live counts) and Custom range (start/end date inputs + 'Show results'); tag facets: checkbox options with live '(count)', sorted by count desc, zero-count hidden (OR within a facet, AND across facets); active-filter chips with 'Clear all'; toolbar row with 'N results' (heading, aria-live status) left and a sort select right (relevance / date desc / date asc); vertical results list, one row per press release - 16:9 thumbnail left (1:3 columns at 600px, 300px column at 900px, hidden on mobile), body right: 'Press Release' type label + long date, title link, description; numbered pagination centred below (max 10 numbers, ellipsis, prev/next). Skeleton rows while the index loads; friendly message when the index fails or nothing matches"
+  },
+  "contentPattern": "Key/value config table, every row optional (column 1 key, column 2 value): 'Index | <link>' (default /en/press/press-index.json), 'Page Size | 9' (default 9), 'Facets | published, corporate-topics, products-technologies, vehicle-types' (comma list, order = tab order; default all four), 'Filter | <facet>' (has any tag in that facet) or 'Filter | <facet> | <label>' / 'Filter | <facet> | <label>' in one cell separated by '|' (exact label) - repeatable, all presets must match, presets are fixed and scope results and counts, 'Sort | date-desc | date-asc | relevance' (default date-desc; with ?q= and no explicit sort the default becomes relevance), 'Heading | <text>'. Index rows provide path, title, description, image, publication-date, corporate-topics, products-technologies, vehicle-types (comma-separated labels) and template. View state is kept in URL params: q, page, sort, published (7d | 30d | 6m | from:yyyy-mm-dd,to:yyyy-mm-dd) and one repeatable param per tag facet. Shared loader: /scripts/press-index.js",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/press-releases/",
+      "https://www.continental.com/en/press/press-releases/corporate-topics/",
+      "https://www.continental.com/en/press/press-releases/products-technologies/",
+      "https://www.continental.com/en/press/press-releases/vehicle-types/"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "press-search"
+  ]
+}

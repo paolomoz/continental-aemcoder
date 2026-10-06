@@ -1,0 +1,80 @@
+.cards-downloads > ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-downloads .cards-downloads-header > :first-child {
+  margin-top: 0;
+}
+
+.cards-downloads .cards-downloads-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 16px;
+  padding: 12px 0;
+}
+
+.cards-downloads .cards-downloads-item + .cards-downloads-item {
+  border-top: 1px solid currentcolor;
+  border-top-color: color-mix(in srgb, currentcolor 15%, transparent);
+}
+
+.cards-downloads .cards-downloads-has-thumb {
+  grid-template-columns: 64px auto minmax(0, 1fr);
+}
+
+.cards-downloads .cards-downloads-thumb {
+  line-height: 0;
+}
+
+.cards-downloads .cards-downloads-thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.cards-downloads .cards-downloads-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 5em;
+  white-space: nowrap;
+}
+
+/* icon slot: a neutral file glyph drawn with borders; the design pass can swap in brand icons per data-kind */
+.cards-downloads .cards-downloads-icon {
+  display: inline-block;
+  flex: none;
+  width: 14px;
+  height: 18px;
+  border: 2px solid currentcolor;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.cards-downloads .cards-downloads-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  min-width: 0;
+}
+
+.cards-downloads .cards-downloads-link {
+  overflow-wrap: anywhere;
+}
+
+.cards-downloads .cards-downloads-size {
+  white-space: nowrap;
+}
+
+@media (width >= 600px) {
+  .cards-downloads .cards-downloads-info {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}

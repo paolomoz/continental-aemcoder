@@ -1,0 +1,1737 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "description": "Corporate homepage: hero, teasers, share price, stats, promos",
+      "urlPattern": "/en/",
+      "representativeUrl": "https://www.continental.com/en/",
+      "urls": [
+        "https://www.continental.com/en/"
+      ],
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".c-heroteaser-fixed"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".o-container .o-container__content > .row:not(.o-container__header):has(a.c-teaser):not(:has(iframe))",
+            ".o-container .o-container__content > .row:not(.o-container__header):has(iframe) > div:has(a.c-teaser)"
+          ]
+        },
+        {
+          "name": "widget-share-price",
+          "instances": [
+            ".o-page__ce:has(iframe[src*=\"equitystory\"])"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            ".o-container.is-pastel-yellow .o-container__content > .row:not(.o-container__header)"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".o-container .o-container__content > .row:not(.o-container__header):has(.c-fact-box)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-slider",
+          "selector": [
+            ".c-heroteaser-fixed"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "welcome-annual-report-share-price",
+          "selector": [
+            "main > .o-container:nth-of-type(2)",
+            ".o-container.has-columns:has(iframe[src*=\"equitystory\"])"
+          ],
+          "style": "teaser-widget",
+          "blocks": [
+            "cards-teaser",
+            "widget-share-price"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "tires-garage-video",
+          "selector": [
+            ".o-container.is-pastel-yellow"
+          ],
+          "style": "pastel-yellow",
+          "blocks": [
+            "columns-video"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "career",
+          "selector": [
+            "main > .o-container:nth-of-type(4)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "sustainability-stats",
+          "selector": [
+            ".o-container.has-image:has(.c-fact-box)"
+          ],
+          "style": "background-image",
+          "blocks": [
+            "cards-stats"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "6",
+          "name": "facts-and-figures",
+          "selector": [
+            "main > .o-container:nth-of-type(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "press-landing",
+      "description": "Press section landing: hero, featured and latest news, category entry points, media/events teasers",
+      "urlPattern": "/en/press/",
+      "representativeUrl": "https://www.continental.com/en/press/",
+      "urls": [
+        "https://www.continental.com/en/press/"
+      ],
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            "main > .c-heroteaser-fixed"
+          ]
+        },
+        {
+          "name": "search-box",
+          "instances": [
+            ".o-container.tx_solr .c-search:not(.c-news-sidebar .c-search) .c-search__form"
+          ]
+        },
+        {
+          "name": "cards-latest-news",
+          "instances": [
+            ".o-tabs .o-tabs__content-item"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".o-container.has-columns:not(.o-tabs .o-container) > .o-container__content > .row:not(.o-container__header):has(a.c-teaser)"
+          ]
+        },
+        {
+          "name": "columns-infobox",
+          "instances": [
+            ".o-container.is-pastel-yellow .c-media__content.is-image-intext:has(.c-media__gallery)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-slider",
+          "selector": [
+            "main > .c-heroteaser-fixed"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "intro-search",
+          "selector": [
+            "main > .o-container.is-white:has(> .o-container__content > .o-container__header h1)"
+          ],
+          "style": null,
+          "blocks": [
+            "search-box"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "quick-links",
+          "selector": [
+            "main > .o-container.is-white:has(.c-media__text a.c-button--internal):not(.has-columns)"
+          ],
+          "style": "button-row",
+          "blocks": [],
+          "defaultContent": [
+            ".c-media__text p"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "press-releases-tabs",
+          "selector": [
+            "main > .o-container.is-lightgray:has(.o-tabs)"
+          ],
+          "style": "light-grey",
+          "blocks": [
+            "cards-latest-news"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "fairs-events",
+          "selector": [
+            "main > .o-container.is-gray.has-columns"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "6",
+          "name": "fairs-events-link",
+          "selector": [
+            "main > .o-container.is-gray:not(.has-columns)"
+          ],
+          "style": "grey",
+          "blocks": [],
+          "defaultContent": [
+            ".c-media__text p"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "mobility-studies",
+          "selector": [
+            "main > .o-container.is-pastel-yellow"
+          ],
+          "style": "pastel-yellow",
+          "blocks": [
+            "columns-infobox"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "8",
+          "name": "media-library",
+          "selector": [
+            "main > .o-container.is-white.has-columns:has(a.c-teaser[href*='/media-library/'])"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "9",
+          "name": "press-contacts",
+          "selector": [
+            "main > .o-container.is-white.has-columns:has(a.c-teaser[href*='/press-contacts/'])"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "press-listing",
+      "description": "Press release search/listing with facets (main listing and category landings)",
+      "urlPattern": "/en/press/press-releases/ and /en/press/press-releases/{corporate-topics|products-technologies|vehicle-types}/",
+      "representativeUrl": "https://www.continental.com/en/press/press-releases/",
+      "urls": [
+        "https://www.continental.com/en/press/press-releases/",
+        "https://www.continental.com/en/press/press-releases/corporate-topics/",
+        "https://www.continental.com/en/press/press-releases/products-technologies/",
+        "https://www.continental.com/en/press/press-releases/vehicle-types/"
+      ],
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            "main > .c-heroteaser-fixed"
+          ]
+        },
+        {
+          "name": "press-search",
+          "instances": [
+            "main > .o-container.tx_solr .c-search"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero",
+          "selector": [
+            "main > .c-heroteaser-fixed"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "search",
+          "selector": [
+            "main > .o-container.is-white:not(.tx_solr):has(h1)",
+            "main > .o-container.tx_solr"
+          ],
+          "style": null,
+          "blocks": [
+            "press-search"
+          ],
+          "defaultContent": [
+            "h1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "press-release",
+      "description": "Press release article: two-column body + sidebar (date, downloads, contact, share)",
+      "urlPattern": "/en/press/press-releases/*",
+      "representativeUrl": "https://www.continental.com/en/press/press-releases/oe-porsche/",
+      "urls": [
+        "https://www.continental.com/en/press/press-releases/oe-porsche/",
+        "https://www.continental.com/en/press/press-release/20230509-sportcontact-7/",
+        "https://www.continental.com/en/press/press-releases/-20210908-new-sports-tire-from-continental-starts/",
+        "https://www.continental.com/en/press/press-releases/-20241014-americas-ashok-vedanayagam/",
+        "https://www.continental.com/en/press/press-releases/-20241028-brabus-supercar-rocket/",
+        "https://www.continental.com/en/press/press-releases/-20241029-remondis-sachsen/",
+        "https://www.continental.com/en/press/press-releases/150-years-agriculture/",
+        "https://www.continental.com/en/press/press-releases/150-years-construction/",
+        "https://www.continental.com/en/press/press-releases/150-years-of-continental/",
+        "https://www.continental.com/en/press/press-releases/2021-01-12-ces-2021/",
+        "https://www.continental.com/en/press/press-releases/2021-01-18-contionlinecontact/",
+        "https://www.continental.com/en/press/press-releases/2021-01-19-eu-tirelabel/",
+        "https://www.continental.com/en/press/press-releases/2021-01-20-new-cnn-head/",
+        "https://www.continental.com/en/press/press-releases/2021-01-21-load-index-code/",
+        "https://www.continental.com/en/press/press-releases/2021-01-28-halve-the-number-stickers/",
+        "https://www.continental.com/en/press/press-releases/2021-01-28-management-of-specialty-tires/",
+        "https://www.continental.com/en/press/press-releases/2021-02-08-conti-scandinavia/",
+        "https://www.continental.com/en/press/press-releases/2021-02-24-vecto/",
+        "https://www.continental.com/en/press/press-releases/2021-03-02-vdo-dtco-testing/",
+        "https://www.continental.com/en/press/press-releases/2021-03-08-eco-performance-award/",
+        "https://www.continental.com/en/press/press-releases/2021-03-23-fendt/",
+        "https://www.continental.com/en/press/press-releases/2021-03-30-general-tire/",
+        "https://www.continental.com/en/press/press-releases/2021-03-31-dpd-truck/",
+        "https://www.continental.com/en/press/press-releases/2021-04-07-tire-simulator/",
+        "https://www.continental.com/en/press/press-releases/2021-04-08-fleet/",
+        "https://www.continental.com/en/press/press-releases/2021-04-09-5g-connectivity/",
+        "https://www.continental.com/en/press/press-releases/2021-04-26-hpc-cv/",
+        "https://www.continental.com/en/press/press-releases/2021-04-27-fleet-ii-services/",
+        "https://www.continental.com/en/press/press-releases/2021-04-30-pr-project-extension-bmz/",
+        "https://www.continental.com/en/press/press-releases/2021-05-03-wintercontact/",
+        "https://www.continental.com/en/press/press-releases/2021-05-05-vecto/",
+        "https://www.continental.com/en/press/press-releases/2021-05-10-150-years/",
+        "https://www.continental.com/en/press/press-releases/2021-05-12-dtco4-bus-en/",
+        "https://www.continental.com/en/press/press-releases/2021-05-12-man/",
+        "https://www.continental.com/en/press/press-releases/2021-05-18-gia-cosma-curved-3d-display/",
+        "https://www.continental.com/en/press/press-releases/2021-05-18-new-loader-tire/",
+        "https://www.continental.com/en/press/press-releases/2021-05-20-frotcom/",
+        "https://www.continental.com/en/press/press-releases/2021-05-20-nico-rosberg/",
+        "https://www.continental.com/en/press/press-releases/2021-05-26-electric-buses-from-man/",
+        "https://www.continental.com/en/press/press-releases/2021-05-27-p2p-display/",
+        "https://www.continental.com/en/press/press-releases/2021-06-02-collision-warning/",
+        "https://www.continental.com/en/press/press-releases/2021-06-02-tpms/",
+        "https://www.continental.com/en/press/press-releases/2021-06-04-continental-ee-days/",
+        "https://www.continental.com/en/press/press-releases/2021-06-07-e-mobility/",
+        "https://www.continental.com/en/press/press-releases/2021-06-15-continental-alexa-voice/",
+        "https://www.continental.com/en/press/press-releases/2021-06-22-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/2021-06-23-connected-truck/",
+        "https://www.continental.com/en/press/press-releases/2021-06-23-solid-tires/",
+        "https://www.continental.com/en/press/press-releases/2021-06-24-continental-mach-e/",
+        "https://www.continental.com/en/press/press-releases/2021-06-28-polymer-simulation/",
+        "https://www.continental.com/en/press/press-releases/2021-06-29-conti-ecoplus/",
+        "https://www.continental.com/en/press/press-releases/20210428-elektomobilitaet/",
+        "https://www.continental.com/en/press/press-releases/20210504-interzum/",
+        "https://www.continental.com/en/press/press-releases/20210506-q1-2021/",
+        "https://www.continental.com/en/press/press-releases/20210601-contitech-staerkt-zukunftsfaehigkeit/",
+        "https://www.continental.com/en/press/press-releases/20210609-mobilitaet-der-zukunft-vorantreiben/",
+        "https://www.continental.com/en/press/press-releases/20210623-gilles-mabire-cto/",
+        "https://www.continental.com/en/press/press-releases/20210708-continental-futuricum/",
+        "https://www.continental.com/en/press/press-releases/20210714-lidar-aeye/",
+        "https://www.continental.com/en/press/press-releases/20210715-ate-ceramic/",
+        "https://www.continental.com/en/press/press-releases/20210720-150th-anniversary/",
+        "https://www.continental.com/en/press/press-releases/20210722-fleet-business-40/",
+        "https://www.continental.com/en/press/press-releases/20210728-cross-domain-hpc/",
+        "https://www.continental.com/en/press/press-releases/20210729-ces-siemens-ehighway/",
+        "https://www.continental.com/en/press/press-releases/20210730-oe-bmw-m4/",
+        "https://www.continental.com/en/press/press-releases/20210803-rpet-otiz/",
+        "https://www.continental.com/en/press/press-releases/20210812-ces-varta/",
+        "https://www.continental.com/en/press/press-releases/20210812-tires-rolling-resistance/",
+        "https://www.continental.com/en/press/press-releases/20210816-mobility-study-software/",
+        "https://www.continental.com/en/press/press-releases/20210818-timo-roebbel/",
+        "https://www.continental.com/en/press/press-releases/20210825-sustainability-commitment-extreme-e/",
+        "https://www.continental.com/en/press/press-releases/20210826-vf-combinemaster/",
+        "https://www.continental.com/en/press/press-releases/20210831-e-mobility/",
+        "https://www.continental.com/en/press/press-releases/20210831-feigel-lauxmann/",
+        "https://www.continental.com/en/press/press-releases/20210901-dtco4/",
+        "https://www.continental.com/en/press/press-releases/20210901-iaa-preview/",
+        "https://www.continental.com/en/press/press-releases/20210902-case-ih/",
+        "https://www.continental.com/en/press/press-releases/20210902-dream-homes-on-the-road/",
+        "https://www.continental.com/en/press/press-releases/20210903-etravelcompanion/",
+        "https://www.continental.com/en/press/press-releases/20210906-tires-greenconcept/",
+        "https://www.continental.com/en/press/press-releases/20210908-continental-tailor-made/",
+        "https://www.continental.com/en/press/press-releases/20210908-new-sportcontact-7/",
+        "https://www.continental.com/en/press/press-releases/20210909-spedition-eggers-conticonnect/",
+        "https://www.continental.com/en/press/press-releases/20210910-supplier-of-the-year-2020/",
+        "https://www.continental.com/en/press/press-releases/20210914-premieres-automechanika/",
+        "https://www.continental.com/en/press/press-releases/20210915-natural-rubber-from-dandelion/",
+        "https://www.continental.com/en/press/press-releases/20210915-profi-werkstatt/",
+        "https://www.continental.com/en/press/press-releases/20210917-marker-security-matters/",
+        "https://www.continental.com/en/press/press-releases/20210922-robotics-its/",
+        "https://www.continental.com/en/press/press-releases/20210923-ls22-gs/",
+        "https://www.continental.com/en/press/press-releases/20210923-winterreifenempfehlungen/",
+        "https://www.continental.com/en/press/press-releases/20210924-porsche-taycan/",
+        "https://www.continental.com/en/press/press-releases/20210929-vdo-scorecards/",
+        "https://www.continental.com/en/press/press-releases/20210930-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20211004-itsworldcongress/",
+        "https://www.continental.com/en/press/press-releases/20211007-conticonnect-live-mercedes-benz/",
+        "https://www.continental.com/en/press/press-releases/20211007-wintercontact-ts-870/",
+        "https://www.continental.com/en/press/press-releases/20211011-150-years-for-continental/",
+        "https://www.continental.com/en/press/press-releases/20211012-air-suspension-systems/",
+        "https://www.continental.com/en/press/press-releases/20211012-mercedes-amg-gt/",
+        "https://www.continental.com/en/press/press-releases/20211013-cabin-sensing/",
+        "https://www.continental.com/en/press/press-releases/20211018-sportcontact7-papenburg/",
+        "https://www.continental.com/en/press/press-releases/20211019-infobook-development-labs/",
+        "https://www.continental.com/en/press/press-releases/20211020-compactmaster-em/",
+        "https://www.continental.com/en/press/press-releases/20211027-clepa-innovation-award/",
+        "https://www.continental.com/en/press/press-releases/20211102-moveexpert/",
+        "https://www.continental.com/en/press/press-releases/20211102-vorab/",
+        "https://www.continental.com/en/press/press-releases/20211103-shytech-display/",
+        "https://www.continental.com/en/press/press-releases/20211105-meets-vodafone/",
+        "https://www.continental.com/en/press/press-releases/20211109-oled-display-order/",
+        "https://www.continental.com/en/press/press-releases/20211110-tyre-errors-winter/",
+        "https://www.continental.com/en/press/press-releases/20211111-steyr-150/",
+        "https://www.continental.com/en/press/press-releases/20211111-whitepaper-electro-mobility/",
+        "https://www.continental.com/en/press/press-releases/20211112-vdo-dsrc-rp/",
+        "https://www.continental.com/en/press/press-releases/20211115-ces-innovation-award/",
+        "https://www.continental.com/en/press/press-releases/20211115-julia-reinhold/",
+        "https://www.continental.com/en/press/press-releases/20211116-john-deere-mannheim/",
+        "https://www.continental.com/en/press/press-releases/20211118-oe-maserati/",
+        "https://www.continental.com/en/press/press-releases/20211123-continental-tolling/",
+        "https://www.continental.com/en/press/press-releases/20211130-vdo-hub/",
+        "https://www.continental.com/en/press/press-releases/20211202-hpc-china/",
+        "https://www.continental.com/en/press/press-releases/20211206-jaguar-i-pace/",
+        "https://www.continental.com/en/press/press-releases/20211206-multiviu-sports/",
+        "https://www.continental.com/en/press/press-releases/20211209-ehorizon-win/",
+        "https://www.continental.com/en/press/press-releases/20211214-hevea-connect/",
+        "https://www.continental.com/en/press/press-releases/20211214-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20211214-vancontacs-a-s-ultra/",
+        "https://www.continental.com/en/press/press-releases/20211215-new-heads/",
+        "https://www.continental.com/en/press/press-releases/20211220-ces/",
+        "https://www.continental.com/en/press/press-releases/20211220-polestar2/",
+        "https://www.continental.com/en/press/press-releases/20211220-winter-urlaub/",
+        "https://www.continental.com/en/press/press-releases/20220110-john-deere/",
+        "https://www.continental.com/en/press/press-releases/20220113-contiseal/",
+        "https://www.continental.com/en/press/press-releases/20220113-ultracontact-marketing/",
+        "https://www.continental.com/en/press/press-releases/20220113-ultracontact-short/",
+        "https://www.continental.com/en/press/press-releases/20220113-ultracontact-technical/",
+        "https://www.continental.com/en/press/press-releases/20220118-reifen-share-now-360/",
+        "https://www.continental.com/en/press/press-releases/20220120-kia-ev6/",
+        "https://www.continental.com/en/press/press-releases/20220120-northeim/",
+        "https://www.continental.com/en/press/press-releases/20220124-bmw-ix/",
+        "https://www.continental.com/en/press/press-releases/20220124-tecdoc/",
+        "https://www.continental.com/en/press/press-releases/20220126-charging-robot/",
+        "https://www.continental.com/en/press/press-releases/20220131-iveco-partnership/",
+        "https://www.continental.com/en/press/press-releases/20220131-landrover-defender/",
+        "https://www.continental.com/en/press/press-releases/20220208-hub-rail/",
+        "https://www.continental.com/en/press/press-releases/20220209-new-holland/",
+        "https://www.continental.com/en/press/press-releases/20220215-design-award-2022/",
+        "https://www.continental.com/en/press/press-releases/20220215-scania-rent/",
+        "https://www.continental.com/en/press/press-releases/20220215-thermostats/",
+        "https://www.continental.com/en/press/press-releases/20220216-eqa/",
+        "https://www.continental.com/en/press/press-releases/20220217-continental-dlg/",
+        "https://www.continental.com/en/press/press-releases/20220221-adac-sommerreifentest/",
+        "https://www.continental.com/en/press/press-releases/20220221-extreme-e-desert-x-prix/",
+        "https://www.continental.com/en/press/press-releases/20220224-conticonnect-20/",
+        "https://www.continental.com/en/press/press-releases/20220228-rv20-allseason/",
+        "https://www.continental.com/en/press/press-releases/20220302-stellantis/",
+        "https://www.continental.com/en/press/press-releases/20220303-conti-hybrid/",
+        "https://www.continental.com/en/press/press-releases/20220304-sportcontact-7/",
+        "https://www.continental.com/en/press/press-releases/20220308-eco-regional/",
+        "https://www.continental.com/en/press/press-releases/20220308-ev-business-success/",
+        "https://www.continental.com/en/press/press-releases/20220311-sustainability-rating/",
+        "https://www.continental.com/en/press/press-releases/20220314-cooperation-pyrum/",
+        "https://www.continental.com/en/press/press-releases/20220315-allseason-label-a/",
+        "https://www.continental.com/en/press/press-releases/20220321-vancontact-rivian/",
+        "https://www.continental.com/en/press/press-releases/20220323-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20220324-tpms-proplus/",
+        "https://www.continental.com/en/press/press-releases/20220404-v-shape-display/",
+        "https://www.continental.com/en/press/press-releases/20220405-contire-tex/",
+        "https://www.continental.com/en/press/press-releases/20220406-ain-dubai/",
+        "https://www.continental.com/en/press/press-releases/20220407-nio-et7/",
+        "https://www.continental.com/en/press/press-releases/20220407-saving-fuel/",
+        "https://www.continental.com/en/press/press-releases/20220407-trainingscenter-schwalbach/",
+        "https://www.continental.com/en/press/press-releases/20220408-inauguration-pune/",
+        "https://www.continental.com/en/press/press-releases/20220408-logimat/",
+        "https://www.continental.com/en/press/press-releases/20220412-update-conti-ecoplus/",
+        "https://www.continental.com/en/press/press-releases/20220419-nachhaltigkeit-flotten/",
+        "https://www.continental.com/en/press/press-releases/20220426-egt-sensors/",
+        "https://www.continental.com/en/press/press-releases/20220426-test-results/",
+        "https://www.continental.com/en/press/press-releases/20220502-autodiagnos-tires/",
+        "https://www.continental.com/en/press/press-releases/20220502-ava/",
+        "https://www.continental.com/en/press/press-releases/20220503-ac-schnitzer/",
+        "https://www.continental.com/en/press/press-releases/20220503-vdo-erru/",
+        "https://www.continental.com/en/press/press-releases/20220503-vdo-scorecards-drivers/",
+        "https://www.continental.com/en/press/press-releases/20220504-design-awards/",
+        "https://www.continental.com/en/press/press-releases/20220505-caddy/",
+        "https://www.continental.com/en/press/press-releases/20220505-remondis-ii/",
+        "https://www.continental.com/en/press/press-releases/20220506-sportcontact-7/",
+        "https://www.continental.com/en/press/press-releases/20220509-multiviu-sports-display/",
+        "https://www.continental.com/en/press/press-releases/20220510-continental-brabus/",
+        "https://www.continental.com/en/press/press-releases/20220511-q1-2022/",
+        "https://www.continental.com/en/press/press-releases/20220512-vdo-workshop-tablet/",
+        "https://www.continental.com/en/press/press-releases/20220517-awards/",
+        "https://www.continental.com/en/press/press-releases/20220519-mercedes-c-klasse/",
+        "https://www.continental.com/en/press/press-releases/20220520-personnel-changes/",
+        "https://www.continental.com/en/press/press-releases/20220520-tire-manufacturer-of-the-year/",
+        "https://www.continental.com/en/press/press-releases/20220601-reifen-pannenservice-lkw/",
+        "https://www.continental.com/en/press/press-releases/20220602-kia-niro/",
+        "https://www.continental.com/en/press/press-releases/20220613-auto-bild-best-brand/",
+        "https://www.continental.com/en/press/press-releases/20220614-toc-europe-2022/",
+        "https://www.continental.com/en/press/press-releases/20220615-coc-app/",
+        "https://www.continental.com/en/press/press-releases/20220616-tuningday/",
+        "https://www.continental.com/en/press/press-releases/20220620-contiretex-europe/",
+        "https://www.continental.com/en/press/press-releases/20220622-nightviu/",
+        "https://www.continental.com/en/press/press-releases/20220622-project-city/",
+        "https://www.continental.com/en/press/press-releases/20220623-mercedes-eqb/",
+        "https://www.continental.com/en/press/press-releases/20220623-vancontact-ultra/",
+        "https://www.continental.com/en/press/press-releases/20220711-ecocontact-6-q-vw-id-buzz/",
+        "https://www.continental.com/en/press/press-releases/20220728-agricultural-tire-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20220728-conticonnect-20-ii/",
+        "https://www.continental.com/en/press/press-releases/20220801-automechanika-2022/",
+        "https://www.continental.com/en/press/press-releases/20220801-premiumcontact7/",
+        "https://www.continental.com/en/press/press-releases/20220804-e-mobility-commercial-vehicles/",
+        "https://www.continental.com/en/press/press-releases/20220811-vdo-link/",
+        "https://www.continental.com/en/press/press-releases/20220818-brabus/",
+        "https://www.continental.com/en/press/press-releases/20220822-oe-approval-mercedes-amg-c43/",
+        "https://www.continental.com/en/press/press-releases/20220824-natural-rubber-indonesia/",
+        "https://www.continental.com/en/press/press-releases/20220829-allseason-gute-fahrt/",
+        "https://www.continental.com/en/press/press-releases/20220830-conticonnect-20/",
+        "https://www.continental.com/en/press/press-releases/20220830-make-power-smart/",
+        "https://www.continental.com/en/press/press-releases/20220831-sustainabelt/",
+        "https://www.continental.com/en/press/press-releases/20220906-klotz-conticonnect/",
+        "https://www.continental.com/en/press/press-releases/20220907-bauma-2022/",
+        "https://www.continental.com/en/press/press-releases/20220907-employee-day-northeim/",
+        "https://www.continental.com/en/press/press-releases/20220907-vulk-montage/",
+        "https://www.continental.com/en/press/press-releases/20220912-contihybrid-gen5/",
+        "https://www.continental.com/en/press/press-releases/20220915-iaa-transportation/",
+        "https://www.continental.com/en/press/press-releases/20220915-sensor-array-iaa/",
+        "https://www.continental.com/en/press/press-releases/20220915-vw-t7-multivan/",
+        "https://www.continental.com/en/press/press-releases/20220919-iaa-surface-solutions/",
+        "https://www.continental.com/en/press/press-releases/20220922-chinese-auto-market/",
+        "https://www.continental.com/en/press/press-releases/20220927-forschungsnetzwerk-neuer-zuechter/",
+        "https://www.continental.com/en/press/press-releases/20220927-winter-tires-test/",
+        "https://www.continental.com/en/press/press-releases/20220928-responsible-sourcing-of-natural-rubber/",
+        "https://www.continental.com/en/press/press-releases/20220929-winter-tires-test-autozeitung/",
+        "https://www.continental.com/en/press/press-releases/20220930-auto-express-winter/",
+        "https://www.continental.com/en/press/press-releases/20221004-premiumcontact-7/",
+        "https://www.continental.com/en/press/press-releases/20221012-connected-infotainment-box/",
+        "https://www.continental.com/en/press/press-releases/20221017-autobild-ts870p/",
+        "https://www.continental.com/en/press/press-releases/20221018-expertentipp-winterreifen/",
+        "https://www.continental.com/en/press/press-releases/20221018-furniture-surfaces-new-standards-in-sustainability/",
+        "https://www.continental.com/en/press/press-releases/20221019-proreta5/",
+        "https://www.continental.com/en/press/press-releases/20221020-display-order-intake/",
+        "https://www.continental.com/en/press/press-releases/20221020-winterreifenvorschriften/",
+        "https://www.continental.com/en/press/press-releases/20221024-proviu360-advanced-features/",
+        "https://www.continental.com/en/press/press-releases/20221024-whitepaper-digital-solutions/",
+        "https://www.continental.com/en/press/press-releases/20221025-bauma-munich-2022/",
+        "https://www.continental.com/en/press/press-releases/20221025-detectablejacket/",
+        "https://www.continental.com/en/press/press-releases/20221026-sightiq/",
+        "https://www.continental.com/en/press/press-releases/20221115-megafactory-timisoara/",
+        "https://www.continental.com/en/press/press-releases/20221118-soc-integration/",
+        "https://www.continental.com/en/press/press-releases/20221121-solar-power/",
+        "https://www.continental.com/en/press/press-releases/202211216-echo-app/",
+        "https://www.continental.com/en/press/press-releases/20221122-cosma-bmw-award/",
+        "https://www.continental.com/en/press/press-releases/20221123-automotive-india/",
+        "https://www.continental.com/en/press/press-releases/20221125-extreme-e-recycling/",
+        "https://www.continental.com/en/press/press-releases/20221201-ces-scenicviewhud/",
+        "https://www.continental.com/en/press/press-releases/20221207-security-matters-smx/",
+        "https://www.continental.com/en/press/press-releases/20221214-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20221215-ces-preview/",
+        "https://www.continental.com/en/press/press-releases/20230105-ambarella-strategic-partnership/",
+        "https://www.continental.com/en/press/press-releases/20230105-ces-curvedultrawidedisplay/",
+        "https://www.continental.com/en/press/press-releases/20230111-bmw-x1/",
+        "https://www.continental.com/en/press/press-releases/20230111-new-head-of-pr/",
+        "https://www.continental.com/en/press/press-releases/20230124-aquactrl2/",
+        "https://www.continental.com/en/press/press-releases/20230125-ford/",
+        "https://www.continental.com/en/press/press-releases/20230126-open-source-software/",
+        "https://www.continental.com/en/press/press-releases/20230131-conticasingaccount/",
+        "https://www.continental.com/en/press/press-releases/20230202-ai-lab-eroeffnung/",
+        "https://www.continental.com/en/press/press-releases/20230207-german-design-award/",
+        "https://www.continental.com/en/press/press-releases/20230207-opening-baskidball/",
+        "https://www.continental.com/en/press/press-releases/20230209-mercedes-glc/",
+        "https://www.continental.com/en/press/press-releases/20230214-sustainable-solutions/",
+        "https://www.continental.com/en/press/press-releases/20230215-driver-identification-display/",
+        "https://www.continental.com/en/press/press-releases/20230216-gute-fahrt/",
+        "https://www.continental.com/en/press/press-releases/20230220-agrovftractormaster/",
+        "https://www.continental.com/en/press/press-releases/20230221-continental-summer-tires/",
+        "https://www.continental.com/en/press/press-releases/20230221-tire-industry-project/",
+        "https://www.continental.com/en/press/press-releases/20230222-rotorpositionsensor/",
+        "https://www.continental.com/en/press/press-releases/20230223-crosscontact-ht/",
+        "https://www.continental.com/en/press/press-releases/20230224-ab-sports-cars/",
+        "https://www.continental.com/en/press/press-releases/20230228-continental-smart/",
+        "https://www.continental.com/en/press/press-releases/20230228-venneker/",
+        "https://www.continental.com/en/press/press-releases/20230306-axxes-tachographenmaut/",
+        "https://www.continental.com/en/press/press-releases/20230307-tiretech-app/",
+        "https://www.continental.com/en/press/press-releases/20230313-continental-infineon/",
+        "https://www.continental.com/en/press/press-releases/20230314-conticonnect-advanced/",
+        "https://www.continental.com/en/press/press-releases/20230321-tires-continental-suitable-for-electric-cars/",
+        "https://www.continental.com/en/press/press-releases/20230322-byd-atto3/",
+        "https://www.continental.com/en/press/press-releases/20230322-tti-award/",
+        "https://www.continental.com/en/press/press-releases/20230328-tyre-pressure-app/",
+        "https://www.continental.com/en/press/press-releases/20230331-changing-tyres/",
+        "https://www.continental.com/en/press/press-releases/20230403-here-and-ehorizon/",
+        "https://www.continental.com/en/press/press-releases/20230404-psychology-of-mobility/",
+        "https://www.continental.com/en/press/press-releases/20230406-new-product-manager/",
+        "https://www.continental.com/en/press/press-releases/20230412-continental-cpd/",
+        "https://www.continental.com/en/press/press-releases/20230412-motorhome-check/",
+        "https://www.continental.com/en/press/press-releases/20230418-continental-top-marks-for-efforts/",
+        "https://www.continental.com/en/press/press-releases/20230419-red-dot-gen-5/",
+        "https://www.continental.com/en/press/press-releases/20230420-charging-infrastructure-for-electric-vehicles/",
+        "https://www.continental.com/en/press/press-releases/20230420-premiumcontact-7/",
+        "https://www.continental.com/en/press/press-releases/20230424-lousado-sc/",
+        "https://www.continental.com/en/press/press-releases/20230425-roadshow/",
+        "https://www.continental.com/en/press/press-releases/20230427-continental-aurora/",
+        "https://www.continental.com/en/press/press-releases/20230427-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20230502-toc/",
+        "https://www.continental.com/en/press/press-releases/20230504-gor-oz/",
+        "https://www.continental.com/en/press/press-releases/20230510-q1-2023/",
+        "https://www.continental.com/en/press/press-releases/20230511-new-head-of-sustainability-at-continental-tires/",
+        "https://www.continental.com/en/press/press-releases/20230517-continentals-new-brake-system/",
+        "https://www.continental.com/en/press/press-releases/20230522-allseasoncontact2-technical/",
+        "https://www.continental.com/en/press/press-releases/20230608-pivot-factory-racing/",
+        "https://www.continental.com/en/press/press-releases/20230614-continental-techshow-topicfield/",
+        "https://www.continental.com/en/press/press-releases/20230614-nearfield-light-projection/",
+        "https://www.continental.com/en/press/press-releases/20230614-techshow-themenfeld-sustainability/",
+        "https://www.continental.com/en/press/press-releases/20230614-ultracontact-nxt/",
+        "https://www.continental.com/en/press/press-releases/20230615-techshow-pnp-hpc/",
+        "https://www.continental.com/en/press/press-releases/20230619-type-approval-dtco41/",
+        "https://www.continental.com/en/press/press-releases/20230620-smart-cockpit/",
+        "https://www.continental.com/en/press/press-releases/20230620-toc/",
+        "https://www.continental.com/en/press/press-releases/20230621-camper-tires/",
+        "https://www.continental.com/en/press/press-releases/20230626-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20230703-summer-season/",
+        "https://www.continental.com/en/press/press-releases/20230704-whitepaper-fleet/",
+        "https://www.continental.com/en/press/press-releases/20230706-new-website/",
+        "https://www.continental.com/en/press/press-releases/20230706-supervisory-board-meeting-gifhorn/",
+        "https://www.continental.com/en/press/press-releases/20230706-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20230710-100-years-vdo-tachograph/",
+        "https://www.continental.com/en/press/press-releases/20230710-conti-urban-sensor/",
+        "https://www.continental.com/en/press/press-releases/20230717-brabus-supercar/",
+        "https://www.continental.com/en/press/press-releases/20230719-gifhorn/",
+        "https://www.continental.com/en/press/press-releases/20230724-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20230731-ultracontact-nxt/",
+        "https://www.continental.com/en/press/press-releases/20230801-summer-heat-damage-tires/",
+        "https://www.continental.com/en/press/press-releases/20230803-real-time-digital-tire-monitoring/",
+        "https://www.continental.com/en/press/press-releases/20230803-supplier-award/",
+        "https://www.continental.com/en/press/press-releases/20230810-vendor-of-the-year/",
+        "https://www.continental.com/en/press/press-releases/20230816-borismergell-newuxhead/",
+        "https://www.continental.com/en/press/press-releases/20230817-caedge-vecu/",
+        "https://www.continental.com/en/press/press-releases/20230821-uci-cycling-world-championships-2023/",
+        "https://www.continental.com/en/press/press-releases/20230824-digital-factory/",
+        "https://www.continental.com/en/press/press-releases/20230829-alfaromeo/",
+        "https://www.continental.com/en/press/press-releases/20230830-manja-greimeier/",
+        "https://www.continental.com/en/press/press-releases/20230831-best-brand/",
+        "https://www.continental.com/en/press/press-releases/20230831-iscc-plus-lousado/",
+        "https://www.continental.com/en/press/press-releases/20230904-iaa-mobility-press-conference/",
+        "https://www.continental.com/en/press/press-releases/20230904-tires-iaa/",
+        "https://www.continental.com/en/press/press-releases/20230908-ultracontactnxt-award/",
+        "https://www.continental.com/en/press/press-releases/20230912-solid-tires/",
+        "https://www.continental.com/en/press/press-releases/20230919-edwin-goudswaard/",
+        "https://www.continental.com/en/press/press-releases/20230920-continental-am/",
+        "https://www.continental.com/en/press/press-releases/20230920-winter-regulations/",
+        "https://www.continental.com/en/press/press-releases/20230925-vshaped-display/",
+        "https://www.continental.com/en/press/press-releases/20230926-continental-adac/",
+        "https://www.continental.com/en/press/press-releases/20230926-continental-proviu-360/",
+        "https://www.continental.com/en/press/press-releases/20230926-nightviu/",
+        "https://www.continental.com/en/press/press-releases/20230927-allseasoncontact2-technical/",
+        "https://www.continental.com/en/press/press-releases/20230928-autobild-allseason/",
+        "https://www.continental.com/en/press/press-releases/20230928-maserati-grecale/",
+        "https://www.continental.com/en/press/press-releases/20230928-nahfeld-projektion/",
+        "https://www.continental.com/en/press/press-releases/20231004-jm-verdier/",
+        "https://www.continental.com/en/press/press-releases/20231004-smart-farming/",
+        "https://www.continental.com/en/press/press-releases/20231005-autobild-winter-tires/",
+        "https://www.continental.com/en/press/press-releases/20231005-deepdrive/",
+        "https://www.continental.com/en/press/press-releases/20231012-anniversary-timisoara/",
+        "https://www.continental.com/en/press/press-releases/20231017-ehorizon-for-dynamic-road-events/",
+        "https://www.continental.com/en/press/press-releases/20231018-continental-amr/",
+        "https://www.continental.com/en/press/press-releases/20231018-oe-byd-seal/",
+        "https://www.continental.com/en/press/press-releases/20231019-enno-straten/",
+        "https://www.continental.com/en/press/press-releases/20231019-mercedes-preferred-partner/",
+        "https://www.continental.com/en/press/press-releases/20231024-sportauto-test/",
+        "https://www.continental.com/en/press/press-releases/20231025-range-extension-ag/",
+        "https://www.continental.com/en/press/press-releases/20231030-eu-taxonomy/",
+        "https://www.continental.com/en/press/press-releases/20231102-nachweis-nachhaltigkeit/",
+        "https://www.continental.com/en/press/press-releases/20231106-diazi/",
+        "https://www.continental.com/en/press/press-releases/20231108-gerd-bartels/",
+        "https://www.continental.com/en/press/press-releases/20231109-study-agriculture/",
+        "https://www.continental.com/en/press/press-releases/20231113-connectivity-agricultural-machinery/",
+        "https://www.continental.com/en/press/press-releases/20231113-mi-continental-agritechnica/",
+        "https://www.continental.com/en/press/press-releases/20231113-smy-accelerate/",
+        "https://www.continental.com/en/press/press-releases/20231116-beste-servicemarke/",
+        "https://www.continental.com/en/press/press-releases/20231116-radar-vision-parking/",
+        "https://www.continental.com/en/press/press-releases/20231120-10-years-clc-plant/",
+        "https://www.continental.com/en/press/press-releases/20231122-edaily/",
+        "https://www.continental.com/en/press/press-releases/20231124-hannover-96/",
+        "https://www.continental.com/en/press/press-releases/20231128-continental-brabus-ems/",
+        "https://www.continental.com/en/press/press-releases/20231128-contipt18/",
+        "https://www.continental.com/en/press/press-releases/20231130-driving-simulator/",
+        "https://www.continental.com/en/press/press-releases/20231207-bmw5er/",
+        "https://www.continental.com/en/press/press-releases/20231208-tyre-reviews/",
+        "https://www.continental.com/en/press/press-releases/20231211-bmw-m-1000-xr/",
+        "https://www.continental.com/en/press/press-releases/20231211-circular-economy/",
+        "https://www.continental.com/en/press/press-releases/20231211-synopsis-cooperation/",
+        "https://www.continental.com/en/press/press-releases/20231212-120-years-retreading/",
+        "https://www.continental.com/en/press/press-releases/20231213-bicycle-tires-new-hire/",
+        "https://www.continental.com/en/press/press-releases/20231213-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20231214-headquarters/",
+        "https://www.continental.com/en/press/press-releases/20231214-myvdo/",
+        "https://www.continental.com/en/press/press-releases/20231214-telechips/",
+        "https://www.continental.com/en/press/press-releases/20231219-valvecapsensor/",
+        "https://www.continental.com/en/press/press-releases/20240105-aurora-milestone/",
+        "https://www.continental.com/en/press/press-releases/20240108-crystalcenterdisplay-ces24/",
+        "https://www.continental.com/en/press/press-releases/20240110-face-authentication-display/",
+        "https://www.continental.com/en/press/press-releases/20240123-the-future-on-the-road/",
+        "https://www.continental.com/en/press/press-releases/20240130-warehouse-otrokovice/",
+        "https://www.continental.com/en/press/press-releases/20240131-mercedes-e-class/",
+        "https://www.continental.com/en/press/press-releases/20240201-srilanka-kalutara/",
+        "https://www.continental.com/en/press/press-releases/20240205-study-sustainability/",
+        "https://www.continental.com/en/press/press-releases/20240205-ultracontact-nxt/",
+        "https://www.continental.com/en/press/press-releases/20240208-decade-aiba/",
+        "https://www.continental.com/en/press/press-releases/20240212-testimonial-vredeveld-group/",
+        "https://www.continental.com/en/press/press-releases/20240214-development/",
+        "https://www.continental.com/en/press/press-releases/20240216-vikingcontact-8-technology/",
+        "https://www.continental.com/en/press/press-releases/20240220-testsieg-adac/",
+        "https://www.continental.com/en/press/press-releases/20240221-tikka-mbo/",
+        "https://www.continental.com/en/press/press-releases/20240222-tire-tech-app/",
+        "https://www.continental.com/en/press/press-releases/20240227-climate-solutions-prize/",
+        "https://www.continental.com/en/press/press-releases/20240227-conticonnect-lite/",
+        "https://www.continental.com/en/press/press-releases/20240305-business-success/",
+        "https://www.continental.com/en/press/press-releases/20240308-autobild/",
+        "https://www.continental.com/en/press/press-releases/20240311-executive-board/",
+        "https://www.continental.com/en/press/press-releases/20240313-autozeitung/",
+        "https://www.continental.com/en/press/press-releases/20240314-testswin/",
+        "https://www.continental.com/en/press/press-releases/20240315-autobild-sportscars/",
+        "https://www.continental.com/en/press/press-releases/20240318-agriculture-transition/",
+        "https://www.continental.com/en/press/press-releases/20240319-ace-test-pc7/",
+        "https://www.continental.com/en/press/press-releases/20240319-tyrereviews/",
+        "https://www.continental.com/en/press/press-releases/20240320-conticonnect-lite/",
+        "https://www.continental.com/en/press/press-releases/20240320-ttiawards/",
+        "https://www.continental.com/en/press/press-releases/20240321-roadshow/",
+        "https://www.continental.com/en/press/press-releases/20240321-test-scandinavia/",
+        "https://www.continental.com/en/press/press-releases/20240322-open-americas/",
+        "https://www.continental.com/en/press/press-releases/20240325-contiroad/",
+        "https://www.continental.com/en/press/press-releases/20240325-energy-saving/",
+        "https://www.continental.com/en/press/press-releases/20240326-rhein-main/",
+        "https://www.continental.com/en/press/press-releases/20240327-testergebnisse-pc7/",
+        "https://www.continental.com/en/press/press-releases/20240408-mold-manufacturer/",
+        "https://www.continental.com/en/press/press-releases/20240408-start-camping/",
+        "https://www.continental.com/en/press/press-releases/20240410-brabus-mc7/",
+        "https://www.continental.com/en/press/press-releases/20240416-us-anniversaries/",
+        "https://www.continental.com/en/press/press-releases/20240417-auto-bild/",
+        "https://www.continental.com/en/press/press-releases/20240417-ev-compatible/",
+        "https://www.continental.com/en/press/press-releases/20240418-zonecontrolunits/",
+        "https://www.continental.com/en/press/press-releases/20240422-conti-eco/",
+        "https://www.continental.com/en/press/press-releases/20240423-cosma-e-class/",
+        "https://www.continental.com/en/press/press-releases/20240424-busplaner-nachhaltigkeitspreis/",
+        "https://www.continental.com/en/press/press-releases/20240424-thailand/",
+        "https://www.continental.com/en/press/press-releases/20240425-group/",
+        "https://www.continental.com/en/press/press-releases/20240429-giro-ditalia/",
+        "https://www.continental.com/en/press/press-releases/20240507-hyundai-tucson/",
+        "https://www.continental.com/en/press/press-releases/20240507-toc-europe/",
+        "https://www.continental.com/en/press/press-releases/20240507-whitepaper-reifen/",
+        "https://www.continental.com/en/press/press-releases/20240508-contitpu/",
+        "https://www.continental.com/en/press/press-releases/20240508-q1-2024/",
+        "https://www.continental.com/en/press/press-releases/20240513-cross-domain-hpc/",
+        "https://www.continental.com/en/press/press-releases/20240514-uc-nxt-gia/",
+        "https://www.continental.com/en/press/press-releases/20240515-whitepaper-tire-testing/",
+        "https://www.continental.com/en/press/press-releases/20240516-flugzeugbetankung/",
+        "https://www.continental.com/en/press/press-releases/20240516-neutral-production/",
+        "https://www.continental.com/en/press/press-releases/20240529-caterpillar-approval/",
+        "https://www.continental.com/en/press/press-releases/20240604-plus-hefei/",
+        "https://www.continental.com/en/press/press-releases/20240605-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20240606-chevrolet-traverse/",
+        "https://www.continental.com/en/press/press-releases/20240610-summer-holidays/",
+        "https://www.continental.com/en/press/press-releases/20240612-sustainability-projects/",
+        "https://www.continental.com/en/press/press-releases/20240620-hefei-phase/",
+        "https://www.continental.com/en/press/press-releases/20240626-partnership-samsara/",
+        "https://www.continental.com/en/press/press-releases/20240627-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20240701-atis-head-of-sam/",
+        "https://www.continental.com/en/press/press-releases/20240703-aero-111-tire/",
+        "https://www.continental.com/en/press/press-releases/20240703-purecontact/",
+        "https://www.continental.com/en/press/press-releases/20240704-suzuki/",
+        "https://www.continental.com/en/press/press-releases/20240708-brabus-sportcontact7/",
+        "https://www.continental.com/en/press/press-releases/20240709-plus-puchov/",
+        "https://www.continental.com/en/press/press-releases/20240716-amr-aws/",
+        "https://www.continental.com/en/press/press-releases/20240718-casingmanager-app/",
+        "https://www.continental.com/en/press/press-releases/20240718-traveling-smart/",
+        "https://www.continental.com/en/press/press-releases/20240722-iaa-preview/",
+        "https://www.continental.com/en/press/press-releases/20240722-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20240724-automechanika/",
+        "https://www.continental.com/en/press/press-releases/20240730-artenglueck-hartmann/",
+        "https://www.continental.com/en/press/press-releases/20240730-contihome/",
+        "https://www.continental.com/en/press/press-releases/20240730-pyrum-10-years/",
+        "https://www.continental.com/en/press/press-releases/20240805-continental/",
+        "https://www.continental.com/en/press/press-releases/20240806-automotive/",
+        "https://www.continental.com/en/press/press-releases/20240829-contiurban-ha5/",
+        "https://www.continental.com/en/press/press-releases/20240829-tread-depth-measure/",
+        "https://www.continental.com/en/press/press-releases/20240902-wintercontact-8s/",
+        "https://www.continental.com/en/press/press-releases/20240904-premiumcontact7/",
+        "https://www.continental.com/en/press/press-releases/20240905-lisa-reiners/",
+        "https://www.continental.com/en/press/press-releases/20240905-truck-bus-tires/",
+        "https://www.continental.com/en/press/press-releases/20240911-auto-strassenverkehr/",
+        "https://www.continental.com/en/press/press-releases/20240912-allseasoncontact2-ace/",
+        "https://www.continental.com/en/press/press-releases/20240912-continental-ams-ts/",
+        "https://www.continental.com/en/press/press-releases/20240912-contiscoot-size-extension/",
+        "https://www.continental.com/en/press/press-releases/20240912-profi-werkstatt/",
+        "https://www.continental.com/en/press/press-releases/20240918-warehouse-texas/",
+        "https://www.continental.com/en/press/press-releases/20240920-etm-award/",
+        "https://www.continental.com/en/press/press-releases/20240924-adac-test/",
+        "https://www.continental.com/en/press/press-releases/20240925-landlife/",
+        "https://www.continental.com/en/press/press-releases/20240925-ts870p-autozeitung/",
+        "https://www.continental.com/en/press/press-releases/20240926-autobild-allseason/",
+        "https://www.continental.com/en/press/press-releases/20240926-continental-smart3/",
+        "https://www.continental.com/en/press/press-releases/20240927-sustainable-companies/",
+        "https://www.continental.com/en/press/press-releases/20241002-autobild-winter/",
+        "https://www.continental.com/en/press/press-releases/20241009-rayong-expansion/",
+        "https://www.continental.com/en/press/press-releases/20241015-upgrade-lodc/",
+        "https://www.continental.com/en/press/press-releases/20241017-autobildallrad/",
+        "https://www.continental.com/en/press/press-releases/20241022-whitepaper-digital-solutions/",
+        "https://www.continental.com/en/press/press-releases/20241022-winter-tires/",
+        "https://www.continental.com/en/press/press-releases/20241024-continental-eicma/",
+        "https://www.continental.com/en/press/press-releases/20241029-porsche-panamera3/",
+        "https://www.continental.com/en/press/press-releases/20241030-ultracontactnxt/",
+        "https://www.continental.com/en/press/press-releases/20241106-motorsportsabs/",
+        "https://www.continental.com/en/press/press-releases/20241112-byd-seal-u/",
+        "https://www.continental.com/en/press/press-releases/20241112-stadtreinigung-hamburg/",
+        "https://www.continental.com/en/press/press-releases/20241113-test-success/",
+        "https://www.continental.com/en/press/press-releases/20241120-invisible-biometrics-sensing-display/",
+        "https://www.continental.com/en/press/press-releases/20241121-future-of-fleets/",
+        "https://www.continental.com/en/press/press-releases/20241125-secubrake/",
+        "https://www.continental.com/en/press/press-releases/20241128-plants-worldwide/",
+        "https://www.continental.com/en/press/press-releases/20241203-zonar/",
+        "https://www.continental.com/en/press/press-releases/20241205-clepa-award/",
+        "https://www.continental.com/en/press/press-releases/20241206-ultracontactnxt/",
+        "https://www.continental.com/en/press/press-releases/20241209-continental/",
+        "https://www.continental.com/en/press/press-releases/20241211-continental/",
+        "https://www.continental.com/en/press/press-releases/20241212-90-years-winter-tires/",
+        "https://www.continental.com/en/press/press-releases/20241212-roadshow-highlights/",
+        "https://www.continental.com/en/press/press-releases/20241213-intelligent-vehicle/",
+        "https://www.continental.com/en/press/press-releases/20241217-whitepaper-tire-development/",
+        "https://www.continental.com/en/press/press-releases/20241218-emotional-cockpit-swarovski/",
+        "https://www.continental.com/en/press/press-releases/20241218-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20250106-window-projection/",
+        "https://www.continental.com/en/press/press-releases/20250108-emotional-cockpit-eink/",
+        "https://www.continental.com/en/press/press-releases/20250116-cfo-automotive/",
+        "https://www.continental.com/en/press/press-releases/20250120-efficientpro/",
+        "https://www.continental.com/en/press/press-releases/20250124-iscc-plus-korbach/",
+        "https://www.continental.com/en/press/press-releases/20250128-contilifecycle/",
+        "https://www.continental.com/en/press/press-releases/20250128-winterholidays/",
+        "https://www.continental.com/en/press/press-releases/20250130-fordexplorercapri-e/",
+        "https://www.continental.com/en/press/press-releases/20250205-ecocontact7/",
+        "https://www.continental.com/en/press/press-releases/20250206-cto-automotive/",
+        "https://www.continental.com/en/press/press-releases/20250206-satisfaction-guarantee/",
+        "https://www.continental.com/en/press/press-releases/20250213-technology-expo/",
+        "https://www.continental.com/en/press/press-releases/20250218-continental-rnd/",
+        "https://www.continental.com/en/press/press-releases/20250225-adac-summer-tire-test/",
+        "https://www.continental.com/en/press/press-releases/20250226-autozeitung/",
+        "https://www.continental.com/en/press/press-releases/20250227-continental-vw-id-7/",
+        "https://www.continental.com/en/press/press-releases/20250304-continental-gptr/",
+        "https://www.continental.com/en/press/press-releases/20250304-test-track-sweden/",
+        "https://www.continental.com/en/press/press-releases/20250305-ttiawards/",
+        "https://www.continental.com/en/press/press-releases/20250306-autobild/",
+        "https://www.continental.com/en/press/press-releases/20250306-tkc-80-40-years/",
+        "https://www.continental.com/en/press/press-releases/20250310-iscc-plus-material-handling/",
+        "https://www.continental.com/en/press/press-releases/20250311-30years-silicia/",
+        "https://www.continental.com/en/press/press-releases/20250312-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20250313-autobild-pc7-sc7/",
+        "https://www.continental.com/en/press/press-releases/20250313-cadillac-lyriq-v/",
+        "https://www.continental.com/en/press/press-releases/20250313-telemasterportfolio/",
+        "https://www.continental.com/en/press/press-releases/20250313-ultracontact-nxt-ams/",
+        "https://www.continental.com/en/press/press-releases/20250317-reqnet/",
+        "https://www.continental.com/en/press/press-releases/20250318-gravity-extension/",
+        "https://www.continental.com/en/press/press-releases/20250318-tires-americas-transition/",
+        "https://www.continental.com/en/press/press-releases/20250319-headquarters/",
+        "https://www.continental.com/en/press/press-releases/20250319-tco-nfz/",
+        "https://www.continental.com/en/press/press-releases/20250320-sustainable-use-of-water/",
+        "https://www.continental.com/en/press/press-releases/20250325-spedition-schlager/",
+        "https://www.continental.com/en/press/press-releases/20250325-terra-adventure/",
+        "https://www.continental.com/en/press/press-releases/20250326-ac2atedsound-display/",
+        "https://www.continental.com/en/press/press-releases/20250326-dtco-41a/",
+        "https://www.continental.com/en/press/press-releases/20250327-uc-nxt-sustainability-award/",
+        "https://www.continental.com/en/press/press-releases/20250328-zeekr-001/",
+        "https://www.continental.com/en/press/press-releases/20250402-vdo-link/",
+        "https://www.continental.com/en/press/press-releases/20250404-announcement-ag/",
+        "https://www.continental.com/en/press/press-releases/20250404-uc-nxt-motor/",
+        "https://www.continental.com/en/press/press-releases/20250408-camping-start/",
+        "https://www.continental.com/en/press/press-releases/20250408-continental/",
+        "https://www.continental.com/en/press/press-releases/20250410-all-mtb/",
+        "https://www.continental.com/en/press/press-releases/20250410-keyfob/",
+        "https://www.continental.com/en/press/press-releases/20250411-auto-shanghai-light/",
+        "https://www.continental.com/en/press/press-releases/20250415-auto-shanghai-highlights/",
+        "https://www.continental.com/en/press/press-releases/20250415-project-extended-giz/",
+        "https://www.continental.com/en/press/press-releases/20250423-autoshanghai/",
+        "https://www.continental.com/en/press/press-releases/20250425-annual-shareholders-meeting/",
+        "https://www.continental.com/en/press/press-releases/20250425-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20250428-alor-setar/",
+        "https://www.continental.com/en/press/press-releases/20250429-polestar3/",
+        "https://www.continental.com/en/press/press-releases/20250429-vos-logistics/",
+        "https://www.continental.com/en/press/press-releases/20250505-pr-dfds/",
+        "https://www.continental.com/en/press/press-releases/20250506-q1-2025/",
+        "https://www.continental.com/en/press/press-releases/20250508-radar/",
+        "https://www.continental.com/en/press/press-releases/20250514-pogacar/",
+        "https://www.continental.com/en/press/press-releases/20250515-120-years-tiretreaddesign/",
+        "https://www.continental.com/en/press/press-releases/20250523-toc-europe/",
+        "https://www.continental.com/en/press/press-releases/20250527-sustainability-rating-ecovadis/",
+        "https://www.continental.com/en/press/press-releases/20250528-continental-cfo-kd/",
+        "https://www.continental.com/en/press/press-releases/20250528-predictive-tire-development/",
+        "https://www.continental.com/en/press/press-releases/20250602-india-strategic-realignment/",
+        "https://www.continental.com/en/press/press-releases/20250603-sam-erts/",
+        "https://www.continental.com/en/press/press-releases/20250603-tourdefrance2025/",
+        "https://www.continental.com/en/press/press-releases/20250605-aumovio-executive-board/",
+        "https://www.continental.com/en/press/press-releases/20250605-more-sustainable-materials/",
+        "https://www.continental.com/en/press/press-releases/20250606-renault-r5/",
+        "https://www.continental.com/en/press/press-releases/20250610-sarreguemines-iscc-plus/",
+        "https://www.continental.com/en/press/press-releases/20250611-spedition-klaus-baum/",
+        "https://www.continental.com/en/press/press-releases/20250612-test-success/",
+        "https://www.continental.com/en/press/press-releases/20250616-otrokovice-iscc-plus/",
+        "https://www.continental.com/en/press/press-releases/20250617-cairo-montenotte/",
+        "https://www.continental.com/en/press/press-releases/20250617-tires-quality-winner-2025/",
+        "https://www.continental.com/en/press/press-releases/20250619-white-paper-electromobility/",
+        "https://www.continental.com/en/press/press-releases/20250620-ir/",
+        "https://www.continental.com/en/press/press-releases/20250623-aess/",
+        "https://www.continental.com/en/press/press-releases/20250624-adac-allseason-tire-test/",
+        "https://www.continental.com/en/press/press-releases/20250624-capital-market-day-aumovio/",
+        "https://www.continental.com/en/press/press-releases/20250625-access-for-audi/",
+        "https://www.continental.com/en/press/press-releases/20250625-continental-uhp/",
+        "https://www.continental.com/en/press/press-releases/20250626-all-european-plants/",
+        "https://www.continental.com/en/press/press-releases/20250626-archetype/",
+        "https://www.continental.com/en/press/press-releases/20250626-timisoara-iscc-plus/",
+        "https://www.continental.com/en/press/press-releases/20250702-sam-nxs-300/",
+        "https://www.continental.com/en/press/press-releases/20250703-beyond-mileage/",
+        "https://www.continental.com/en/press/press-releases/20250703-vacation-tire-care/",
+        "https://www.continental.com/en/press/press-releases/20250707-ultracontactnxt-ks-auxilia/",
+        "https://www.continental.com/en/press/press-releases/20250708-more-sustainable-fillers/",
+        "https://www.continental.com/en/press/press-releases/20250709-whitepaper-verifiable-credentials/",
+        "https://www.continental.com/en/press/press-releases/20250727-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20250729-fleet-study/",
+        "https://www.continental.com/en/press/press-releases/20250731-iaamobility2025/",
+        "https://www.continental.com/en/press/press-releases/202508-continental-ct/",
+        "https://www.continental.com/en/press/press-releases/20250807-alena-bauer/",
+        "https://www.continental.com/en/press/press-releases/20250814-acontact/",
+        "https://www.continental.com/en/press/press-releases/20250822-kalmar-supplier-award/",
+        "https://www.continental.com/en/press/press-releases/20250828-cfo-aumovio/",
+        "https://www.continental.com/en/press/press-releases/20250828-dacia/",
+        "https://www.continental.com/en/press/press-releases/20250909-rubber-resins-additives/",
+        "https://www.continental.com/en/press/press-releases/20250915-cadillac-optiq/",
+        "https://www.continental.com/en/press/press-releases/20250917-conti-urban-ha-5-nxt/",
+        "https://www.continental.com/en/press/press-releases/20250919-continental/",
+        "https://www.continental.com/en/press/press-releases/20250923-test-win-retro-bike/",
+        "https://www.continental.com/en/press/press-releases/20251002-conti-coach-ha-5/",
+        "https://www.continental.com/en/press/press-releases/20251002-mercedes-gle/",
+        "https://www.continental.com/en/press/press-releases/20251002-vancontact-a-s-eco/",
+        "https://www.continental.com/en/press/press-releases/20251007-personell-changes/",
+        "https://www.continental.com/en/press/press-releases/20251021-aarbus/",
+        "https://www.continental.com/en/press/press-releases/20251022-rsteelcokoonpet/",
+        "https://www.continental.com/en/press/press-releases/20251029-contisportattack-5/",
+        "https://www.continental.com/en/press/press-releases/20251029-tkc-802/",
+        "https://www.continental.com/en/press/press-releases/20251105-porschemacan/",
+        "https://www.continental.com/en/press/press-releases/20251114-aldora-mills-closure/",
+        "https://www.continental.com/en/press/press-releases/20251117-vacuum-technology-tire-wear/",
+        "https://www.continental.com/en/press/press-releases/20251118-roboter-clc/",
+        "https://www.continental.com/en/press/press-releases/20251120-ioniq-9/",
+        "https://www.continental.com/en/press/press-releases/20251125-adami-trasporti/",
+        "https://www.continental.com/en/press/press-releases/20251204-renault-clio/",
+        "https://www.continental.com/en/press/press-releases/20251209-iscc-plus-mt-vernon/",
+        "https://www.continental.com/en/press/press-releases/20251210-contitradefrance/",
+        "https://www.continental.com/en/press/press-releases/20251211-rolling-resistance/",
+        "https://www.continental.com/en/press/press-releases/20251215-tire-industry-project/",
+        "https://www.continental.com/en/press/press-releases/20251217-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20260115-cemex/",
+        "https://www.continental.com/en/press/press-releases/20260119-icecontact-8/",
+        "https://www.continental.com/en/press/press-releases/20260120-terra-graphite-reflex/",
+        "https://www.continental.com/en/press/press-releases/20260128-audi-a6/",
+        "https://www.continental.com/en/press/press-releases/20260129-noise/",
+        "https://www.continental.com/en/press/press-releases/20260129-tire-construction/",
+        "https://www.continental.com/en/press/press-releases/20260216-conti-hybrid-ht-5/",
+        "https://www.continental.com/en/press/press-releases/20260217-cdp/",
+        "https://www.continental.com/en/press/press-releases/20260218-tt-expo-conference/",
+        "https://www.continental.com/en/press/press-releases/20260226-terra-competition/",
+        "https://www.continental.com/en/press/press-releases/20260302-zerocoalandheavyoil/",
+        "https://www.continental.com/en/press/press-releases/20260304-fiscal-year-2025/",
+        "https://www.continental.com/en/press/press-releases/20260304-tti-awards/",
+        "https://www.continental.com/en/press/press-releases/20260310-collard-group/",
+        "https://www.continental.com/en/press/press-releases/20260310-gp5000/",
+        "https://www.continental.com/en/press/press-releases/20260310-smart5/",
+        "https://www.continental.com/en/press/press-releases/20260311-ev-update-2026/",
+        "https://www.continental.com/en/press/press-releases/20260312-contiscoot-portfolio/",
+        "https://www.continental.com/en/press/press-releases/20260327-bugatti-factor-one/",
+        "https://www.continental.com/en/press/press-releases/20260409-20-years-camacari/",
+        "https://www.continental.com/en/press/press-releases/20260415-busplaner-sustainability-award/",
+        "https://www.continental.com/en/press/press-releases/20260416-dubnital-50/",
+        "https://www.continental.com/en/press/press-releases/20260421-sound-of-premium/",
+        "https://www.continental.com/en/press/press-releases/20260423-den-hartogh/",
+        "https://www.continental.com/en/press/press-releases/20260428-ctj-janssen/",
+        "https://www.continental.com/en/press/press-releases/20260428-vw-troc/",
+        "https://www.continental.com/en/press/press-releases/20260430-annual-shareholders-meeting/",
+        "https://www.continental.com/en/press/press-releases/20260430-supervisory-board-meeting/",
+        "https://www.continental.com/en/press/press-releases/20260505-wp-safety/",
+        "https://www.continental.com/en/press/press-releases/20260506-q1-2026/",
+        "https://www.continental.com/en/press/press-releases/20260512-vancontact-ultra-camper/",
+        "https://www.continental.com/en/press/press-releases/20260513-summer-press-test/",
+        "https://www.continental.com/en/press/press-releases/20260513-toc-europe/",
+        "https://www.continental.com/en/press/press-releases/20260518-sportcontact7-force/",
+        "https://www.continental.com/en/press/press-releases/20260521-if-design-nobilia/",
+        "https://www.continental.com/en/press/press-releases/20260522-mc-plant-rayong/",
+        "https://www.continental.com/en/press/press-releases/20260522-rayong-plant-expansion/",
+        "https://www.continental.com/en/press/press-releases/20260603-contitradefrance/",
+        "https://www.continental.com/en/press/press-releases/20260611-eurosatory-2026/",
+        "https://www.continental.com/en/press/press-releases/20260615-renault-futurama/",
+        "https://www.continental.com/en/press/press-releases/20260616-renault-twingo/",
+        "https://www.continental.com/en/press/press-releases/20260623-tdf-tires/",
+        "https://www.continental.com/en/press/press-releases/20260623-tour-de-france-2026/",
+        "https://www.continental.com/en/press/press-releases/20260623-tour-de-france/",
+        "https://www.continental.com/en/press/press-releases/20260625-nissan-n7/",
+        "https://www.continental.com/en/press/press-releases/20260703-crosscontact-at2/",
+        "https://www.continental.com/en/press/press-releases/20260707-roadshow/",
+        "https://www.continental.com/en/press/press-releases/20260806-gravity-extensions/",
+        "https://www.continental.com/en/press/press-releases/20260818-aero-111/",
+        "https://www.continental.com/en/press/press-releases/20260910-contimotion-evo/",
+        "https://www.continental.com/en/press/press-releases/20260915-winter/",
+        "https://www.continental.com/en/press/press-releases/20260922-conti-eco-ht-5/",
+        "https://www.continental.com/en/press/press-releases/210504-furniture/",
+        "https://www.continental.com/en/press/press-releases/250402-high-pressure-hydrogen/",
+        "https://www.continental.com/en/press/press-releases/250407-ev-success-2024/",
+        "https://www.continental.com/en/press/press-releases/250828-surface-explorer-software/",
+        "https://www.continental.com/en/press/press-releases/250903-recycling-technology/",
+        "https://www.continental.com/en/press/press-releases/250910-aguascalientes/",
+        "https://www.continental.com/en/press/press-releases/250910-thunderbolt/",
+        "https://www.continental.com/en/press/press-releases/250923-baler-belts/",
+        "https://www.continental.com/en/press/press-releases/250929-nobilia/",
+        "https://www.continental.com/en/press/press-releases/251006-leadership/",
+        "https://www.continental.com/en/press/press-releases/251007-greimeier/",
+        "https://www.continental.com/en/press/press-releases/251009-surface-solutions/",
+        "https://www.continental.com/en/press/press-releases/251020-mount-pleasant/",
+        "https://www.continental.com/en/press/press-releases/251023-best-supplier-chile/",
+        "https://www.continental.com/en/press/press-releases/251028-glassbuild/",
+        "https://www.continental.com/en/press/press-releases/251028-portfolio/",
+        "https://www.continental.com/en/press/press-releases/251103-aguascalientes/",
+        "https://www.continental.com/en/press/press-releases/251111-granit-parts/",
+        "https://www.continental.com/en/press/press-releases/251111-vantage-hoses/",
+        "https://www.continental.com/en/press/press-releases/251113-ineos-inovyn/",
+        "https://www.continental.com/en/press/press-releases/251117-metstrade/",
+        "https://www.continental.com/en/press/press-releases/251119-colipi/",
+        "https://www.continental.com/en/press/press-releases/251127-skai/",
+        "https://www.continental.com/en/press/press-releases/251211-rohit-markan/",
+        "https://www.continental.com/en/press/press-releases/acquisition-norrvulk-sweden/",
+        "https://www.continental.com/en/press/press-releases/acquisition-sweden/",
+        "https://www.continental.com/en/press/press-releases/agreement-on-reconciliation-of-interests-social-plan-and-future-framework/",
+        "https://www.continental.com/en/press/press-releases/aguascalientes/",
+        "https://www.continental.com/en/press/press-releases/ambienc3/",
+        "https://www.continental.com/en/press/press-releases/annual-shareholders-meeting-2021/",
+        "https://www.continental.com/en/press/press-releases/annual-shareholders-meeting-2022/",
+        "https://www.continental.com/en/press/press-releases/annual-shareholders-meeting-2023/",
+        "https://www.continental.com/en/press/press-releases/annual-shareholders-meeting-2024/",
+        "https://www.continental.com/en/press/press-releases/apex-ai/",
+        "https://www.continental.com/en/press/press-releases/assistance-systems/",
+        "https://www.continental.com/en/press/press-releases/auto-shanghai-ambience/",
+        "https://www.continental.com/en/press/press-releases/automated-driving-still-a-long-way-off-for-the-logistics-industry/",
+        "https://www.continental.com/en/press/press-releases/automechanika-portfolio/",
+        "https://www.continental.com/en/press/press-releases/automechanika-sustainability/",
+        "https://www.continental.com/en/press/press-releases/automotive-interiors-expo/",
+        "https://www.continental.com/en/press/press-releases/automotive-technologies/",
+        "https://www.continental.com/en/press/press-releases/autonomous-mobile-robots/",
+        "https://www.continental.com/en/press/press-releases/battery-impact-detection/",
+        "https://www.continental.com/en/press/press-releases/benova-eco-protect/",
+        "https://www.continental.com/en/press/press-releases/biovyn/",
+        "https://www.continental.com/en/press/press-releases/bmw4/",
+        "https://www.continental.com/en/press/press-releases/capital-market-day-2023/",
+        "https://www.continental.com/en/press/press-releases/capital-market-day/",
+        "https://www.continental.com/en/press/press-releases/cars-are-a-status-symbol-for-many-young-people/",
+        "https://www.continental.com/en/press/press-releases/changzhou-expansion/",
+        "https://www.continental.com/en/press/press-releases/christian-koetz/",
+        "https://www.continental.com/en/press/press-releases/clerkenwell-design-week/",
+        "https://www.continental.com/en/press/press-releases/collaboration-hamburg/",
+        "https://www.continental.com/en/press/press-releases/colornetwork/",
+        "https://www.continental.com/en/press/press-releases/commercial-vehicle-air-spring/",
+        "https://www.continental.com/en/press/press-releases/competition-cost-pressure-scarce-funds-challenging-conditions-for-the-logistics-industry/",
+        "https://www.continental.com/en/press/press-releases/connected-driving-equals-relaxed-driving/",
+        "https://www.continental.com/en/press/press-releases/connectivity/",
+        "https://www.continental.com/en/press/press-releases/conti-20/",
+        "https://www.continental.com/en/press/press-releases/contiattack-sm-2/",
+        "https://www.continental.com/en/press/press-releases/contihome/",
+        "https://www.continental.com/en/press/press-releases/continental-acquires-stake-in-kopernikus-automotive-artificial-intelligence-specialist-for-automated-parking/",
+        "https://www.continental.com/en/press/press-releases/continental-adjusts-outlook-for-fiscal-2022/",
+        "https://www.continental.com/en/press/press-releases/continental-and-employee-representatives-agree-on-social-plan-for-employees-of-the-tire-plant-in-aachen/",
+        "https://www.continental.com/en/press/press-releases/continental-and-inam/",
+        "https://www.continental.com/en/press/press-releases/continental-announces-preliminary-figures-of-the-second-quarter-of-2023/",
+        "https://www.continental.com/en/press/press-releases/continental-announces-preliminary-key-figures-for-the-second-quarter-of-2022/",
+        "https://www.continental.com/en/press/press-releases/continental-at-the-iaa-mobility-2023/",
+        "https://www.continental.com/en/press/press-releases/continental-ct-2026/",
+        "https://www.continental.com/en/press/press-releases/continental-engineering-services-is-expanding-three-new-branch-locations-inaugurated/",
+        "https://www.continental.com/en/press/press-releases/continental-executive-board/",
+        "https://www.continental.com/en/press/press-releases/continental-in-russia/",
+        "https://www.continental.com/en/press/press-releases/continental-invests-in-new-process-technology/",
+        "https://www.continental.com/en/press/press-releases/continental-invests-in-two-german-locations/",
+        "https://www.continental.com/en/press/press-releases/continental-mobility-study-2015-electric-cars-facing-image-problems/",
+        "https://www.continental.com/en/press/press-releases/continental-oettinger/",
+        "https://www.continental.com/en/press/press-releases/continental-opens-training-center-in-gifhorn/",
+        "https://www.continental.com/en/press/press-releases/continental-presents-sustainable-surface-materials-for-the-interiors-of-cruise-ships/",
+        "https://www.continental.com/en/press/press-releases/continental-releases-preliminary-figures-for-first-quarter-2024/",
+        "https://www.continental.com/en/press/press-releases/continental-releases-preliminary-figures-for-fourth-quarter-and-fiscal-2022/",
+        "https://www.continental.com/en/press/press-releases/continental-revises-outlook-for-fiscal-2021-and-announces-preliminary-key-data-for-the-third-quarter-of-2021/",
+        "https://www.continental.com/en/press/press-releases/continental-rheinmetall-en/",
+        "https://www.continental.com/en/press/press-releases/continental-strengthens-drive-belt-portfolio/",
+        "https://www.continental.com/en/press/press-releases/continental-tiny-house/",
+        "https://www.continental.com/en/press/press-releases/convenient-safe-clean-young-city-dwellers-want-flexible-mobility/",
+        "https://www.continental.com/en/press/press-releases/cooperation-emobility/",
+        "https://www.continental.com/en/press/press-releases/cooperation-gera-eisenach/",
+        "https://www.continental.com/en/press/press-releases/corporate-communications/",
+        "https://www.continental.com/en/press/press-releases/cruise-ship-interiors-expo/",
+        "https://www.continental.com/en/press/press-releases/dannenberg-60-years/",
+        "https://www.continental.com/en/press/press-releases/dividend-fiscal-2020/",
+        "https://www.continental.com/en/press/press-releases/door-panel-concept/",
+        "https://www.continental.com/en/press/press-releases/drivetrain-type/",
+        "https://www.continental.com/en/press/press-releases/drupa-2024/",
+        "https://www.continental.com/en/press/press-releases/ecovadis-sustainability-rating/",
+        "https://www.continental.com/en/press/press-releases/electric-vehicles-high-prices-continue-to-significantly-restrict-sales-potential/",
+        "https://www.continental.com/en/press/press-releases/energy-efficiency-label/",
+        "https://www.continental.com/en/press/press-releases/engine-mount-in-electric-vehicles/",
+        "https://www.continental.com/en/press/press-releases/eu-project-zevra/",
+        "https://www.continental.com/en/press/press-releases/european-green-award/",
+        "https://www.continental.com/en/press/press-releases/expansion-in-changzhou/",
+        "https://www.continental.com/en/press/press-releases/fendt/",
+        "https://www.continental.com/en/press/press-releases/fensterbau-frontale-2026/",
+        "https://www.continental.com/en/press/press-releases/fensterbau-frontale/",
+        "https://www.continental.com/en/press/press-releases/fiscal-2025/",
+        "https://www.continental.com/en/press/press-releases/fiscal-year-2020/",
+        "https://www.continental.com/en/press/press-releases/fiscal-year-2021/",
+        "https://www.continental.com/en/press/press-releases/fiscal-year-2022/",
+        "https://www.continental.com/en/press/press-releases/fiscal-year-2023/",
+        "https://www.continental.com/en/press/press-releases/fiscal-year-2024/",
+        "https://www.continental.com/en/press/press-releases/flood-protection-by-continental-conveyor-belts/",
+        "https://www.continental.com/en/press/press-releases/future-brake-system/",
+        "https://www.continental.com/en/press/press-releases/future-interior/",
+        "https://www.continental.com/en/press/press-releases/german-chancellor-olaf-scholz-visits-continental/",
+        "https://www.continental.com/en/press/press-releases/german-motorists-want-automated-freeway-driving/",
+        "https://www.continental.com/en/press/press-releases/germans-expect-fewer-traffic-jams-as-a-result-of-autonomous-trucks/",
+        "https://www.continental.com/en/press/press-releases/germans-fear-job-losses-due-to-artificial-intelligence/",
+        "https://www.continental.com/en/press/press-releases/green-caliper/",
+        "https://www.continental.com/en/press/press-releases/green-image-electric-cars-take-the-lead-in-global-awareness/",
+        "https://www.continental.com/en/press/press-releases/group-communications-birgit-hiller/",
+        "https://www.continental.com/en/press/press-releases/gtchair-strategic-partnership/",
+        "https://www.continental.com/en/press/press-releases/hose-line-competence-center-japan/",
+        "https://www.continental.com/en/press/press-releases/hydraulic-bushings/",
+        "https://www.continental.com/en/press/press-releases/iaa-mobility-2021-press-briefing/",
+        "https://www.continental.com/en/press/press-releases/immigration-concept/",
+        "https://www.continental.com/en/press/press-releases/interzum/",
+        "https://www.continental.com/en/press/press-releases/invest-brazil/",
+        "https://www.continental.com/en/press/press-releases/invest-hydraulic-hose-production-facility/",
+        "https://www.continental.com/en/press/press-releases/invest-in-highly-automated-warehouse-at-mount-vernon/",
+        "https://www.continental.com/en/press/press-releases/invest-in-recogni/",
+        "https://www.continental.com/en/press/press-releases/invest-korbach/",
+        "https://www.continental.com/en/press/press-releases/investment-weissbach/",
+        "https://www.continental.com/en/press/press-releases/investor-relations/",
+        "https://www.continental.com/en/press/press-releases/iscc-plus-sustainability-certification/",
+        "https://www.continental.com/en/press/press-releases/jubilees-northeim/",
+        "https://www.continental.com/en/press/press-releases/labelexpo-2023/",
+        "https://www.continental.com/en/press/press-releases/life-saving-technologies/",
+        "https://www.continental.com/en/press/press-releases/load-sense/",
+        "https://www.continental.com/en/press/press-releases/logistics-industry-wants-clearly-structured-software-solutions-instead-of-a-software-jungle/",
+        "https://www.continental.com/en/press/press-releases/logistics-sector-urgently-awaits-innovative-electric-mobility-solutions-from-manufacturers/",
+        "https://www.continental.com/en/press/press-releases/majority-of-people-in-germany-skeptical-of-car-toll/",
+        "https://www.continental.com/en/press/press-releases/market-entry-autonomous-mobile-robot-1/",
+        "https://www.continental.com/en/press/press-releases/measures-november2025/",
+        "https://www.continental.com/en/press/press-releases/mine-car-ownership-extremely-popular-even-among-younger-generations/",
+        "https://www.continental.com/en/press/press-releases/mk-c2-from-continental-is-an-enabler/",
+        "https://www.continental.com/en/press/press-releases/mobility-study-automated-driving/",
+        "https://www.continental.com/en/press/press-releases/mobility-study-electric-mobility-china/",
+        "https://www.continental.com/en/press/press-releases/mobility-study-electric-mobility/",
+        "https://www.continental.com/en/press/press-releases/mobility-study-mobility-concepts/",
+        "https://www.continental.com/en/press/press-releases/mobility-study-private-transportation/",
+        "https://www.continental.com/en/press/press-releases/mobility-study/",
+        "https://www.continental.com/en/press/press-releases/motorists-worldwide-open-to-automated-driving/",
+        "https://www.continental.com/en/press/press-releases/motorists-worldwide-want-electromobility/",
+        "https://www.continental.com/en/press/press-releases/my-car/",
+        "https://www.continental.com/en/press/press-releases/net-zero-now/",
+        "https://www.continental.com/en/press/press-releases/new-development-center-in-china/",
+        "https://www.continental.com/en/press/press-releases/new-head-sustainability/",
+        "https://www.continental.com/en/press/press-releases/new-hose-for-the-food-and-beverage-industry/",
+        "https://www.continental.com/en/press/press-releases/new-management-for-political-office/",
+        "https://www.continental.com/en/press/press-releases/new-radar-sensors-for-360-degree-coverage/",
+        "https://www.continental.com/en/press/press-releases/new-rubber-compound-for-air-springs/",
+        "https://www.continental.com/en/press/press-releases/new-strategic-conveying-solutions-portfolio/",
+        "https://www.continental.com/en/press/press-releases/nine-months-2021-results/",
+        "https://www.continental.com/en/press/press-releases/nine-months-2022-results/",
+        "https://www.continental.com/en/press/press-releases/nine-months-2023-results/",
+        "https://www.continental.com/en/press/press-releases/nine-months-2024/",
+        "https://www.continental.com/en/press/press-releases/oe-audi-q3/",
+        "https://www.continental.com/en/press/press-releases/oe-skoda-elroq/",
+        "https://www.continental.com/en/press/press-releases/outlook-for-fiscal-2021/",
+        "https://www.continental.com/en/press/press-releases/outstanding-innovation/",
+        "https://www.continental.com/en/press/press-releases/pandemic-reinforces-desire-for-vacations-on-four-wheels/",
+        "https://www.continental.com/en/press/press-releases/people-are-worried-about-affordability-of-their-mobility/",
+        "https://www.continental.com/en/press/press-releases/personalie-bonset/",
+        "https://www.continental.com/en/press/press-releases/plant-closures-planned/",
+        "https://www.continental.com/en/press/press-releases/project-sensic/",
+        "https://www.continental.com/en/press/press-releases/public-affairs-thorsten-burger/",
+        "https://www.continental.com/en/press/press-releases/race-to-catch-up-in-artificial-intelligence/",
+        "https://www.continental.com/en/press/press-releases/ready-for-use/",
+        "https://www.continental.com/en/press/press-releases/realignment-contitech/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2021/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2022/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2023/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2024/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2025/",
+        "https://www.continental.com/en/press/press-releases/results-first-half-2026/",
+        "https://www.continental.com/en/press/press-releases/results-nine-months-2025/",
+        "https://www.continental.com/en/press/press-releases/riding-on-air/",
+        "https://www.continental.com/en/press/press-releases/robo-taxis/",
+        "https://www.continental.com/en/press/press-releases/rollers-and-sleeves/",
+        "https://www.continental.com/en/press/press-releases/safe-driving/",
+        "https://www.continental.com/en/press/press-releases/sicam-show/",
+        "https://www.continental.com/en/press/press-releases/sicam/",
+        "https://www.continental.com/en/press/press-releases/skai-parotega-nf-artificial-leather/",
+        "https://www.continental.com/en/press/press-releases/skilled-occupations/",
+        "https://www.continental.com/en/press/press-releases/solution-for-hydrogen-challenges/",
+        "https://www.continental.com/en/press/press-releases/solutions-printing-industry/",
+        "https://www.continental.com/en/press/press-releases/space-d-iaa/",
+        "https://www.continental.com/en/press/press-releases/start-up-feelit/",
+        "https://www.continental.com/en/press/press-releases/supervisory-board-meeting-3/",
+        "https://www.continental.com/en/press/press-releases/supplier-award-2021/",
+        "https://www.continental.com/en/press/press-releases/surface-materials-for-hotels/",
+        "https://www.continental.com/en/press/press-releases/survey-workingfromhome/",
+        "https://www.continental.com/en/press/press-releases/sustainability-2045-climate-goals/",
+        "https://www.continental.com/en/press/press-releases/sustainable-and-socially-acceptable-manner/",
+        "https://www.continental.com/en/press/press-releases/sustainable-operations/",
+        "https://www.continental.com/en/press/press-releases/switchable-privacy-display/",
+        "https://www.continental.com/en/press/press-releases/synchromotion/",
+        "https://www.continental.com/en/press/press-releases/techcenter-hydrogen-technologies/",
+        "https://www.continental.com/en/press/press-releases/the-logistics-industry-is-worried-about-digitalization-and-is-looking-for-the-right-approach/",
+        "https://www.continental.com/en/press/press-releases/thermal-management-emobility/",
+        "https://www.continental.com/en/press/press-releases/transformation-mfs/",
+        "https://www.continental.com/en/press/press-releases/transport-industry-in-the-digital-price-trap/",
+        "https://www.continental.com/en/press/press-releases/trelleborg/",
+        "https://www.continental.com/en/press/press-releases/two-channel-abs/",
+        "https://www.continental.com/en/press/press-releases/ultra-high-performance-tires/",
+        "https://www.continental.com/en/press/press-releases/vda-award-2022/",
+        "https://www.continental.com/en/press/press-releases/vertech-ab-in-kiruna/",
+        "https://www.continental.com/en/press/press-releases/vincent-charles/",
+        "https://www.continental.com/en/press/press-releases/vitesco/",
+        "https://www.continental.com/en/press/press-releases/volkswagen-id-polo/",
+        "https://www.continental.com/en/press/press-releases/wcco/",
+        "https://www.continental.com/en/press/press-releases/wind-farm-korbach/",
+        "https://www.continental.com/en/press/press-releases/winner-continental-challenge/",
+        "https://www.continental.com/en/press/press-releases/workforce-of-tomorrow/",
+        "https://www.continental.com/en/press/press-releases/working-as-a-trucker-day-to-day-mixture-of-dream-job-and-self-exploitation/",
+        "https://www.continental.com/en/presse/pressemitteilungen/20250508-autobild-sportscars-sc7/",
+        "https://www.continental.com/en/presse/pressemitteilungen/20241011-autobild-winterreifen/",
+        "https://www.continental.com/en/press/press-releases/20210929-continental-horizon-robotics/",
+        "https://www.continental.com/en/no-chance-for-hackers/",
+        "https://www.continental.com/en/2021-04-21-dtco4-fleet-en/",
+        "https://www.continental.com/en/2021-04-21-software-auto-shanghai/",
+        "https://www.continental.com/en/printing-technology-as-a-virtual-experience/",
+        "https://www.continental.com/en/20210415-continental-and-amazon-web-services/",
+        "https://www.continental.com/en/100-percent-green-electricity/",
+        "https://www.continental.com/en/spokesman-business-finance/",
+        "https://www.continental.com/en/citt/",
+        "https://www.continental.com/en/low-emission-and-zero-emission-mobility/"
+      ],
+      "blocks": [
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .o-container.is-white.is-nested:has(figure ~ figure, .col figure)",
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .c-content-slider"
+          ]
+        },
+        {
+          "name": "columns-infobox",
+          "instances": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .o-container.is-lightgray.is-nested .o-container__content > .row:not(.o-container__header)"
+          ]
+        },
+        {
+          "name": "cards-downloads",
+          "instances": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .c-pageoptions"
+          ]
+        },
+        {
+          "name": "cards-latest-news",
+          "instances": [
+            "main .o-container__content > .row > .col-12.col-md-4.col-lg-3 .c-news-sidebar"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "main .c-table"
+          ]
+        },
+        {
+          "name": "video-poster",
+          "instances": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .c-media__embed.is-video"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "banner",
+          "selector": [
+            "main > .c-heroteaser.c-heroteaser--small"
+          ],
+          "style": "banner",
+          "blocks": [],
+          "defaultContent": [
+            ".c-heroteaser img"
+          ]
+        },
+        {
+          "id": "2",
+          "name": "article-body",
+          "selector": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-gallery",
+            "table"
+          ],
+          "defaultContent": [
+            "header.c-media__header h1",
+            ".o-page__ce"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "infobox",
+          "selector": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .o-container.is-lightgray.is-nested"
+          ],
+          "style": "light-grey",
+          "blocks": [
+            "columns-infobox"
+          ],
+          "defaultContent": [
+            ".o-container__header"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "downloads",
+          "selector": [
+            "main .o-container__content > .row > .col-12.col-md-8.col-lg-9 .c-pageoptions"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-downloads"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "5",
+          "name": "sidebar",
+          "selector": [
+            "main .o-container__content > .row > .col-12.col-md-4.col-lg-3"
+          ],
+          "style": "sidebar",
+          "blocks": [
+            "cards-latest-news"
+          ],
+          "defaultContent": [
+            ".c-contact"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "press-content",
+      "description": "Modular press section pages: fairs & events, media library, studies & publications, press contacts, white papers",
+      "urlPattern": "/en/press/{fairs-events|media-library|studies-publications|press-contacts}/**",
+      "representativeUrl": "https://www.continental.com/en/press/fairs-events/ces-2025/",
+      "urls": [
+        "https://www.continental.com/en/press/fairs-events/ces-2025/",
+        "https://www.continental.com/en/press/fairs-events/",
+        "https://www.continental.com/en/press/fairs-events/annual-press-conference-2025/",
+        "https://www.continental.com/en/press/fairs-events/annual-press-conference-2025/technology-highlights/",
+        "https://www.continental.com/en/press/fairs-events/annual-press-conference-2026/",
+        "https://www.continental.com/en/press/fairs-events/annual-press-conference-2026/technology-highlights/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2025/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2025/press-contacts/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2025/technology-highlights/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2026/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2026/directions/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2026/press-contacts/",
+        "https://www.continental.com/en/press/fairs-events/annual-shareholders-meeting-2026/technology-highlights/",
+        "https://www.continental.com/en/press/fairs-events/auto-shanghai-2025/",
+        "https://www.continental.com/en/press/fairs-events/ces-2025/media-kit-ces-2025/",
+        "https://www.continental.com/en/press/fairs-events/events/",
+        "https://www.continental.com/en/press/fairs-events/fairs/",
+        "https://www.continental.com/en/press/fairs-events/iaa-history/",
+        "https://www.continental.com/en/press/fairs-events/launch-event-contisportattack-5/",
+        "https://www.continental.com/en/press/fairs-events/launch-event-tkc-80-generation-2/",
+        "https://www.continental.com/en/press/fairs-events/quarterly-publications/",
+        "https://www.continental.com/en/press/fairs-events/results-q1-2025/",
+        "https://www.continental.com/en/press/fairs-events/results-q1-2026/",
+        "https://www.continental.com/en/press/fairs-events/toc-europe-2025/",
+        "https://www.continental.com/en/press/media-library/",
+        "https://www.continental.com/en/press/media-library/150-years-continental/",
+        "https://www.continental.com/en/press/media-library/continental-headquarter/",
+        "https://www.continental.com/en/press/media-library/pictures/",
+        "https://www.continental.com/en/press/media-library/press-footage/",
+        "https://www.continental.com/en/press/media-library/press-pictures-executive-board/",
+        "https://www.continental.com/en/press/media-library/responsible-sourcing-of-natural-rubber/",
+        "https://www.continental.com/en/press/media-library/road-bike-tires-production/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/the-continental-tires-garage-episode-1/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/the-continental-tires-garage-episode-2/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/the-continental-tires-garage-episode-3/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/the-continental-tires-garage-episode-4/",
+        "https://www.continental.com/en/press/media-library/the-continental-tires-garage/the-continental-tires-garage-episode-5/",
+        "https://www.continental.com/en/press/media-library/tire-production-korbach/",
+        "https://www.continental.com/en/press/media-library/tkc-80-generation-2/",
+        "https://www.continental.com/en/press/media-library/videos/",
+        "https://www.continental.com/en/press/press-contacts/",
+        "https://www.continental.com/en/press/press-contacts/corporate-communications/",
+        "https://www.continental.com/en/press/press-contacts/international-press-contacts/",
+        "https://www.continental.com/en/press/press-contacts/press-contacts-by-business-areas/",
+        "https://www.continental.com/en/press/press-contacts/press-contacts-contitech/",
+        "https://www.continental.com/en/press/press-contacts/press-contacts-for-industries-topics-products/",
+        "https://www.continental.com/en/press/press-contacts/registering-for-press-releases/",
+        "https://www.continental.com/en/press/press-contacts/unsubscription-for-continental-press-releases/",
+        "https://www.continental.com/en/press/press-releases/press-tires/white-papers/",
+        "https://www.continental.com/en/press/studies-publications/",
+        "https://www.continental.com/en/press/studies-publications/a-sustainable-interior-thanks-to-innovative-surfaces/",
+        "https://www.continental.com/en/press/studies-publications/agriculture-in-transition/",
+        "https://www.continental.com/en/press/studies-publications/aumovio-spin-off-approaches-finish-line/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/continental-mobility-study-2011/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2013/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2015/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2016/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2018/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2018/press-contacts/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2018/press-pictures-and-charts/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2018/the-2018-mobility-study/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/china-could-provide-a-boost-for-electric-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/electric-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/electricmobility-during-the-pandemic/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/new-mobility-concepts/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/press-contacts/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2020/private-transportation/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/affordable-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/individual-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/sustainable-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/technology-in-cars/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2022/travel-and-leisure/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/artificial-intelligence-in-the-car/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/car-of-the-future-from-vehicle-interior-to-living-space/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/cars-as-a-prestige-item/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/displays-in-the-car/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/mobility-in-everyday-life/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/renewed-impetus-for-e-mobility/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobility-study-2024/sustainable-materials/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobilitystudy2020-from-driver-to-passenger/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobilitystudy2020-from-driver-to-passenger/assistance-systems/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobilitystudy2020-from-driver-to-passenger/benefits-of-autonomous-driving/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobilitystudy2020-from-driver-to-passenger/data-sharing/",
+        "https://www.continental.com/en/press/studies-publications/continental-mobility-studies/mobilitystudy2020-from-driver-to-passenger/expectations-for-the-existing-technology/",
+        "https://www.continental.com/en/press/studies-publications/contitech/",
+        "https://www.continental.com/en/press/studies-publications/electric-cars-why-manufacturers-rely-on-continental-tires/",
+        "https://www.continental.com/en/press/studies-publications/figures-data-facts/",
+        "https://www.continental.com/en/press/studies-publications/grafic-novel/",
+        "https://www.continental.com/en/press/studies-publications/interview-sabrina-soussan/",
+        "https://www.continental.com/en/press/studies-publications/interview/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/20220926-continental-informs/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/20260202-continental-informs-1/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/20260202-continental-informs/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/continental-technology-protects-electric-car-batteries-against-heat/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/spin-off-automotive/",
+        "https://www.continental.com/en/press/studies-publications/other-publications/the-e-bus-is-here/",
+        "https://www.continental.com/en/press/studies-publications/sophisticated-technologies-extend-range-and-battery-life/",
+        "https://www.continental.com/en/press/studies-publications/survey-artificial-intelligence/",
+        "https://www.continental.com/en/press/studies-publications/sustainable-tires-for-electric-mobility/"
+      ],
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            "main > .c-heroteaser-fixed"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".c-content-slider:has(a.c-teaser)",
+            ".o-tabs .o-tabs__content-item .o-container__content > .row:not(.o-container__header):has(.c-teaser)",
+            ".o-container.has-columns:not(.o-tabs .o-container) > .o-container__content > .row:not(.o-container__header):has(.c-teaser)"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            ".c-content-slider:has(figure.c-image):not(:has(a.c-teaser))",
+            ".o-container > .o-container__content > .row:not(.o-container__header):has(> .col-md-3 figure.c-image)",
+            ".o-container.is-white.is-nested:has(figure ~ figure, .col figure)"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".o-container .o-container__content > .row:not(.o-container__header):has(.c-fact-box)"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            ".o-container .o-container__content > .row:not(.o-container__header):has(> div ~ div):has(.c-media__embed.is-video):has(.c-media__text):not(:has(.o-accordion))"
+          ]
+        },
+        {
+          "name": "video-poster",
+          "instances": [
+            ".c-media__embed.is-video"
+          ]
+        },
+        {
+          "name": "accordion-lined",
+          "instances": [
+            ".o-accordion"
+          ]
+        },
+        {
+          "name": "quote-portrait",
+          "instances": [
+            ".c-quote"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            ".c-table"
+          ]
+        },
+        {
+          "name": "columns-infobox",
+          "instances": [
+            ".c-media__content.is-image-intext:has(.c-media__gallery, figure)",
+            ".o-container.is-lightgray.is-nested .o-container__content > .row:not(.o-container__header)"
+          ]
+        },
+        {
+          "name": "columns-content",
+          "instances": [
+            ".o-container.has-columns > .o-container__content > .row:not(.o-container__header):not(:has(.c-teaser, .c-fact-box, .c-contact, .o-accordion, .c-content-slider, .c-quote, .c-media__embed.is-video, .c-table)):has(> div ~ div)"
+          ]
+        },
+        {
+          "name": "cards-downloads",
+          "instances": [
+            ".c-pageoptions:has(form[data-minicart])",
+            ".o-page__ce:has(a.c-link--download)"
+          ]
+        }
+      ],
+      "sectionMode": "containers",
+      "sectionStyles": {
+        "is-lightgray": "light-grey",
+        "is-gray": "grey",
+        "is-pastel-yellow": "pastel-yellow",
+        "is-pastel-green": "pastel-green",
+        "is-yellow": "yellow",
+        "has-image": "background-image"
+      },
+      "sections": [
+        {
+          "id": "1",
+          "name": "banner",
+          "selector": [
+            "main > .c-heroteaser.c-heroteaser--small"
+          ],
+          "style": "banner",
+          "blocks": [],
+          "defaultContent": [
+            "img"
+          ]
+        },
+        {
+          "id": "2",
+          "name": "hero",
+          "selector": [
+            "main > .c-heroteaser-fixed"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "container",
+          "selector": [
+            "main > .o-container:not(.d-print-none)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-hero",
+            "cards-teaser",
+            "cards-gallery",
+            "cards-stats",
+            "columns-video",
+            "video-poster",
+            "accordion-lined",
+            "quote-portrait",
+            "table",
+            "columns-infobox",
+            "columns-content",
+            "cards-downloads"
+          ],
+          "defaultContent": [
+            ".o-container__header",
+            ".c-media__text"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "sidebar",
+          "selector": [
+            "main .o-container__content > .row > .col-12.col-md-4.col-lg-3"
+          ],
+          "style": "sidebar",
+          "blocks": [],
+          "defaultContent": [
+            ".c-contact",
+            ".o-box"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "press-contact",
+      "description": "Shared spokesperson contact fragments (/en/press/fragments/contacts/*)",
+      "urlPattern": "/en/press/fragments/contacts/*",
+      "blocks": [],
+      "sections": [],
+      "urls": [
+        "https://www.continental.com/en/press/press-releases/-20241029-remondis-sachsen/#contact=1",
+        "https://www.continental.com/en/press/press-release/20230509-sportcontact-7/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-01-18-contionlinecontact/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-01-12-ces-2021/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20240131-mercedes-e-class/#contact=1",
+        "https://www.continental.com/en/press/press-releases/oe-porsche/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210623-gilles-mabire-cto/#contact=1",
+        "https://www.continental.com/en/press/press-releases/150-years-of-continental/#contact=1",
+        "https://www.continental.com/en/press/press-releases/150-years-agriculture/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-03-02-vdo-dtco-testing/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20240730-contihome/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210506-q1-2021/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20220426-test-results/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210714-lidar-aeye/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210729-ces-siemens-ehighway/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20220120-northeim/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-04-09-5g-connectivity/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20230608-pivot-factory-racing/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20240508-contitpu/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-01-20-new-cnn-head/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210910-supplier-of-the-year-2020/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20230908-ultracontactnxt-award/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20231106-diazi/#contact=1",
+        "https://www.continental.com/en/press/press-releases/250910-aguascalientes/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20260119-icecontact-8/#contact=1",
+        "https://www.continental.com/en/press/press-releases/2021-03-31-dpd-truck/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20250822-kalmar-supplier-award/#contact=1",
+        "https://www.continental.com/en/press/press-releases/-20241014-americas-ashok-vedanayagam/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210428-elektomobilitaet/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20240322-open-americas/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20250318-tires-americas-transition/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20250410-keyfob/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20260522-rayong-plant-expansion/#contact=1",
+        "https://www.continental.com/en/press/press-releases/auto-shanghai-ambience/#contact=1",
+        "https://www.continental.com/en/press/press-releases/invest-hydraulic-hose-production-facility/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20210915-natural-rubber-from-dandelion/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20240620-hefei-phase/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20250428-alor-setar/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20250602-india-strategic-realignment/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20251210-contitradefrance/#contact=1",
+        "https://www.continental.com/en/press/press-releases/20260603-contitradefrance/#contact=1",
+        "https://www.continental.com/en/press/press-releases/continental-acquires-stake-in-kopernikus-automotive-artificial-intelligence-specialist-for-automated-parking/#contact=1",
+        "https://www.continental.com/en/press/press-releases/invest-korbach/#contact=1"
+      ],
+      "representativeUrl": "https://www.continental.com/en/press/press-releases/-20241029-remondis-sachsen/#contact=1"
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}

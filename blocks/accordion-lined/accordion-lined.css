@@ -1,0 +1,89 @@
+/* lined list of collapsible rows: a rule above the first and below every item */
+.accordion-lined .accordion-lined-item {
+  border-bottom: 1px solid currentcolor;
+}
+
+.accordion-lined > .accordion-lined-item:first-child,
+.accordion-lined .accordion-lined-column:first-child > .accordion-lined-item:first-child {
+  border-top: 1px solid currentcolor;
+}
+
+.accordion-lined .accordion-lined-item-label {
+  position: relative;
+  display: block;
+  padding: 16px 40px 16px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-lined .accordion-lined-item-label::-webkit-details-marker {
+  display: none;
+}
+
+/* headings authored in a title keep the row compact */
+.accordion-lined .accordion-lined-item-label > * {
+  margin: 0;
+  font-size: inherit;
+}
+
+/* plus / minus indicator on the right */
+.accordion-lined .accordion-lined-item-label::before,
+.accordion-lined .accordion-lined-item-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  width: 12px;
+  height: 2px;
+  background-color: currentcolor;
+  transform: translateY(-50%);
+}
+
+.accordion-lined .accordion-lined-item-label::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.2s;
+}
+
+.accordion-lined .accordion-lined-item[open] > .accordion-lined-item-label::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* items without panel content are plain rows */
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label {
+  padding-right: 0;
+  cursor: default;
+}
+
+/* stylelint-disable no-descending-specificity */
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label::before,
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label::after {
+  display: none;
+}
+/* stylelint-enable no-descending-specificity */
+
+.accordion-lined .accordion-lined-item-body {
+  padding-bottom: 16px;
+}
+
+.accordion-lined .accordion-lined-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion-lined .accordion-lined-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- option: two-column - items in two columns on desktop ---------- */
+@media (width >= 900px) {
+  .accordion-lined.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 0 32px;
+  }
+
+  /* each column starts with its own top rule */
+  .accordion-lined.two-column .accordion-lined-column > .accordion-lined-item:first-child {
+    border-top: 1px solid currentcolor;
+  }
+}

@@ -1,0 +1,194 @@
+/* full-bleed: the hero slider spans the viewport width */
+.carousel-hero-container .carousel-hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.carousel-hero {
+  position: relative;
+}
+
+.carousel-hero .carousel-hero-slides-container {
+  position: relative;
+}
+
+.carousel-hero .carousel-hero-slides,
+.carousel-hero .carousel-hero-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-hero .carousel-hero-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+  scrollbar-width: none;
+}
+
+.carousel-hero .carousel-hero-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* each slide: background image with overlaid text, content anchored bottom-left */
+.carousel-hero .carousel-hero-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 320px;
+  box-sizing: border-box;
+}
+
+.carousel-hero .carousel-hero-slide-image {
+  line-height: 0;
+}
+
+.carousel-hero .carousel-hero-slide-image picture {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-hero .carousel-hero-slide-image picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-hero .carousel-hero-slide-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 72px;
+  box-sizing: border-box;
+}
+
+.carousel-hero .carousel-hero-slide-content > :first-child {
+  margin-top: 0;
+}
+
+/* CTA row: 1-2 buttons side by side */
+.carousel-hero .carousel-hero-slide-content p.button-container {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* prev/next arrows: right side, bottom-aligned with the slide content */
+.carousel-hero .carousel-hero-navigation-buttons {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-hero .carousel-hero-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* pagination: bar indicators centred below the slider */
+.carousel-hero .carousel-hero-slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.carousel-hero .carousel-hero-slide-indicator button {
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: currentcolor;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.carousel-hero .carousel-hero-slide-indicator button:disabled,
+.carousel-hero .carousel-hero-slide-indicator button:hover,
+.carousel-hero .carousel-hero-slide-indicator button:focus-visible {
+  opacity: 1;
+}
+
+/* option: light-text - text and arrows over the photo switch to white (for darker photos);
+   the pagination sits below the photo and keeps the inherited colour */
+.carousel-hero.light-text .carousel-hero-slide-content,
+.carousel-hero.light-text .carousel-hero-navigation-buttons {
+  color: #fff;
+}
+
+.carousel-hero.light-text .carousel-hero-slide-content :is(h1, h2, h3, h4, h5, h6, p) {
+  color: inherit;
+}
+
+@media (width >= 600px) {
+  .carousel-hero .carousel-hero-slide {
+    min-height: 400px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    padding: 32px 32px 48px;
+  }
+
+  .carousel-hero .carousel-hero-slide-indicator button {
+    width: 96px;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slide {
+    min-height: 480px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    padding-right: 140px;
+  }
+
+  .carousel-hero .carousel-hero-navigation-buttons {
+    right: 32px;
+    bottom: 48px;
+  }
+}
+
+@media (width >= 1200px) {
+  .carousel-hero .carousel-hero-navigation-buttons {
+    right: calc((100% - 1200px) / 2 + 32px);
+  }
+}

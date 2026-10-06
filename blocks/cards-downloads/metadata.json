@@ -1,0 +1,25 @@
+{
+  "variantName": "cards-downloads",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "file-downloads",
+    "colorScheme": "light",
+    "density": "compact",
+    "imagePattern": "noimg (optional small thumbnail for press photos)",
+    "layout": "Vertical list of downloadable files, one per line: type icon + label (Word / PDF / Image ...), file name link, file size aligned right; optional square thumbnail at the start of a row when an image cell is authored"
+  },
+  "contentPattern": "One row per file: cell 1 = file type label (e.g. 'Word', 'PDF', 'Image'); cell 2 = link with the file name as text plus the size text (e.g. '245 KB'). Optional extra image cell for a press-photo thumbnail. Also accepts a single cell with the link and a 'TYPE size' paragraph. Links stay absolute (cdn.continental.com, or the source article URL when the file could not be resolved)",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/press-releases/oe-porsche/",
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-downloads"
+  ]
+}

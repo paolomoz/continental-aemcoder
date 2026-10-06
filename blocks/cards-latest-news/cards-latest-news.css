@@ -1,0 +1,157 @@
+.cards-latest-news .cards-latest-news-header > :first-child {
+  margin-top: 0;
+}
+
+.cards-latest-news .cards-latest-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-latest-news .cards-latest-news-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cards-latest-news .cards-latest-news-date {
+  display: block;
+}
+
+.cards-latest-news .cards-latest-news-title {
+  overflow-wrap: anywhere;
+}
+
+.cards-latest-news .cards-latest-news-all {
+  margin: 24px 0 0;
+}
+
+.cards-latest-news.cards-latest-news-empty .cards-latest-news-all {
+  margin-top: 0;
+}
+
+/* ---------- option: teaser - image cards in a grid ---------- */
+.cards-latest-news.teaser .cards-latest-news-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-image {
+  line-height: 0;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-image picture,
+.cards-latest-news.teaser .cards-latest-news-card-image img {
+  display: block;
+  width: 100%;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-image img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-title {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-text .cards-latest-news-date {
+  display: inline;
+  font-weight: bold;
+}
+
+/* CTA pinned to the bottom of the card; its hit area covers the whole card */
+.cards-latest-news.teaser .cards-latest-news-card-cta {
+  margin-top: auto;
+  padding-top: 8px;
+  margin-bottom: 0;
+}
+
+.cards-latest-news.teaser .cards-latest-news-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media (width >= 600px) {
+  .cards-latest-news.teaser .cards-latest-news-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  .cards-latest-news.teaser .cards-latest-news-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* exactly four items (e.g. a curated selection) fill one row */
+  .cards-latest-news.teaser .cards-latest-news-cards[data-count="4"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------- option: teaser + all-news link centred below the grid ---------- */
+.cards-latest-news.teaser .cards-latest-news-all {
+  margin-top: 32px;
+  text-align: center;
+}
+
+/* ---------- option: tabbed - adjacent instances share one tab bar ---------- */
+
+/* the tab bar is inserted before the first grouped instance (outside the block) */
+.cards-latest-news-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid currentcolor;
+}
+
+.cards-latest-news-tablist .cards-latest-news-tab {
+  margin: 0 0 -1px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+.cards-latest-news-tablist .cards-latest-news-tab[aria-selected="true"] {
+  border-bottom-color: currentcolor;
+  font-weight: bold;
+}
+
+/* in a tab group the tab is the label; the block heading only names the panel for no-JS */
+.cards-latest-news.cards-latest-news-in-tabs .cards-latest-news-header {
+  display: none;
+}
+
+.cards-latest-news-wrapper[role="tabpanel"][hidden] {
+  display: none;
+}

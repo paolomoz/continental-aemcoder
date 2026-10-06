@@ -1,0 +1,70 @@
+.quote-portrait .quote-portrait-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0;
+}
+
+/* round portrait */
+.quote-portrait .quote-portrait-image {
+  flex: 0 0 auto;
+  width: 120px;
+  line-height: 0;
+}
+
+.quote-portrait .quote-portrait-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.quote-portrait .quote-portrait-content {
+  min-width: 0;
+}
+
+/* large opening quotation mark above the quote text */
+.quote-portrait .quote-portrait-text {
+  margin: 0;
+}
+
+.quote-portrait .quote-portrait-text::before {
+  content: '\201C';
+  display: block;
+  height: 0.5em;
+  font-size: 4em;
+  line-height: 1;
+}
+
+.quote-portrait .quote-portrait-text > :first-child {
+  margin-top: 0;
+}
+
+.quote-portrait .quote-portrait-text > :last-child {
+  margin-bottom: 0;
+}
+
+.quote-portrait .quote-portrait-author {
+  margin-top: 16px;
+}
+
+.quote-portrait .quote-portrait-author > * {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .quote-portrait .quote-portrait-figure {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .quote-portrait .quote-portrait-image {
+    width: 160px;
+  }
+
+  .quote-portrait .quote-portrait-content {
+    flex: 1 1 auto;
+  }
+}

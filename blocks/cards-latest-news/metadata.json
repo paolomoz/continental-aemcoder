@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-latest-news",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "latest-news-feed",
+    "colorScheme": "light",
+    "density": "compact",
+    "imagePattern": "noimg",
+    "layout": "Narrow vertical list (sidebar section) of the most recent press releases: date line above a title link per item, followed by an 'All news' link. Populated at runtime from the press query index (template = press-release, sorted by publication-date desc, current page excluded, default 10 items); renders only the 'All news' link when the index is unavailable. Options: 'teaser' renders image cards (16:9 image, title, bold date + description, CTA link stretched over the card) in a grid, 1/2/3 per row at <600/600/900px (4 per row when there are exactly 4 items) with the 'All news' link centred below; 'curated' renders the authored press-release links as the items in authored order, enriched from the index by path (falls back to the link text when a link is not indexed); 'tabbed' groups adjacent tabbed instances in one section into one ARIA tab bar labelled by each block heading (first tab active); a single instance or no JS stacks the lists with their headings"
+  },
+  "contentPattern": "Config-style, every row optional: a link to the query index (default /en/press/press-index.json), a number for the limit (default 10; also 'limit | 10' key/value rows), and an 'All news' link. An optional heading is kept above the list. Index rows provide path, title, publication-date (yyyy-mm-dd) and template. Explicit key/value rows: 'index | <link>', 'limit | 9', 'all-news | <link>' (wins over any other link; in curated mode the ONLY way to set the All news link) and 'link-label | Find out more' (teaser CTA; default 'Find out more' when curated, 'Read the press release' otherwise). Curated: every other link (one per row, e.g. /en/press/press-releases/...) is an item; limit applies only when authored. Index rows also provide description and image for teaser cards. Shared loader: /scripts/press-index.js (one cached, paginated fetch of /en/press/press-index.json per page view for all instances)",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/press-releases/oe-porsche/",
+      "https://www.continental.com/en/press/"
+    ],
+    "reuseCount": 3,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [
+    {
+      "class": "teaser",
+      "label": "Teaser"
+    },
+    {
+      "class": "curated",
+      "label": "Curated"
+    },
+    {
+      "class": "tabbed",
+      "label": "Tabbed"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-latest-news"
+  ]
+}

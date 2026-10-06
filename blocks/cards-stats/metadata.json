@@ -1,0 +1,24 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "key figures",
+    "colorScheme": "light-grey boxes on a full-width section photo",
+    "density": "medium",
+    "imagePattern": "noimg",
+    "layout": "3 equal boxes in a row (stacked on mobile, 2 per row from 600px); exactly 4 boxes share one row from 900px; each: label heading, very large centred number, bold unit line and small descriptive text; no images"
+  },
+  "contentPattern": "One row per stat, one cell each: label (h3), large number paragraph (e.g. \"0.20\"), bold unit line (e.g. \"t CO2e per ton\"), description paragraph(s)",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-stats"
+  ]
+}

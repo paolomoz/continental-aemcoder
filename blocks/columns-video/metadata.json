@@ -1,0 +1,25 @@
+{
+  "variantName": "columns-video",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "video with text",
+    "colorScheme": "pastel-yellow (section background)",
+    "density": "medium",
+    "imagePattern": "video-poster-left",
+    "layout": "Two side-by-side columns (1/3 + 2/3), stacked on mobile: left is a video poster image with a play overlay and a caption (e.g. \"(c) Continental AG\"); right is text paragraphs ending with a pill CTA button. With a video.continental.com link the poster is a click-to-play button that swaps in the player iframe; otherwise the poster links to the video/media page"
+  },
+  "contentPattern": "One row, two cells: cell 1 = poster image + caption paragraph (+ link); cell 2 = paragraphs + CTA link. The video link may sit in either cell: a https://video.continental.com/?v={uuid} link makes the poster click-to-play (iframe, nothing third-party before the click; a stand-alone link paragraph is folded into the poster). Any other link (e.g. the media-library page) keeps the previous behaviour: the poster links to it. Shared helper: /scripts/video-embed.js",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/",
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-video"
+  ]
+}
