@@ -1,0 +1,22 @@
+{
+  "variantName": "quote-portrait",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "quote with portrait",
+    "colorScheme": "inherits section (design pass: yellow quotation mark and quote text)",
+    "density": "medium",
+    "imagePattern": "round-portrait-left",
+    "layout": "Round portrait image on the left, large opening quotation mark above the quote text, attribution (bold name, role) below the quote; portrait stacks above the quote on mobile"
+  },
+  "contentPattern": "Row 1: portrait image | quote text. Row 2: attribution (bold name, role). Cells may be in either order; without a second row a trailing paragraph starting with bold text or a dash is the attribution; the portrait is optional",
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "quote-portrait"
+  ]
+}

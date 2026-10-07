@@ -1,0 +1,247 @@
+/* source: 64px above the photos, 48px item margin + 64px container padding below */
+.cards-gallery {
+  margin-bottom: 112px;
+}
+
+.default-content-wrapper + .cards-gallery-wrapper > .cards-gallery {
+  margin-top: 64px;
+}
+
+/* source grid: 32px gutter between columns, 48px between rows */
+.cards-gallery > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-gallery .cards-gallery-item {
+  min-width: 0;
+  margin: 0;
+}
+
+.cards-gallery .cards-gallery-figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.cards-gallery .cards-gallery-image {
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-image a {
+  display: block;
+}
+
+/* product photos: show the whole image, never crop */
+.cards-gallery .cards-gallery-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.cards-gallery .cards-gallery-caption {
+  position: relative;
+  margin: 0 0 12px;
+  padding: 12px 0 0;
+  font-size: var(--body-font-size-xs);
+  font-weight: 300;
+  line-height: 19.6px;
+  text-align: left;
+}
+
+.cards-gallery .cards-gallery-caption p {
+  margin: 0;
+}
+
+/*
+ * hi-res download: a link paragraph after the caption text becomes the source's
+ * round orange download tool, 12px in from the photo's bottom-right corner
+ * (the caption's top edge is the photo's bottom edge)
+ */
+.cards-gallery .cards-gallery-caption > p:not(:first-child):has(> .cards-gallery-download:only-child) {
+  position: absolute;
+  right: 12px;
+  bottom: calc(100% + 12px);
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child {
+  display: block;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: 28px;
+  background-color: var(--brand-orange);
+  color: var(--text-color);
+  font-size: 0;
+  line-height: 0;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child::before {
+  content: '';
+  display: block;
+  width: 10.5px;
+  height: 10.5px;
+  margin: 8.75px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M65.92 55.9a3.34 3.34 0 00-3.34-3.34H7.26a3.34 3.34 0 00-3.34 3.34v9.32a3.34 3.34 0 003.34 3.34h55.32a3.34 3.34 0 003.34-3.34zm-7.85 7a3.22 3.22 0 113.22-3.22 3.22 3.22 0 01-3.22 3.26z'/%3E%3Cpath d='M58 24l-2-2a2.64 2.64 0 00-3.46 0L41.92 32.41V4.73c0-2-1-3.17-3-3.17H29.3a3.07 3.07 0 00-3.39 3.17v27.68L15.42 22a2.29 2.29 0 00-3.19 0l-2 2a2.22 2.22 0 000 3.13L32.51 49.4a2.4 2.4 0 003.25 0L58 27.11A2.22 2.22 0 0058 24z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child:hover,
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child:focus-visible {
+  background-color: var(--brand-orange-dark);
+  color: var(--text-color);
+}
+
+@media (width >= 600px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* two photos share the row instead of leaving an empty third column */
+  .cards-gallery > ul[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* a single photo keeps its natural column width */
+.cards-gallery > ul[data-count='1'] {
+  grid-template-columns: minmax(0, 480px);
+}
+
+/* ---------- option: four-up - 4 photos per row on desktop ---------- */
+@media (width >= 900px) {
+  .cards-gallery.four-up > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-gallery.four-up > ul[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-gallery.four-up > ul[data-count='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- option: slider - one horizontal scroll-snap row ---------- */
+.cards-gallery.slider {
+  position: relative;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-gallery.slider > ul,
+.cards-gallery.slider > ul[data-count] {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.cards-gallery.slider > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-gallery.slider .cards-gallery-item {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
+
+/* the slider crops photos to one height so the row stays even */
+.cards-gallery.slider .cards-gallery-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav[hidden] {
+  display: none;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cards-gallery.slider .cards-gallery-slider-nav button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+
+.cards-gallery.slider .cards-gallery-slider-prev::after {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+@media (width >= 600px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-gallery.slider .cards-gallery-item {
+    flex-basis: calc((100% - 3 * 24px) / 4);
+  }
+
+  /* desktop: arrows sit on the track edges at the photo's mid-height */
+  .cards-gallery.slider .cards-gallery-slider-nav {
+    position: absolute;
+    inset: 0 -20px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .cards-gallery.slider .cards-gallery-slider-nav button {
+    background-color: var(--background-color, white);
+    pointer-events: auto;
+  }
+}

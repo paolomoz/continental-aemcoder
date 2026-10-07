@@ -1,0 +1,102 @@
+/*
+ * Values measured from the source player (.c-media__embed.is-video) on
+ * /en/press/fairs-events/ces-2025/ and /en/press/media-library/the-continental-tires-garage/…:
+ * 16:9 poster, video.js big play button (90x45, 1px white border, 9px radius,
+ * rgb(150 150 150 / 30%), 50% on hover, 0.4s), figcaption 14px/19.6px with 12px top
+ * padding, the creator line 6px below the title and 12px under the caption.
+ * The play box matches columns-video.
+ */
+.video-poster .video-poster-media {
+  position: relative;
+  line-height: 0;
+}
+
+/* poster: picture with a centred play button; a <button> for videos, a link otherwise */
+.video-poster .video-poster-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.video-poster .video-poster-poster picture,
+.video-poster .video-poster-poster img {
+  display: block;
+  width: 100%;
+}
+
+.video-poster .video-poster-poster img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* no poster image: keep the 16:9 player area */
+.video-poster .video-poster-no-image {
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+/* video.js big play button of the source player: 90x45 rounded box, white play glyph */
+.video-poster .video-poster-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 90px;
+  height: 45px;
+  border: 1px solid #fff;
+  border-radius: 9px;
+  background-color: rgb(150 150 150 / 30%);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.4s;
+}
+
+.video-poster .video-poster-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  border-style: solid;
+  border-width: 9px 0 9px 14px;
+  border-color: transparent transparent transparent #fff;
+  transform: translate(-50%, -50%);
+}
+
+.video-poster .video-poster-poster:hover .video-poster-play,
+.video-poster .video-poster-poster:focus-visible .video-poster-play {
+  background-color: rgb(150 150 150 / 50%);
+}
+
+.video-poster .video-poster-poster:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+/* the player iframe that replaces the poster after the click */
+.video-poster .video-poster-frame {
+  line-height: 0;
+}
+
+/* caption under the poster (figcaption: 14px, 12px top padding, creator line 6px below) */
+.video-poster .video-poster-caption {
+  margin-bottom: 12px;
+  padding-top: 12px;
+  font-size: var(--body-font-size-xs);
+  line-height: 19.6px;
+}
+
+.video-poster .video-poster-caption > * {
+  margin: 0;
+}
+
+.video-poster .video-poster-caption > * + * {
+  margin-top: 6px;
+}

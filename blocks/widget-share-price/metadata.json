@@ -1,0 +1,20 @@
+{
+  "variantName": "widget-share-price",
+  "baseBlock": "widget",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "share price chart",
+    "colorScheme": "light",
+    "density": "compact",
+    "imagePattern": "noimg",
+    "layout": "Third-party equitystory share price chart iframe (lazy-loaded) in a 1/3-width column, followed by a pill CTA button \"Share Price Chart\" linking to the full chart page"
+  },
+  "contentPattern": "One row, one cell: optional link to the equitystory chart (https://charts3.equitystory.com/teaser-t1/continental-ag-v31/English/) - defaults to the Continental chart when omitted; avoid /widgets/ links here (scripts.js auto-blocks them; the block tolerates it and falls back to the default chart); followed by CTA link(s), e.g. \"Share Price Chart\" to /en/investors/shares/share-price-chart/",
+  "usage": {
+    "pagesUsing": ["https://www.continental.com/en/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": ["widget-share-price"]
+}

@@ -1,0 +1,112 @@
+/*
+ * cards-downloads: inline list of article downloads.
+ * Row layout from the source "Available documents" modal (file name left,
+ * "TYPE size" right, 2px grey separators); link treatment from the source
+ * inline download links (download glyph, underline, orange on hover).
+ */
+.cards-downloads {
+  --cards-downloads-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M65.92 55.9a3.34 3.34 0 0 0-3.34-3.34H7.26a3.34 3.34 0 0 0-3.34 3.34v9.32a3.34 3.34 0 0 0 3.34 3.34h55.32a3.34 3.34 0 0 0 3.34-3.34zm-7.85 7a3.22 3.22 0 1 1 3.22-3.22 3.22 3.22 0 0 1-3.22 3.26z'/%3E%3Cpath d='m58 24-2-2a2.64 2.64 0 0 0-3.46 0L41.92 32.41V4.73c0-2-1-3.17-3-3.17H29.3a3.07 3.07 0 0 0-3.39 3.17v27.68L15.42 22a2.29 2.29 0 0 0-3.19 0l-2 2a2.22 2.22 0 0 0 0 3.13L32.51 49.4a2.4 2.4 0 0 0 3.25 0L58 27.11A2.22 2.22 0 0 0 58 24z'/%3E%3C/svg%3E");
+  --cards-downloads-icon-hover: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cg fill='%23e38702'%3E%3Cpath d='M65.92 55.9a3.34 3.34 0 0 0-3.34-3.34H7.26a3.34 3.34 0 0 0-3.34 3.34v9.32a3.34 3.34 0 0 0 3.34 3.34h55.32a3.34 3.34 0 0 0 3.34-3.34zm-7.85 7a3.22 3.22 0 1 1 3.22-3.22 3.22 3.22 0 0 1-3.22 3.26z'/%3E%3Cpath d='m58 24-2-2a2.64 2.64 0 0 0-3.46 0L41.92 32.41V4.73c0-2-1-3.17-3-3.17H29.3a3.07 3.07 0 0 0-3.39 3.17v27.68L15.42 22a2.29 2.29 0 0 0-3.19 0l-2 2a2.22 2.22 0 0 0 0 3.13L32.51 49.4a2.4 2.4 0 0 0 3.25 0L58 27.11A2.22 2.22 0 0 0 58 24z'/%3E%3C/g%3E%3C/svg%3E");
+
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: var(--body-line-height-m);
+  letter-spacing: 0.2px;
+}
+
+.cards-downloads > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--grey-color);
+}
+
+.cards-downloads .cards-downloads-header > :first-child {
+  margin-top: 0;
+}
+
+/* one row: [thumb] | name link | TYPE | size */
+.cards-downloads .cards-downloads-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "link type size";
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 2px solid var(--grey-color);
+}
+
+.cards-downloads .cards-downloads-has-thumb {
+  grid-template-columns: 64px minmax(0, 1fr) auto auto;
+  grid-template-areas: "thumb link type size";
+  column-gap: 12px;
+}
+
+.cards-downloads .cards-downloads-thumb {
+  grid-area: thumb;
+  line-height: 0;
+}
+
+.cards-downloads .cards-downloads-thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+/* the info wrapper dissolves so link and size become row columns */
+.cards-downloads .cards-downloads-info {
+  display: contents;
+}
+
+/* file name: inline download link */
+.cards-downloads .cards-downloads-link:any-link {
+  grid-area: link;
+  min-width: 0;
+  margin: 0 12px 0 8px;
+  overflow: hidden;
+  color: var(--link-color);
+  font-weight: 300;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+  overflow-wrap: normal;
+  transition: color 0.15s ease-in-out;
+}
+
+.cards-downloads .cards-downloads-link::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  background: var(--cards-downloads-icon) 50% 50% / contain no-repeat;
+}
+
+.cards-downloads .cards-downloads-link:hover,
+.cards-downloads .cards-downloads-link:focus-visible {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.cards-downloads .cards-downloads-link:hover::before,
+.cards-downloads .cards-downloads-link:focus-visible::before {
+  background-image: var(--cards-downloads-icon-hover);
+}
+
+/* file properties: "PDF 191 KB" */
+.cards-downloads .cards-downloads-type {
+  grid-area: type;
+  padding-right: 0.25em;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cards-downloads .cards-downloads-icon {
+  display: none;
+}
+
+.cards-downloads .cards-downloads-size {
+  grid-area: size;
+  font-weight: 500;
+  white-space: nowrap;
+}

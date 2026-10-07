@@ -1,0 +1,25 @@
+{
+  "variantName": "table",
+  "baseBlock": "table",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "data-table",
+    "colorScheme": "neutral; striped tables use alternating row tint and a dark head row unless no-header is set",
+    "density": "medium",
+    "imagePattern": "none",
+    "layout": "Semantic <table> filling the content width inside a horizontally scrollable wrapper on mobile; rows stack top to bottom, cells left-aligned, top-aligned. Two-column key/value tables (e.g. a CV: year | role) keep a narrow first column on desktop"
+  },
+  "contentPattern": {
+    "structure": "each block row = one table row; each cell = one table cell (inline formatting such as bold, line breaks and links is preserved; empty cells are kept). The first row becomes the table head unless the 'no header' option is set"
+  },
+  "usage": {
+    "pagesUsing": ["https://www.continental.com/en/press/press-releases/christian-koetz/"],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [
+    { "class": "no-header", "label": "No header row" },
+    { "class": "striped", "label": "Striped" }
+  ],
+  "memberVariantIds": ["table"]
+}

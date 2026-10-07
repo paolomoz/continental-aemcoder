@@ -10,6 +10,10 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  getMetadata,
+  readBlockConfig,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -104,6 +108,118 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Applies section metadata: `style` becomes section classes, `background-image`
+ * becomes a `.section-background` picture, other keys become data attributes.
+ * Runs after decorateSections and before decorateBlocks.
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section > div > .section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    const config = readBlockConfig(meta);
+    Object.entries(config).forEach(([key, value]) => {
+      if (key === 'style') {
+        [value].flat().join(',').split(',')
+          .map((s) => toClassName(s.trim()))
+          .filter(Boolean)
+          .forEach((cls) => section.classList.add(cls));
+      } else if (key === 'background-image') {
+        const picture = meta.querySelector('picture');
+        if (picture) {
+          const bg = document.createElement('div');
+          bg.className = 'section-background';
+          bg.append(picture);
+          section.prepend(bg);
+          section.classList.add('has-background');
+        }
+      } else {
+        section.dataset[toCamelCase(key)] = [value].flat().join(',');
+      }
+    });
+    const wrapper = meta.parentElement;
+    meta.remove();
+    if (!wrapper.children.length) wrapper.remove();
+  });
+}
+
+/**
+ * Press release template: breadcrumb + "Press Release | date" eyebrow above the title,
+ * and a sidebar with a Latest News list (added when the article has none).
+ * Runs after decorateSectionMetadata and before decorateBlocks.
+ * @param {Element} main The container element
+ */
+function decoratePressRelease(main) {
+  // only the page itself, not fragments (e.g. contact cards) decorated with decorateMain
+  if (!document.body.classList.contains('press-release') || main !== document.querySelector('body > main')) return;
+  const h1 = main.querySelector('h1');
+  if (h1) {
+    const crumbs = document.createElement('nav');
+    crumbs.className = 'breadcrumb';
+    crumbs.setAttribute('aria-label', 'Breadcrumb');
+    const list = document.createElement('ol');
+    [['Press', '/en/press/'], ['Press Releases', '/en/press/press-releases/']].forEach(([label, href]) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      li.append(a);
+      list.append(li);
+    });
+    const current = document.createElement('li');
+    current.setAttribute('aria-current', 'page');
+    current.textContent = h1.textContent.trim();
+    list.append(current);
+    crumbs.append(list);
+
+    const eyebrow = document.createElement('p');
+    eyebrow.className = 'article-eyebrow';
+    const label = document.createElement('span');
+    label.textContent = getMetadata('eyebrow') || 'Press Release';
+    eyebrow.append(label);
+    const iso = getMetadata('publication-date');
+    const date = iso ? new Date(`${iso}T00:00:00`) : null;
+    if (date && !Number.isNaN(date.getTime())) {
+      const time = document.createElement('time');
+      time.dateTime = iso;
+      time.textContent = date.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
+      eyebrow.append(time);
+    }
+    h1.before(eyebrow);
+
+    // the breadcrumb spans both columns, so it gets its own section after the banner
+    const crumbSection = document.createElement('div');
+    crumbSection.className = 'section breadcrumb-container';
+    crumbSection.dataset.sectionStatus = 'initialized';
+    crumbSection.style.display = 'none';
+    const crumbWrapper = document.createElement('div');
+    crumbWrapper.append(crumbs);
+    crumbSection.append(crumbWrapper);
+    const banner = main.querySelector(':scope > .section.banner');
+    if (banner) banner.after(crumbSection);
+    else main.prepend(crumbSection);
+  }
+
+  let sidebar = main.querySelector(':scope > .section.sidebar');
+  if (!sidebar) {
+    sidebar = document.createElement('div');
+    sidebar.className = 'section sidebar';
+    sidebar.dataset.sectionStatus = 'initialized';
+    sidebar.style.display = 'none';
+    main.append(sidebar);
+  }
+  if (!sidebar.querySelector('.cards-latest-news')) {
+    const heading = document.createElement('h3');
+    heading.textContent = 'Latest News';
+    const allNews = document.createElement('a');
+    allNews.href = '/en/press/press-releases/';
+    allNews.textContent = 'All news';
+    const wrapper = document.createElement('div');
+    wrapper.append(buildBlock('cards-latest-news', [[heading], ['all-news', allNews]]));
+    sidebar.append(wrapper);
+  }
+}
+
+/**
  * Decorates formatted links to style them as buttons.
  * @param {HTMLElement} main The main container element
  */
@@ -151,6 +267,8 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
+  decoratePressRelease(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

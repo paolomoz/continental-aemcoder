@@ -1,0 +1,24 @@
+{
+  "variantName": "search-box",
+  "baseBlock": "search",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "search entry point",
+    "colorScheme": "light",
+    "density": "compact",
+    "imagePattern": "noimg",
+    "layout": "Single full-width rounded search input with the placeholder 'Search' and a round magnifier submit button inside its right edge. Renders a GET search form (role=search) that navigates to the authored search page with ?q=<term>; it does not query any index itself"
+  },
+  "contentPattern": "One column: one link whose href is the search results page (e.g. /en/press/press-releases/) and whose text is the input placeholder. Optional key/value rows 'placeholder | Search' and 'label | <accessible label>'. Submitting navigates to {href}?q=<term> (empty term = results page unfiltered). If JS fails the authored link stays as a working link to the search page",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "search-box"
+  ]
+}

@@ -1,0 +1,242 @@
+/*
+ * Values measured from the source accordions (.o-accordion) on
+ * https://www.continental.com/en/press/fairs-events/ces-2025/ : 20px/500 titles with
+ * 32px 48px 32px 0 padding, an orange 28px plus/minus disc on the right, a rule above
+ * every item and below the last one (1px #cdcdcd; 2px white in pastel-yellow sections),
+ * panels padded 0 24px 24px 0. The source column under the accordion is mb-5 (48px).
+ */
+.accordion-lined {
+  --accordion-lined-rule: 1px solid var(--grey-color);
+
+  margin-bottom: 48px;
+}
+
+/* coloured sections draw the rules in white */
+.pastel-yellow .accordion-lined {
+  --accordion-lined-rule: 2px solid #fff;
+}
+
+/* the section header sits 48px above the accordion row on the source */
+.section:not(.three-column) > .default-content-wrapper + .accordion-lined-wrapper > .accordion-lined {
+  margin-top: 48px;
+}
+
+/* a rule above every item and below the last one of each list / column */
+.accordion-lined .accordion-lined-item {
+  border-top: var(--accordion-lined-rule);
+}
+
+.accordion-lined .accordion-lined-item:last-child {
+  border-bottom: var(--accordion-lined-rule);
+}
+
+.accordion-lined .accordion-lined-item-label {
+  position: relative;
+  display: block;
+  padding: 32px 48px 32px 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-lined .accordion-lined-item-label::-webkit-details-marker {
+  display: none;
+}
+
+/* headings authored in a title keep the row compact */
+.accordion-lined .accordion-lined-item-label > * {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* plus / minus disc: orange 28px circle with a 10.5px x 2px horizontal bar ... */
+.accordion-lined .accordion-lined-item-label::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(currentcolor, currentcolor) center / 10.5px 2px no-repeat var(--brand-orange);
+  transform: translateY(-50%);
+}
+
+/* ... and a vertical bar that turns flat when the item opens */
+.accordion-lined .accordion-lined-item-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8.75px;
+  width: 10.5px;
+  height: 2px;
+  background-color: currentcolor;
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.15s ease-in-out;
+}
+
+.accordion-lined .accordion-lined-item[open] > .accordion-lined-item-label::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion-lined .accordion-lined-item-label:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+/* items without panel content are plain rows */
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label {
+  padding-right: 0;
+  cursor: default;
+}
+
+/* stylelint-disable no-descending-specificity */
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label::before,
+.accordion-lined .accordion-lined-item-empty > .accordion-lined-item-label::after {
+  display: none;
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ---------- panel ---------- */
+.accordion-lined .accordion-lined-item-body {
+  display: flow-root;
+  padding: 0 24px 24px 0;
+  letter-spacing: 0.2px;
+}
+
+.accordion-lined .accordion-lined-item-body p {
+  margin: 0 0 32px;
+}
+
+.accordion-lined .accordion-lined-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion-lined .accordion-lined-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * Contact panel (a panel with portraits, e.g. "Press contact for ..."): the source
+ * c-contact cards are set in 17.5px/24.5px with 17.5px paragraph spacing; each portrait
+ * stacks full width above its text on mobile (24px below it) and 76px separates cards.
+ */
+.accordion-lined .accordion-lined-item-body:has(> p > picture) {
+  font-size: 17.5px;
+  line-height: 24.5px;
+  letter-spacing: normal;
+}
+
+.accordion-lined .accordion-lined-item-body:has(> p > picture) p {
+  margin-bottom: 17.5px;
+}
+
+/* the source keeps the last card's row spacing (12px + mb-6) above the panel padding */
+.accordion-lined .accordion-lined-item-body:has(> p > picture) > :last-child {
+  margin-bottom: 76px;
+}
+
+.accordion-lined .accordion-lined-item-body:has(> p > picture) > p:has(> picture) {
+  margin-bottom: 24px;
+  line-height: 0;
+}
+
+/* each further card (a portrait, or a contact fragment) starts 76px below the previous one */
+.accordion-lined .accordion-lined-item-body > p:has(> picture) ~ p:has(> picture),
+.accordion-lined .accordion-lined-item-body:has(> p > picture) > .section:not(:first-child) {
+  margin-top: 76px;
+}
+
+.accordion-lined .accordion-lined-item-body > p > picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* phone and e-mail lines: 28px glyph + 12px, 19.25px lines, 12px apart */
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="tel:"]:only-child),
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="mailto:"]:only-child) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  line-height: 19.25px;
+}
+
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="tel:"]:only-child)::before,
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="mailto:"]:only-child)::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  background-color: currentcolor;
+  mask: var(--accordion-lined-icon) center / contain no-repeat;
+}
+
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="tel:"]:only-child) {
+  --accordion-lined-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M24 2.869a.615.615 0 01-.028.194 23.427 23.427 0 01-6.886 14.036 23.5 23.5 0 01-14.023 6.873.615.615 0 01-.194.028.477.477 0 01-.194-.028.668.668 0 01-.278-.278L.036 17.752a.476.476 0 01.25-.639l6.553-3.276a.474.474 0 01.583.083l3.193 3.221a20.08 20.08 0 006.5-6.525l-3.193-3.193a.474.474 0 01-.083-.583L17.116.287a.476.476 0 01.639-.25l5.942 2.36a.513.513 0 01.25.278.447.447 0 01.053.194z'/%3E%3C/svg%3E");
+}
+
+.accordion-lined .accordion-lined-item-body p:has(> a[href^="mailto:"]:only-child) {
+  --accordion-lined-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M35 37L3 11h64L35 37zm0 7L3 18v41h64V18L35 44z'/%3E%3C/svg%3E");
+}
+
+.accordion-lined .accordion-lined-item-body a[href^="tel:"]:any-link {
+  text-decoration: none;
+}
+
+.accordion-lined .accordion-lined-item-body a[href^="mailto:"]:any-link {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* option two-column, mobile: the columns stack like the source's separate accordions (mb-5) */
+.accordion-lined.two-column .accordion-lined-column + .accordion-lined-column {
+  margin-top: 48px;
+}
+
+/* ---------- desktop ---------- */
+@media (width >= 900px) {
+  .accordion-lined.two-column .accordion-lined-column + .accordion-lined-column {
+    margin-top: 0;
+  }
+
+  /* contact cards: portrait in the first third (col-lg-4, 32px gutter), text beside it */
+  .accordion-lined .accordion-lined-item-body:has(> p > picture) > p:has(> picture) {
+    float: left;
+    clear: left;
+    width: calc((100% + 32px) / 3 - 32px);
+    margin-bottom: 0;
+  }
+
+  .accordion-lined .accordion-lined-item-body:has(> p > picture) > p:not(:has(> picture)),
+  .accordion-lined .accordion-lined-item-body:has(> p > picture) > .section {
+    margin-left: calc((100% + 32px) / 3);
+  }
+
+  /*
+   * the first text line of each further card starts level with its portrait
+   * (a float does not collapse with the 12px under the previous contact line)
+   */
+  .accordion-lined .accordion-lined-item-body > p:has(> picture) ~ p:has(> picture) {
+    margin-top: 64px;
+  }
+
+  .accordion-lined .accordion-lined-item-body > p:has(> picture) ~ p:has(> picture) + p {
+    margin-top: 76px;
+  }
+
+  /* option two-column: items in two columns (32px gutter) */
+  .accordion-lined.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 0 32px;
+  }
+}

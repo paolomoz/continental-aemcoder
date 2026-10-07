@@ -1,0 +1,65 @@
+/* Continental brand tokens (measured from https://www.continental.com/en/) */
+:root {
+  /* fonts */
+  --brand-font: continentalstagsansw, continental-fallback, -apple-system, 'Segoe UI', roboto, arial, sans-serif;
+  --body-font-family: var(--brand-font);
+  --heading-font-family: var(--brand-font);
+
+  /* colors */
+  --background-color: #fff;
+  --text-color: #000;
+  --link-color: #000;
+  --link-hover-color: #e38702;
+  --brand-orange: #ffa500;
+  --brand-orange-dark: #e38702;
+  --text-grey: #6b6b6b;
+  --light-color: #f0f0f0;
+  --grey-color: #cdcdcd;
+  --dark-color: #6b6b6b;
+  --pastel-yellow-color: #f4cf9b;
+  --pastel-green-color: #daebe6;
+
+  /* body sizes (mobile) */
+  --body-font-size-m: 17.5px;
+  --body-line-height-m: 24.5px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+
+  /* heading sizes (mobile) */
+  --heading-font-size-xxl: 32.8125px;
+  --heading-line-height-xxl: 36px;
+  --heading-font-size-xl: 26.25px;
+  --heading-line-height-xl: 28px;
+  --heading-font-size-l: 21.875px;
+  --heading-line-height-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-line-height-m: 28px;
+  --heading-font-size-s: 18px;
+  --heading-line-height-s: 25.2px;
+  --heading-font-size-xs: 16px;
+  --heading-line-height-xs: 22.4px;
+
+  /* layout */
+  --section-padding-top: 48px;
+  --section-padding-bottom: 64px;
+  --section-inset: 0;
+  --content-max-width: 1460px;
+  --content-padding: 16px;
+  --button-radius: 24px;
+}
+
+@media (width >= 900px) {
+  :root {
+    --body-font-size-m: 20px;
+    --body-line-height-m: 28px;
+    --heading-font-size-xxl: 52.5px;
+    --heading-line-height-xxl: 61.25px;
+    --heading-font-size-xl: 39.375px;
+    --heading-line-height-xl: 43.75px;
+    --heading-font-size-l: 26.25px;
+    --heading-line-height-l: 28px;
+    --heading-font-size-m: 24px;
+    --heading-line-height-m: 33.6px;
+    --section-inset: 76px;
+  }
+}

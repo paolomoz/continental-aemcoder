@@ -1,0 +1,177 @@
+/*
+ * Values measured from the source rows on https://www.continental.com/en/ (video left)
+ * and /en/press/fairs-events/ces-2025/ (video right): bootstrap columns with a 32px
+ * gutter (col-md-4 + col-md-8) and mb-5 (48px) under every column.
+ */
+
+/* the section header sits 48px above the row on the source */
+.default-content-wrapper + .columns-video-wrapper > .columns-video {
+  margin-top: 48px;
+}
+
+.columns-video .columns-video-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-video .columns-video-row > div {
+  min-width: 0;
+  margin-bottom: 48px;
+}
+
+/* ---------- text column ---------- */
+.columns-video .columns-video-text {
+  letter-spacing: 0.2px;
+}
+
+.columns-video .columns-video-text p {
+  margin: 0 0 32px;
+}
+
+.columns-video .columns-video-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-video .columns-video-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* a bold inline link is the source's orange pill (c-button--internal) */
+.columns-video .columns-video-text strong > a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  min-height: 48px;
+  margin: 0 16px 16px 0;
+  border-radius: var(--button-radius);
+  padding: 10px 24px;
+  background-color: var(--brand-orange);
+  color: #000;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 24.5px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.columns-video .columns-video-text strong > a:any-link::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+.columns-video .columns-video-text strong > a:hover,
+.columns-video .columns-video-text strong > a:focus-visible {
+  background-color: var(--brand-orange-dark);
+  color: #000;
+}
+
+/* ---------- media column: poster with play affordance ---------- */
+.columns-video .columns-video-poster {
+  position: relative;
+  display: block;
+  line-height: 0;
+}
+
+/* click-to-play poster (video.continental.com link) */
+.columns-video button.columns-video-poster {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.columns-video .columns-video-poster picture,
+.columns-video .columns-video-poster img {
+  display: block;
+  width: 100%;
+}
+
+.columns-video .columns-video-poster img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* the player iframe that replaces the poster after the click */
+.columns-video .columns-video-frame {
+  line-height: 0;
+}
+
+/* video.js big play button of the source player: 90x45 rounded box, white play glyph */
+.columns-video .columns-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 90px;
+  height: 45px;
+  border: 1px solid #fff;
+  border-radius: 9px;
+  background-color: rgb(150 150 150 / 30%);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.4s;
+}
+
+.columns-video .columns-video-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  border-style: solid;
+  border-width: 9px 0 9px 14px;
+  border-color: transparent transparent transparent #fff;
+  transform: translate(-50%, -50%);
+}
+
+.columns-video .columns-video-poster:hover .columns-video-play,
+.columns-video .columns-video-poster:focus-visible .columns-video-play {
+  background-color: rgb(150 150 150 / 50%);
+}
+
+/* caption under the poster (figcaption: 14px, 12px top padding, creator line 6px below) */
+.columns-video .columns-video-caption {
+  margin-bottom: 12px;
+  padding-top: 12px;
+  font-size: var(--body-font-size-xs);
+  line-height: 19.6px;
+}
+
+.columns-video .columns-video-caption > * {
+  margin: 0;
+}
+
+.columns-video .columns-video-caption > :last-child {
+  margin-top: 6px;
+}
+
+@media (width >= 900px) {
+  .columns-video .columns-video-row {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  /* col-md-4: a third of the row including one gutter */
+  .columns-video .columns-video-row > .columns-video-media {
+    flex: 0 0 calc((100% + 32px) / 3 - 32px);
+  }
+
+  .columns-video .columns-video-row > .columns-video-text {
+    flex: 1 1 0;
+  }
+
+  .columns-video .columns-video-row.columns-video-1-cols > div {
+    flex: 1 1 auto;
+  }
+}

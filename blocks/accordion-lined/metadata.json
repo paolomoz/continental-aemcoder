@@ -1,0 +1,29 @@
+{
+  "variantName": "accordion-lined",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "expandable content rows",
+    "colorScheme": "inherits section",
+    "density": "compact",
+    "imagePattern": "noimg",
+    "layout": "Lined list of collapsible rows (native details/summary): a rule above the first and below every row, title on the left and a plus/minus indicator on the right; the panel opens below its title. Used for 'Contacts for media' (one row holding spokesperson contacts) and 'Our Highlights' topics. Option 'two-column' lays the items out in two columns on desktop (first half left, second half right), stacked on mobile"
+  },
+  "contentPattern": "One row per item: cell 1 = title (text or heading), cell 2 = panel content (rich text, contact fragments, images, links). A single-cell row uses its first element as title. A row without panel content renders as a plain lined row. Option two-column when the source shows accordions in two sibling columns (left column items first)",
+  "usage": {
+    "pagesUsing": [
+      "https://www.continental.com/en/press/fairs-events/ces-2025/"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-06"
+  },
+  "options": [
+    {
+      "class": "two-column",
+      "label": "Two Column"
+    }
+  ],
+  "memberVariantIds": [
+    "accordion-lined"
+  ]
+}

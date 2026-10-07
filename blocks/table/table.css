@@ -1,0 +1,84 @@
+/* Table block (source: continental.com .c-table) */
+
+.table .table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+
+  /* tables do not inherit font in quirks mode; keep body typography */
+  font: inherit;
+  color: inherit;
+}
+
+.table th,
+.table td {
+  padding: 18px;
+  font-weight: 300;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* source keeps every column at least 200px wide (+ padding); narrow viewports scroll */
+.table th::after,
+.table td::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 200px;
+}
+
+/* keep empty cells taking up space so rows stay aligned */
+.table td:empty::after,
+.table th:empty::after {
+  content: '\00a0';
+  height: auto;
+}
+
+/* header row (default; no-header option turns it off): dark head */
+.table thead th {
+  background-color: var(--dark-color);
+  color: #fff;
+}
+
+.table th:first-child {
+  text-align: left;
+}
+
+/* single-row tables are list layouts (e.g. country columns): align to the top */
+.table tbody tr:only-child td {
+  vertical-align: top;
+}
+
+.table th *,
+.table td * {
+  hyphens: none;
+  word-break: keep-all;
+}
+
+.table th a,
+.table td a {
+  overflow-wrap: anywhere;
+}
+
+.table th p,
+.table td p {
+  margin: 0;
+}
+
+.table th p + p,
+.table td p + p {
+  margin-top: 0.25em;
+}
+
+/* striped option: grey even body rows */
+.table.striped tbody tr:nth-child(even) {
+  background-color: var(--grey-color);
+}
