@@ -1,10 +1,16 @@
-/* compact search entry point: one rounded input with the submit button inside its right edge */
+/* compact search entry point: grey pill input with an orange round submit inside its right edge */
+.search-box {
+  margin-top: 48px;
+}
+
 .search-box .search-box-form {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 /* visually hidden, still announced */
@@ -21,15 +27,24 @@
   flex: 1 1 auto;
   width: 100%;
   min-width: 0;
-  height: 44px;
+  height: 34px;
   margin: 0;
-  padding: 0 56px 0 20px;
+  padding: 0 44px 0 24px;
   box-sizing: border-box;
-  border: 1px solid currentcolor;
-  border-radius: 22px;
+  border: 0;
+  border-radius: 34px;
+  background-color: var(--light-color);
+  color: var(--text-grey);
   font: inherit;
-  color: inherit;
-  background: transparent;
+  font-size: 17.5px;
+  font-weight: 400;
+  line-height: 24.5px;
+  appearance: none;
+}
+
+.search-box .search-box-input::placeholder {
+  color: #757575;
+  opacity: 1;
 }
 
 .search-box .search-box-input::-webkit-search-cancel-button {
@@ -39,53 +54,55 @@
 .search-box .search-box-submit {
   position: absolute;
   top: 50%;
-  right: 6px;
+  right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin: 0;
   padding: 0;
   border: 0;
-  border-radius: 50%;
-  color: inherit;
-  background: transparent;
+  border-radius: 28px;
+  background-color: var(--brand-orange);
+  color: #000;
   cursor: pointer;
   transform: translateY(-50%);
 }
 
-/* magnifier drawn in currentcolor: a ring plus a handle */
-.search-box .search-box-icon {
-  position: relative;
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin: -3px 0 0 -3px;
-  border: 2px solid currentcolor;
-  border-radius: 50%;
+.search-box .search-box-submit:hover,
+.search-box .search-box-submit:focus-visible {
+  background-color: var(--brand-orange-dark);
 }
 
-.search-box .search-box-icon::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 100%;
-  width: 6px;
-  height: 2px;
-  background: currentcolor;
-  transform: translate(-1px, -1px) rotate(45deg);
-  transform-origin: 0 50%;
+/* source magnifier glyph (70x70 viewBox), drawn in black */
+.search-box .search-box-icon {
+  display: block;
+  width: 10.5px;
+  height: 10.5px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M68.59 60.61L54 46a28.74 28.74 0 10-6.83 7.44l14.29 14.31a1.4 1.4 0 002 0l5.16-5.16a1.4 1.4 0 00-.03-1.98zM29.67 51.1A20.53 20.53 0 1150.2 30.58 20.53 20.53 0 0129.67 51.1z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 @media (width >= 900px) {
+  .search-box .search-box-form {
+    padding: 0 16px;
+  }
+
   .search-box .search-box-input {
     height: 48px;
-    border-radius: 24px;
+    padding-right: 56px;
+    border-radius: 48px;
   }
 
   .search-box .search-box-submit {
-    width: 36px;
-    height: 36px;
+    right: 21px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+  }
+
+  .search-box .search-box-icon {
+    width: 18px;
+    height: 18px;
   }
 }

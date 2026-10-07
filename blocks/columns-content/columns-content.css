@@ -1,16 +1,16 @@
-/* columns stack on mobile, sit side by side from tablet up */
+/* values measured from the source .o-container.has-columns rows */
+
+/* columns stack on mobile (48px apart), sit side by side from tablet up */
 .columns-content .columns-content-row {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.columns-content .columns-content-row + .columns-content-row {
-  margin-top: 32px;
+  gap: 48px;
+  margin-bottom: 48px;
 }
 
 .columns-content .columns-content-col {
   min-width: 0;
+  letter-spacing: 0.2px;
 }
 
 .columns-content .columns-content-col > :first-child {
@@ -21,6 +21,49 @@
   margin-bottom: 0;
 }
 
+/* rich text */
+.columns-content .columns-content-col p {
+  margin: 0 0 32px;
+}
+
+.columns-content .columns-content-col ul,
+.columns-content .columns-content-col ol {
+  margin: 32px 0;
+}
+
+.columns-content .columns-content-col ul {
+  padding-left: 16px;
+}
+
+.columns-content .columns-content-col ol {
+  padding-left: 40px;
+}
+
+.columns-content .columns-content-col li {
+  margin-bottom: 17.5px;
+}
+
+.columns-content .columns-content-col li:last-child {
+  margin-bottom: 0;
+}
+
+/* headline, optionally followed by a light sub-headline */
+.columns-content .columns-content-col h2 {
+  margin-bottom: 32px;
+}
+
+.columns-content .columns-content-col h2:has(+ h3) {
+  margin-bottom: 0;
+}
+
+.columns-content .columns-content-col h2 + h3 {
+  margin-bottom: 32px;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 300;
+  line-height: var(--heading-line-height-xl);
+}
+
+/* images: full column width, natural ratio */
 .columns-content .columns-content-col picture,
 .columns-content .columns-content-col img {
   display: block;
@@ -28,12 +71,74 @@
   height: auto;
 }
 
-@media (width >= 600px) {
+.columns-content .columns-content-col > p:has(> picture) {
+  margin-bottom: 32px;
+}
+
+/* teaser-style column: image, title, short text, "find out more" link */
+.columns-content .columns-content-col > p:has(> picture):has(+ h3) {
+  margin-bottom: 24px;
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture):has(+ h3) img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.8px;
+  letter-spacing: 1px;
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 ~ p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 ~ p:last-child:has(> a:only-child) {
+  margin-top: 24px;
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 24.5px;
+  letter-spacing: normal;
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 ~ p:last-child > a:only-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* orange disc with a chevron */
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 ~ p:last-child > a:only-child::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 28px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M2.5 1l3 3-3 3' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E")
+    center / 8px 8px no-repeat
+    var(--brand-orange);
+}
+
+.columns-content .columns-content-col > p:first-child:has(> picture) + h3 ~ p:last-child > a:only-child:hover {
+  color: var(--link-hover-color);
+}
+
+@media (width >= 768px) {
   .columns-content .columns-content-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
-    gap: 32px;
+    gap: 48px 32px;
   }
 
   .columns-content .columns-content-row[data-cols='1'] {
@@ -42,6 +147,15 @@
 }
 
 @media (width >= 900px) {
+  .columns-content .columns-content-col > p:has(> picture) {
+    margin-bottom: 64px;
+  }
+
+  .columns-content .columns-content-col h2 + h3 {
+    font-size: 32.8125px;
+    line-height: 39px;
+  }
+
   .columns-content .columns-content-row[data-cols='3'] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -65,5 +179,12 @@
 
   .columns-content.wide-left .columns-content-row[data-cols='3'] > .columns-content-col:first-child {
     grid-row: span 2;
+  }
+}
+
+@media (width >= 1280px) {
+  .columns-content .columns-content-col h2 + h3 {
+    font-size: 35px;
+    line-height: 42px;
   }
 }

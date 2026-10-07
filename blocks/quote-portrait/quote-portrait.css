@@ -1,19 +1,23 @@
+/* values measured from the source .c-quote component */
 .quote-portrait .quote-portrait-figure {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  margin: 0;
+  display: flow-root;
+  margin: -12px 0 0;
 }
 
-/* round portrait */
+/* round portrait, centred above the quote on mobile */
 .quote-portrait .quote-portrait-image {
-  flex: 0 0 auto;
-  width: 120px;
+  width: 240px;
+  max-width: 100%;
+  margin: 12px auto 0;
   line-height: 0;
 }
 
+.quote-portrait .quote-portrait-image picture {
+  display: block;
+}
+
 .quote-portrait .quote-portrait-image img {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 1;
@@ -21,50 +25,93 @@
   object-fit: cover;
 }
 
+/* quote + attribution; the large opening quotation mark sits above on mobile */
 .quote-portrait .quote-portrait-content {
+  position: relative;
   min-width: 0;
+  padding-top: 72px;
 }
 
-/* large opening quotation mark above the quote text */
+.quote-portrait .quote-portrait-content::before {
+  content: '\201C';
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--brand-orange);
+  font-size: 360px;
+  font-weight: 300;
+  line-height: 259.2px;
+  transform: translateX(-10%);
+  pointer-events: none;
+}
+
 .quote-portrait .quote-portrait-text {
+  position: relative;
+  margin: 0;
+  color: var(--brand-orange);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 33.6px;
+}
+
+.quote-portrait .quote-portrait-text > * {
   margin: 0;
 }
 
-.quote-portrait .quote-portrait-text::before {
-  content: '\201C';
-  display: block;
-  height: 0.5em;
-  font-size: 4em;
-  line-height: 1;
-}
-
-.quote-portrait .quote-portrait-text > :first-child {
-  margin-top: 0;
-}
-
-.quote-portrait .quote-portrait-text > :last-child {
-  margin-bottom: 0;
+.quote-portrait .quote-portrait-text > * + * {
+  margin-top: 1em;
 }
 
 .quote-portrait .quote-portrait-author {
-  margin-top: 16px;
+  position: relative;
+  margin-top: 24px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
 }
 
 .quote-portrait .quote-portrait-author > * {
   margin: 0;
 }
 
-@media (width >= 600px) {
+.quote-portrait .quote-portrait-author strong,
+.quote-portrait .quote-portrait-author b {
+  font-weight: 600;
+}
+
+/* no portrait: nothing to centre, nothing to offset */
+.quote-portrait.quote-portrait-no-image .quote-portrait-figure {
+  margin-top: 0;
+}
+
+/* portrait left, quote right; the quotation mark moves into the left gutter */
+@media (width >= 1024px) {
   .quote-portrait .quote-portrait-figure {
+    display: flex;
     flex-direction: row;
-    gap: 32px;
   }
 
   .quote-portrait .quote-portrait-image {
-    width: 160px;
+    flex: 0 0 auto;
+    max-width: none;
+    margin: 12px 0 0;
+    padding-right: 32px;
   }
 
   .quote-portrait .quote-portrait-content {
     flex: 1 1 auto;
+    padding: 0 0 0 108px;
+  }
+
+  .quote-portrait .quote-portrait-text {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+}
+
+@media (width >= 1280px) {
+  .quote-portrait .quote-portrait-image {
+    width: 300px;
   }
 }
