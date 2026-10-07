@@ -1,7 +1,17 @@
+/* source: 64px above the photos, 48px item margin + 64px container padding below */
+.cards-gallery {
+  margin-bottom: 112px;
+}
+
+.default-content-wrapper + .cards-gallery-wrapper > .cards-gallery {
+  margin-top: 64px;
+}
+
+/* source grid: 32px gutter between columns, 48px between rows */
 .cards-gallery > ul {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 48px 32px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -9,6 +19,7 @@
 
 .cards-gallery .cards-gallery-item {
   min-width: 0;
+  margin: 0;
 }
 
 .cards-gallery .cards-gallery-figure {
@@ -33,15 +44,60 @@
 }
 
 .cards-gallery .cards-gallery-caption {
-  padding-top: 8px;
+  position: relative;
+  margin: 0 0 12px;
+  padding: 12px 0 0;
+  font-size: var(--body-font-size-xs);
+  font-weight: 300;
+  line-height: 19.6px;
+  text-align: left;
 }
 
-.cards-gallery .cards-gallery-caption > :first-child {
-  margin-top: 0;
+.cards-gallery .cards-gallery-caption p {
+  margin: 0;
 }
 
-.cards-gallery .cards-gallery-caption > :last-child {
-  margin-bottom: 0;
+/*
+ * hi-res download: a link paragraph after the caption text becomes the source's
+ * round orange download tool, 12px in from the photo's bottom-right corner
+ * (the caption's top edge is the photo's bottom edge)
+ */
+.cards-gallery .cards-gallery-caption > p:not(:first-child):has(> .cards-gallery-download:only-child) {
+  position: absolute;
+  right: 12px;
+  bottom: calc(100% + 12px);
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child {
+  display: block;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: 28px;
+  background-color: var(--brand-orange);
+  color: var(--text-color);
+  font-size: 0;
+  line-height: 0;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child::before {
+  content: '';
+  display: block;
+  width: 10.5px;
+  height: 10.5px;
+  margin: 8.75px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M65.92 55.9a3.34 3.34 0 00-3.34-3.34H7.26a3.34 3.34 0 00-3.34 3.34v9.32a3.34 3.34 0 003.34 3.34h55.32a3.34 3.34 0 003.34-3.34zm-7.85 7a3.22 3.22 0 113.22-3.22 3.22 3.22 0 01-3.22 3.26z'/%3E%3Cpath d='M58 24l-2-2a2.64 2.64 0 00-3.46 0L41.92 32.41V4.73c0-2-1-3.17-3-3.17H29.3a3.07 3.07 0 00-3.39 3.17v27.68L15.42 22a2.29 2.29 0 00-3.19 0l-2 2a2.22 2.22 0 000 3.13L32.51 49.4a2.4 2.4 0 003.25 0L58 27.11A2.22 2.22 0 0058 24z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child:hover,
+.cards-gallery .cards-gallery-caption > p:not(:first-child) > .cards-gallery-download:only-child:focus-visible {
+  background-color: var(--brand-orange-dark);
+  color: var(--text-color);
 }
 
 @media (width >= 600px) {
