@@ -1,37 +1,99 @@
+/*
+ * Values measured from the source widget column on https://www.continental.com/en/
+ * Stacked under the teaser on mobile, where source columns are 48px apart.
+ */
 .widget-share-price {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  margin-top: 48px;
 }
 
-/* reserve space for the third-party chart so lazy-loading causes no layout shift */
+/*
+ * The equitystory teaser renders at 512px tall (set by the widget once loaded);
+ * source wraps it in a 519px box (inline iframe + baseline gap). Reserving the
+ * same box keeps the CTA in place and avoids layout shift while lazy-loading.
+ */
 .widget-share-price .widget-share-price-frame {
   position: relative;
+  overflow: hidden;
   width: 100%;
-  min-height: 360px;
+  min-height: 519px;
 }
 
 .widget-share-price .widget-share-price-frame iframe {
   display: block;
   width: 100%;
-  height: 360px;
+  height: 512px;
   border: 0;
+  overflow: hidden;
 }
 
-/* CTA button sits below the chart, aligned to the end of the column */
+/* CTA row under the chart: 24px top padding, left aligned */
 .widget-share-price .widget-share-price-cta {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 8px;
+  padding-top: 24px;
 }
 
-.widget-share-price .widget-share-price-cta > * {
+.widget-share-price .widget-share-price-cta > p {
   margin: 0;
 }
 
+/* "Share Price Chart" pill (authored as a plain link, so not auto-buttonized) */
+.widget-share-price .widget-share-price-cta a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 100%;
+  min-height: 48px;
+  margin: 0 16px 0 0;
+  border: 0;
+  border-radius: var(--button-radius);
+  padding: 10px 24px;
+  background-color: var(--brand-orange);
+  color: #000;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 24.5px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/*
+ * chevron icon: source draws a ~9x15.5px chevron inside a 16px-wide icon slot.
+ * An 11px square rotated 45deg gives the same 15.5px height; the margins keep
+ * the 16px slot and shift the visible chevron to the same spot as on source.
+ */
+.widget-share-price .widget-share-price-cta a:any-link::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  margin: 0 6.5px 0 -1.5px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+.widget-share-price .widget-share-price-cta a:hover,
+.widget-share-price .widget-share-price-cta a:focus-visible {
+  background-color: var(--brand-orange-dark);
+  color: #000;
+}
+
 @media (width >= 900px) {
-  .widget-share-price .widget-share-price-cta {
-    justify-content: flex-end;
+  /*
+   * Source splits the full row into 8/4 columns with 16px inner padding; the
+   * teaser-widget section grid takes its 32px column gap out of the row first,
+   * which makes the 1/3 column 32px/3 narrower than on source. Pull the block's
+   * start edge back so its left edge and width match the source column at every
+   * desktop width (right edge already aligns).
+   */
+  .widget-share-price {
+    margin-top: 0;
+    margin-inline-start: calc(-32px / 3);
   }
 }

@@ -1,7 +1,23 @@
+/*
+ * cards-teaser - values measured from https://www.continental.com/en/ (c-teaser, c-content-slider, o-tabs)
+ * see migration-work/cards-teaser-extracted.css
+ */
+.cards-teaser {
+  --cards-teaser-gap: 32px;
+  --cards-teaser-row-gap: 48px;
+  --cards-teaser-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M18.77 68.11l-2.71-2.71a3.07 3.07 0 010-4.33L42.13 35 16.06 8.93a3.07 3.07 0 010-4.33l2.71-2.71a3.07 3.07 0 014.33 0L54 32.75a3.34 3.34 0 010 4.51L23.1 68.11a3.07 3.07 0 01-4.33 0z'/%3E%3C/svg%3E");
+  --cards-teaser-icon-download: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M65.92 55.9a3.34 3.34 0 00-3.34-3.34H7.26a3.34 3.34 0 00-3.34 3.34v9.32a3.34 3.34 0 003.34 3.34h55.32a3.34 3.34 0 003.34-3.34zm-7.85 7a3.22 3.22 0 113.22-3.22 3.22 3.22 0 01-3.22 3.26z'/%3E%3Cpath d='M58 24l-2-2a2.64 2.64 0 00-3.46 0L41.92 32.41V4.73c0-2-1-3.17-3-3.17H29.3a3.07 3.07 0 00-3.39 3.17v27.68L15.42 22a2.29 2.29 0 00-3.19 0l-2 2a2.22 2.22 0 000 3.13L32.51 49.4a2.4 2.4 0 003.25 0L58 27.11A2.22 2.22 0 0058 24z'/%3E%3C/svg%3E");
+  --cards-teaser-icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M58 35v23H12V12h23L23 1H1v68h68V47L58 35z'/%3E%3Cpath d='M30 48l29-29 10 11V1H40l11 10-29 29 8 8z'/%3E%3C/svg%3E");
+  --cards-teaser-icon-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Cpath d='M63.24 31.3L10.72 1.53A4 4 0 004.73 5v60a4 4 0 006 3.48l52.53-30.21a4 4 0 00-.02-6.97z'/%3E%3C/svg%3E");
+
+  color: var(--text-color);
+}
+
+/* ---------- grid: 1-up mobile, 2-up from 600px, 3-up from 900px ---------- */
 .cards-teaser > ul {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: var(--cards-teaser-row-gap) var(--cards-teaser-gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -10,52 +26,6 @@
 /* a single teaser fills the available width (e.g. the 2/3 column next to a widget) */
 .cards-teaser > ul:has(> li:only-child) {
   grid-template-columns: 1fr;
-}
-
-.cards-teaser .cards-teaser-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.cards-teaser .cards-teaser-card-image {
-  line-height: 0;
-}
-
-.cards-teaser .cards-teaser-card-image img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.cards-teaser .cards-teaser-card-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding-top: 16px;
-}
-
-.cards-teaser .cards-teaser-card-body > :first-child {
-  margin-top: 0;
-}
-
-/* push the CTA to the bottom so links align across a row of cards */
-.cards-teaser .cards-teaser-card-body > :last-child:has(.cards-teaser-card-link) {
-  margin-top: auto;
-}
-
-/* stretched link: the whole teaser is clickable */
-.cards-teaser .cards-teaser-card-linked .cards-teaser-card-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-/* other links inside the body stay independently clickable above the stretched link */
-.cards-teaser .cards-teaser-card-body a:not(.cards-teaser-card-link) {
-  position: relative;
-  z-index: 2;
 }
 
 @media (width >= 600px) {
@@ -76,6 +46,131 @@
   .cards-teaser > ul:has(> li:only-child) {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- teaser ---------- */
+.cards-teaser .cards-teaser-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.cards-teaser .cards-teaser-card-image {
+  line-height: 0;
+}
+
+.cards-teaser .cards-teaser-card-image picture {
+  display: block;
+}
+
+.cards-teaser .cards-teaser-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cards-teaser .cards-teaser-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: 24px;
+}
+
+.cards-teaser .cards-teaser-card-body > :first-child {
+  margin-top: 0;
+}
+
+.cards-teaser .cards-teaser-card-body :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.8px;
+  letter-spacing: 1px;
+  color: var(--text-color);
+}
+
+.cards-teaser .cards-teaser-card-body p {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 22.4px;
+  letter-spacing: 0.2px;
+}
+
+/* a date on its own line is set bold (source <time>) */
+.cards-teaser .cards-teaser-card-body p > em:only-child {
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* CTA line: pushed to the bottom so links align across a row of cards */
+.cards-teaser .cards-teaser-card-body > p:has(> .cards-teaser-card-link) {
+  margin-top: auto;
+  padding-top: 24px;
+  letter-spacing: normal;
+}
+
+.cards-teaser .cards-teaser-card-body a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+/* orange icon disc + label: chevron (page), download (PDF), external (other sites) */
+.cards-teaser a.cards-teaser-card-link:any-link {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 24.5px;
+}
+
+.cards-teaser a.cards-teaser-card-link::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 28px;
+  background: var(--cards-teaser-icon-chevron) calc(50% + 1px) 50% / 8px 8px no-repeat var(--brand-orange);
+}
+
+.cards-teaser a.cards-teaser-card-link[href^="http"]:not([href*="continental.com"])::before {
+  background-image: var(--cards-teaser-icon-external);
+  background-position: 50%;
+}
+
+.cards-teaser a.cards-teaser-card-link.cards-teaser-link-download::before {
+  background-image: var(--cards-teaser-icon-download);
+  background-position: 50%;
+}
+
+/* hover anywhere on the teaser: the CTA turns dark orange */
+.cards-teaser .cards-teaser-card-link:focus-visible {
+  color: var(--link-hover-color);
+}
+
+.cards-teaser .cards-teaser-card-linked:hover .cards-teaser-card-link {
+  color: var(--link-hover-color);
+}
+
+/* stretched link: the whole teaser is clickable */
+.cards-teaser .cards-teaser-card-linked .cards-teaser-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* other links inside the body stay independently clickable above the stretched link */
+.cards-teaser .cards-teaser-card-body a:not(.cards-teaser-card-link) {
+  position: relative;
+  z-index: 2;
+}
+
+.cards-teaser .cards-teaser-card-body a:not(.cards-teaser-card-link):hover {
+  color: var(--link-hover-color);
 }
 
 /* block heading row (tab label in a tab group) */
@@ -100,23 +195,20 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: rgb(0 0 0 / 50%);
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  border-radius: 28px;
+  background: var(--cards-teaser-icon-play) calc(50% + 2px) 50% / 28px 28px no-repeat var(--brand-orange);
+  box-shadow: 0 0 100px 0 rgb(0 0 0 / 50%);
   transform: translate(-50%, -50%);
+  transition: transform 0.15s cubic-bezier(0.71, 0.46, 0.26, 1.51), background-color 0.15s ease-in-out;
   pointer-events: none;
 }
 
-.cards-teaser .cards-teaser-play::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 54%;
-  border-style: solid;
-  border-width: 10px 0 10px 16px;
-  border-color: transparent transparent transparent white;
-  transform: translate(-50%, -50%);
+.cards-teaser .cards-teaser-card-video:hover .cards-teaser-play {
+  background-color: var(--brand-orange-dark);
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .cards-teaser .cards-teaser-video-dialog {
@@ -174,7 +266,6 @@
 @media (width >= 900px) {
   .cards-teaser.four-up > ul {
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
   }
 }
 
@@ -186,7 +277,7 @@
   }
 }
 
-/* ---------- option: slider - one horizontal scroll-snap row ---------- */
+/* ---------- option: slider - one horizontal scroll-snap row of boxed teasers ---------- */
 .cards-teaser.slider {
   position: relative;
 }
@@ -195,7 +286,7 @@
 .cards-teaser.slider > ul,
 .cards-teaser.slider > ul:has(> li:only-child) {
   display: flex;
-  gap: 24px;
+  gap: var(--cards-teaser-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -209,14 +300,28 @@
 .cards-teaser.slider .cards-teaser-card {
   flex: 0 0 85%;
   min-width: 0;
+  background-color: var(--light-color);
   scroll-snap-align: start;
+}
+
+/* on a coloured section the boxed teasers turn white */
+.section:is(.light-grey, .light, .grey, .yellow, .pastel-yellow, .pastel-green) .cards-teaser.slider .cards-teaser-card {
+  background-color: var(--background-color);
+}
+
+.cards-teaser.slider .cards-teaser-card-body {
+  padding: 24px 16px;
 }
 
 .cards-teaser.slider .cards-teaser-slider-nav {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--brand-orange);
+}
+
+.section:is(.grey, .pastel-yellow) .cards-teaser.slider .cards-teaser-slider-nav {
+  color: var(--brand-orange-dark);
 }
 
 .cards-teaser.slider .cards-teaser-slider-nav[hidden] {
@@ -225,12 +330,13 @@
 
 .cards-teaser.slider .cards-teaser-slider-nav button {
   position: relative;
-  width: 40px;
-  height: 40px;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
   margin: 0;
   padding: 0;
-  border: 1px solid currentcolor;
-  border-radius: 50%;
+  border: 2px solid currentcolor;
+  border-radius: 60px;
   background: none;
   color: inherit;
   cursor: pointer;
@@ -241,43 +347,48 @@
   cursor: default;
 }
 
+/* chevron glyph: 32x42 at scale(0.6), grows to scale(0.8) on hover */
 .cards-teaser.slider .cards-teaser-slider-nav button::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 8px;
-  height: 8px;
-  border: solid currentcolor;
-  border-width: 2px 2px 0 0;
-  transform: translate(-65%, -50%) rotate(45deg);
+  width: 32px;
+  height: 42px;
+  margin: -21px 0 0 -16px;
+  background-color: currentcolor;
+  mask: var(--cards-teaser-icon-chevron) 50% / contain no-repeat;
+  transform: scale(0.6);
+  transition: transform 0.15s ease-in-out;
 }
 
-.cards-teaser.slider .cards-teaser-slider-prev::after {
-  transform: translate(-35%, -50%) rotate(-135deg);
+.cards-teaser.slider .cards-teaser-slider-nav .cards-teaser-slider-prev::after {
+  transform: rotate(180deg) scale(0.6);
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav button:not(:disabled):hover::after {
+  transform: scale(0.8);
+}
+
+.cards-teaser.slider .cards-teaser-slider-nav .cards-teaser-slider-prev:not(:disabled):hover::after {
+  transform: rotate(180deg) scale(0.8);
 }
 
 @media (width >= 600px) {
   .cards-teaser.slider .cards-teaser-card {
-    flex-basis: calc((100% - 24px) / 2);
+    flex-basis: calc((100% - var(--cards-teaser-gap)) / 2);
   }
 }
 
 @media (width >= 900px) {
   .cards-teaser.slider .cards-teaser-card {
-    flex-basis: calc((100% - 2 * 24px) / 3);
-  }
-}
-
-@media (width >= 1200px) {
-  .cards-teaser.slider .cards-teaser-card {
-    flex-basis: calc((100% - 3 * 24px) / 4);
+    flex-basis: calc((100% - 2 * var(--cards-teaser-gap)) / 3);
   }
 
-  /* desktop: arrows sit on the track edges at mid-height */
+  /* desktop: arrows sit outside the track edges at mid-height */
   .cards-teaser.slider .cards-teaser-slider-nav {
     position: absolute;
-    inset: 0 -20px;
+    inset: 0 -80px;
     justify-content: space-between;
     align-items: center;
     margin: 0;
@@ -285,8 +396,13 @@
   }
 
   .cards-teaser.slider .cards-teaser-slider-nav button {
-    background-color: var(--background-color, white);
     pointer-events: auto;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-teaser.slider .cards-teaser-card {
+    flex-basis: calc((100% - 3 * var(--cards-teaser-gap)) / 4);
   }
 }
 
@@ -295,27 +411,70 @@
 /* the tab bar is inserted before the first grouped instance (outside the block) */
 .cards-teaser-tablist {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0 24px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid currentcolor;
+  flex-direction: column;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--brand-orange);
+}
+
+/* the bar is a direct section child: align its rule with the content column, not the padded box */
+.section > .cards-teaser-tablist {
+  max-width: calc(var(--content-max-width) - 2 * var(--content-padding));
+  margin: 0 max(var(--content-padding), (100% - var(--content-max-width)) / 2 + var(--content-padding)) 32px;
+  padding: 0;
 }
 
 .cards-teaser-tablist .cards-teaser-tab {
-  margin: 0 0 -1px;
-  padding: 8px 0;
+  position: relative;
+  margin: 0;
+  padding: 16px 0;
   border: 0;
-  border-bottom: 3px solid transparent;
   border-radius: 0;
-  font: inherit;
-  color: inherit;
   background: none;
+  color: var(--text-color);
+  font: inherit;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 24.5px;
+  text-align: left;
   cursor: pointer;
 }
 
-.cards-teaser-tablist .cards-teaser-tab[aria-selected="true"] {
-  border-bottom-color: currentcolor;
-  font-weight: bold;
+/* indicator bar: 2px on hover, 8px when selected */
+.cards-teaser-tablist .cards-teaser-tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--brand-orange);
+  transition: height 0.15s ease-in-out;
+}
+
+.cards-teaser-tablist .cards-teaser-tab:hover::before {
+  height: 2px;
+}
+
+.cards-teaser-tablist .cards-teaser-tab[aria-selected="true"]::before {
+  height: 8px;
+}
+
+.section:is(.grey, .pastel-yellow) .cards-teaser-tablist {
+  border-bottom-color: var(--text-color);
+}
+
+.section:is(.grey, .pastel-yellow) .cards-teaser-tablist .cards-teaser-tab::before {
+  background-color: var(--text-color);
+}
+
+@media (width >= 600px) {
+  .cards-teaser-tablist {
+    flex-flow: row wrap;
+  }
+
+  .cards-teaser-tablist .cards-teaser-tab {
+    padding: 24px 12px;
+  }
 }
 
 /* in a tab group the tab is the label; the heading row only names the panel for no-JS */

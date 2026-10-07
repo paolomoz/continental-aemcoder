@@ -1,50 +1,90 @@
+/* cards-stats: light-grey key-figure boxes (source .c-fact-box.is-lightgray) */
+
 .cards-stats > ul {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 0 32px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* equal-height boxes */
+/*
+ * Each box spans four shared rows (label / value / unit / description) via subgrid,
+ * so labels, numbers and units line up across boxes like the source's equalised sections.
+ */
 .cards-stats .cards-stats-card {
-  display: flex;
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  margin: 0 0 48px; /* source .mb-5 on every column */
 }
 
 .cards-stats .cards-stats-card-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 24px;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  row-gap: 0;
   box-sizing: border-box;
+  padding: 24px;
+  background-color: var(--light-color);
+  color: var(--text-color);
 }
 
 .cards-stats .cards-stats-card-body > * {
   margin: 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 300;
+  line-height: 22.4px;
+  color: var(--text-color);
 }
 
-/* label on top, reserving two lines so the numbers line up across boxes */
-.cards-stats .cards-stats-label {
-  min-height: 2.4em;
+/* label */
+.cards-stats .cards-stats-card-body > .cards-stats-label {
+  grid-row: 1;
+  margin: 0 0 4px;
+  font-size: var(--heading-font-size-l);
+  font-weight: 400;
+  line-height: var(--heading-line-height-l);
 }
 
-/* the big number is centred in its own band */
-.cards-stats .cards-stats-value {
-  margin: 24px 0;
+/* big number, centred in its own band */
+.cards-stats .cards-stats-card-body > .cards-stats-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  grid-row: 2;
+  margin: 0 0 48px;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 48px;
+  color: var(--brand-orange);
   text-align: center;
-  line-height: 1;
 }
 
-.cards-stats .cards-stats-unit + .cards-stats-description,
-.cards-stats .cards-stats-description + .cards-stats-description {
-  margin-top: 4px;
+.cards-stats .cards-stats-label ~ .cards-stats-value {
+  margin-top: 48px;
 }
 
-@media (width >= 600px) {
-  .cards-stats > ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* bold unit line + small description */
+.cards-stats .cards-stats-card-body > .cards-stats-unit {
+  grid-row: 3;
+}
+
+.cards-stats .cards-stats-card-body > .cards-stats-description {
+  grid-row: 4;
+}
+
+.cards-stats .cards-stats-unit strong {
+  font-weight: 400;
+}
+
+/* boxes with several description paragraphs fall back to a plain stack */
+.cards-stats .cards-stats-card-body:has(.cards-stats-description ~ .cards-stats-description) {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (width >= 900px) {
@@ -52,12 +92,15 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .cards-stats .cards-stats-value {
-    margin: 32px 0;
-  }
-
-  /* exactly four key figures share one row instead of wrapping 3 + 1 */
+  /* exactly four key figures share one row (source col-md-3) */
   .cards-stats > ul[data-count='4'] {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-stats .cards-stats-card-body > .cards-stats-value {
+    font-size: 60px;
+    line-height: 60px;
   }
 }
