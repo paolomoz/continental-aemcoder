@@ -98,7 +98,7 @@ export function formatDate(iso) {
   if (Number.isNaN(date.getTime())) return iso;
   const lang = document.documentElement.lang || 'en';
   return new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : lang, {
-    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+    year: 'numeric', month: 'long', day: '2-digit', timeZone: 'UTC',
   }).format(date);
 }
 

@@ -279,10 +279,37 @@ function removeDownloadModals(element) {
   });
 }
 
+// Lazy-loaded images keep a tiny 20x11 placeholder in `src`; the real renditions live in
+// `data-src` and the picture's `source[data-srcset]`. Point `src` at the largest real one
+// before any parser reads it.
+// Found: <source media="(min-width:1280px)" data-srcset="...b32bccaacc.jpg" width="1450">
+//        <img src="...58d5dd0cee.jpg" data-src="...e4516778a6.jpg" data-lazyload="">
+function promoteLazyImages(element) {
+  element.querySelectorAll('img[data-src], picture img').forEach((img) => {
+    const candidates = [];
+    const picture = img.closest('picture');
+    if (picture) {
+      picture.querySelectorAll('source[data-srcset], source[srcset]').forEach((source) => {
+        const url = (source.getAttribute('data-srcset') || source.getAttribute('srcset') || '').trim().split(/\s+/)[0];
+        if (url) candidates.push({ url, width: Number(source.getAttribute('width')) || 0 });
+      });
+    }
+    const dataSrc = img.getAttribute('data-src');
+    if (dataSrc) candidates.push({ url: dataSrc, width: Number(img.getAttribute('width')) || 1 });
+    if (!candidates.length) return;
+    const best = candidates.sort((a, b) => b.width - a.width)[0];
+    img.setAttribute('src', best.url);
+    img.removeAttribute('data-lazyload');
+  });
+}
+
 export default function transform(hookName, element, payload) {
   const templateName = payload && payload.template && payload.template.name;
 
-  if (hookName === TransformHook.beforeTransform) normalizeHeadMetadata(element);
+  if (hookName === TransformHook.beforeTransform) {
+    normalizeHeadMetadata(element);
+    promoteLazyImages(element);
+  }
 
   if (hookName === TransformHook.beforeTransform && templateName === PRESS_CONTENT) {
     removeSolrSearch(element, payload);
@@ -438,6 +465,14 @@ export default function transform(hookName, element, payload) {
 
     // Download modals not consumed by cards-downloads
     removeDownloadModals(element);
+
+    // Same-site absolute links become root-relative so they stay on the migrated site
+    // (and are not treated as external by blocks).
+    // Found: <a href="https://www.continental.com/en/stories/when-mobility-changes/"> (press-landing)
+    element.querySelectorAll('a[href^="https://www.continental.com/"], a[href^="http://www.continental.com/"]').forEach((a) => {
+      const href = new URL(a.getAttribute('href'));
+      a.setAttribute('href', `${href.pathname}${href.search}${href.hash}`);
+    });
 
     // Strip tracking / inline handler attributes
     element.querySelectorAll('[onclick], [data-track], [data-tracking]').forEach((el) => {
