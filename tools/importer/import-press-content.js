@@ -1,6 +1,6 @@
 /* eslint-disable */
 /* global WebImporter */
-// Generated import script for template "press-content" (105 URLs in page-templates.json).
+// Generated import script for template "press-content" (106 URLs in page-templates.json).
 
 import carouselHeroParser from './parsers/carousel-hero.js';
 import cardsTeaserParser from './parsers/cards-teaser.js';
@@ -14,6 +14,7 @@ import tableParser from './parsers/table.js';
 import columnsInfoboxParser from './parsers/columns-infobox.js';
 import columnsContentParser from './parsers/columns-content.js';
 import cardsDownloadsParser from './parsers/cards-downloads.js';
+import pressSearchParser from './parsers/press-search.js';
 
 import continentalCleanupTransformer from './transformers/continental-cleanup.js';
 import continentalSectionsTransformer from './transformers/continental-sections.js';
@@ -32,6 +33,7 @@ const parsers = {
   'columns-infobox': columnsInfoboxParser,
   'columns-content': columnsContentParser,
   'cards-downloads': cardsDownloadsParser,
+  'press-search': pressSearchParser,
 };
 
 const PAGE_TEMPLATE = {
@@ -121,6 +123,12 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".c-pageoptions:has(form[data-minicart])",
         ".o-page__ce:has(a.c-link--download)"
+      ]
+    },
+    {
+      "name": "press-search",
+      "instances": [
+        ".o-container.tx_solr:has(.c-search__results)"
       ]
     }
   ],
