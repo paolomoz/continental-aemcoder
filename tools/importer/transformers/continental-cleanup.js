@@ -474,6 +474,17 @@ export default function transform(hookName, element, payload) {
       a.setAttribute('href', `${href.pathname}${href.search}${href.hash}`);
     });
 
+    // Source pages live at trailing-slash URLs (/en/press/); EDS serves them slashless
+    // (/en/press), so a trailing slash 404s. Locale roots (/en/) resolve to /en/index and stay.
+    // Found: <a href="/en/press/press-releases/"> (all templates)
+    element.querySelectorAll('a[href^="/"]').forEach((a) => {
+      const href = a.getAttribute('href');
+      const [, path, rest] = href.match(/^([^?#]*)(.*)$/);
+      if (path.length > 1 && path.endsWith('/') && !/^\/[a-z]{2}(-[a-z]{2})?\/$/.test(path)) {
+        a.setAttribute('href', `${path.replace(/\/+$/, '')}${rest}`);
+      }
+    });
+
     // Strip tracking / inline handler attributes
     element.querySelectorAll('[onclick], [data-track], [data-tracking]').forEach((el) => {
       el.removeAttribute('onclick');
