@@ -1520,7 +1520,8 @@
         "https://www.continental.com/en/press/studies-publications/other-publications/the-e-bus-is-here/",
         "https://www.continental.com/en/press/studies-publications/sophisticated-technologies-extend-range-and-battery-life/",
         "https://www.continental.com/en/press/studies-publications/survey-artificial-intelligence/",
-        "https://www.continental.com/en/press/studies-publications/sustainable-tires-for-electric-mobility/"
+        "https://www.continental.com/en/press/studies-publications/sustainable-tires-for-electric-mobility/",
+        "https://www.continental.com/en/press/press-releases/press-tires/"
       ],
       "blocks": [
         {
@@ -1599,6 +1600,12 @@
           "instances": [
             ".c-pageoptions:has(form[data-minicart])",
             ".o-page__ce:has(a.c-link--download)"
+          ]
+        },
+        {
+          "name": "press-search",
+          "instances": [
+            ".o-container.tx_solr:has(.c-search__results)"
           ]
         }
       ],

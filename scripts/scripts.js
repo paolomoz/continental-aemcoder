@@ -157,7 +157,7 @@ function decoratePressRelease(main) {
     crumbs.className = 'breadcrumb';
     crumbs.setAttribute('aria-label', 'Breadcrumb');
     const list = document.createElement('ol');
-    [['Press', '/en/press/'], ['Press Releases', '/en/press/press-releases/']].forEach(([label, href]) => {
+    [['Press', '/en/press'], ['Press Releases', '/en/press/press-releases']].forEach(([label, href]) => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = href;
@@ -211,7 +211,7 @@ function decoratePressRelease(main) {
     const heading = document.createElement('h3');
     heading.textContent = 'Latest News';
     const allNews = document.createElement('a');
-    allNews.href = '/en/press/press-releases/';
+    allNews.href = '/en/press/press-releases';
     allNews.textContent = 'All news';
     const wrapper = document.createElement('div');
     wrapper.append(buildBlock('cards-latest-news', [[heading], ['all-news', allNews]]));
